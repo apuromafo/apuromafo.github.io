@@ -96,6 +96,18 @@ Soy jugador activo de TryHackMe, con más de 700 máquinas completadas entre lab
 
 <div class="card" markdown="1">
 
+### [Juego 404 — Laberinto](https://github.com/apuromafo/ctf/tree/main/Tryhackme/Personal%20Profile/404_juego)
+
+Mi juego de creación propia con estética TryHackMe: laberinto jugable en el navegador con 10 niveles en JSON, ranking con protección CSRF y servidor propio en Python. Se juega con el personaje de Echo, de TryHackMe.
+
+**Mi historia:** lo diseñé y programé yo, mezclando juego, web y seguridad.
+
+<span class="tags"><a class="tag" data-tag="juego">#juego</a> <a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="tryhackme">#tryhackme</a> <a class="tag" data-tag="web">#web</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
 ### [DockerLabs — Respaldo de máquinas](https://github.com/apuromafo/dockerlabs_backup)
 
 Respaldo que armé de máquinas de práctica de laboratorio de intrusión.
