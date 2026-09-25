@@ -9,3 +9,5 @@ main:
     url: /sobre-mi/
   - title: Novedades
     url: /novedades/
+  - title: Índice
+    url: /indice/
