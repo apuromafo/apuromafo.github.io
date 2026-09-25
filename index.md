@@ -93,6 +93,18 @@ Scripts para OllyDbg 1.0 orientados a análisis y depuración.
 
 <div class="card" markdown="1">
 
+### [TryHackMe — Perfil](https://tryhackme.com/p/apuromafo)
+
+Jugador activo de TryHackMe, con más de 700 máquinas completadas entre laboratorios guiados y retos.
+
+**Historia:** años de práctica continua en la plataforma, complementando el reversing con pentesting aplicado.
+
+<span class="tags"><a class="tag" data-tag="tryhackme">#tryhackme</a> <a class="tag" data-tag="pentesting">#pentesting</a> <a class="tag" data-tag="practica">#práctica</a> <a class="tag" data-tag="red-team">#red-team</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
 ### [DockerLabs — Respaldo de máquinas](https://github.com/apuromafo/dockerlabs_backup)
 
 Respaldo de máquinas de práctica de laboratorio de intrusión.
