@@ -91,7 +91,7 @@ Crackmes, keygenmes, seriales y ejercicios de ingeniería inversa.
 
 Respaldo personal de la lista de reversing Crackslatinos, liderada por Ricardo Narvaja, incluyendo sus [teorías numeradas](https://github.com/apuromafo/Crackslatinos_/tree/master/Teorias_Numeradas).
 
-**Historia:** el sitio original desapareció y este respaldo es citado por la comunidad como referencia casi oficial de ese conocimiento.
+**Historia:** comunidad con 26 años de trayectoria. El sitio original desapareció y este respaldo es citado como referencia casi oficial de ese conocimiento.
 
 <span class="tags"><a class="tag" data-tag="reversing">#reversing</a> <a class="tag" data-tag="assembly">#assembly</a> <a class="tag" data-tag="crackslatinos">#crackslatinos</a> <a class="tag" data-tag="historia">#historia</a></span>
 
