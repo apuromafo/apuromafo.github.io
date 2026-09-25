@@ -34,3 +34,17 @@ plugins:
   - jekyll-sitemap
   - jekyll-include-cache
 show_excerpts: false
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      author_profile: true
+      show_date: true
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true
