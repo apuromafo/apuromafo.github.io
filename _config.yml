@@ -14,6 +14,15 @@ author:
     - label: TryHackMe
       icon: fas fa-flag
       url: https://tryhackme.com/p/apuromafo
+    - label: LinkedIn
+      icon: fab fa-linkedin
+      url: https://linkedin.com/in/mfaundez
+    - label: Instagram
+      icon: fab fa-instagram
+      url: https://www.instagram.com/apuromafo
+    - label: X
+      icon: fab fa-x-twitter
+      url: https://twitter.com/apuromafo
     - label: Sitio
       icon: fas fa-link
       url: https://apuromafo.github.io
