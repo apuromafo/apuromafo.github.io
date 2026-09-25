@@ -1,0 +1,151 @@
+---
+layout: page
+title: Herramientas
+permalink: /herramientas/
+---
+
+Selección de utilidades de mi [Repositorio Python](https://github.com/apuromafo/Repositorio_Python). Haz clic en cualquier hashtag para filtrar las fichas.
+
+<p id="filtro-activo" hidden>Filtrando por <strong id="filtro-nombre"></strong><button id="limpiar-filtro" type="button">Limpiar</button></p>
+
+<div class="card" markdown="1">
+
+### [MalApiScan](https://github.com/apuromafo/Repositorio_Python/tree/main/011_MalApiScan)
+
+Escáner de API que armé con foco en abuso y malas prácticas.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="api">#api</a> <a class="tag" data-tag="appsec">#appsec</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [Miniscan tipo Nmap](https://github.com/apuromafo/Repositorio_Python/tree/main/015_miniscan_tipo%20nmap)
+
+Mi escáner de red liviano al estilo Nmap.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="red-team">#red-team</a> <a class="tag" data-tag="scanning">#scanning</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [Mini assessment NIST + phishing](https://github.com/apuromafo/Repositorio_Python/tree/main/031_mini_assesment_nist_phish)
+
+Mi mini evaluación de postura con base NIST y simulación de phishing.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="blue-team">#blue-team</a> <a class="tag" data-tag="phishing">#phishing</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [Mitre](https://github.com/apuromafo/Repositorio_Python/tree/main/034_Mitre)
+
+Mis utilidades de trabajo con MITRE ATT&CK.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="mitre">#mitre</a> <a class="tag" data-tag="threat-intel">#threat-intel</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [CIS](https://github.com/apuromafo/Repositorio_Python/tree/main/036_cis)
+
+Mi apoyo a la verificación de controles CIS.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="blue-team">#blue-team</a> <a class="tag" data-tag="hardening">#hardening</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [OWASP vulns](https://github.com/apuromafo/Repositorio_Python/tree/main/037_owasp_vulns)
+
+Mis pruebas de vulnerabilidades OWASP en aplicaciones.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="appsec">#appsec</a> <a class="tag" data-tag="owasp">#owasp</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [CVE check](https://github.com/apuromafo/Repositorio_Python/tree/main/043_cve_check)
+
+Mi consulta y verificación de CVE.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="vulnerabilidades">#vulnerabilidades</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [Audit Burp to Risk](https://github.com/apuromafo/Repositorio_Python/tree/main/051_Audit_Burp2Risk)
+
+Convierto mis auditorías de Burp en análisis de riesgo con esta utilidad.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="burp">#burp</a> <a class="tag" data-tag="pentest">#pentest</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [Orquestador PwnDoc](https://github.com/apuromafo/Repositorio_Python/tree/main/060_orquestador%20pwndoc)
+
+Mi orquestación de reportes de pentest con PwnDoc.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="pentest">#pentest</a> <a class="tag" data-tag="reportes">#reportes</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [DefectDojo](https://github.com/apuromafo/Repositorio_Python/tree/main/062_Defect%20dojo)
+
+Mi integración y trabajo con DefectDojo para gestión de hallazgos.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="appsec">#appsec</a> <a class="tag" data-tag="devsecops">#devsecops</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [Informes pentest](https://github.com/apuromafo/Repositorio_Python/tree/main/063_informes%20pentest)
+
+Mi generación y apoyo a informes de pentesting.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="pentest">#pentest</a> <a class="tag" data-tag="reportes">#reportes</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [SCA Grype scan](https://github.com/apuromafo/Repositorio_Python/tree/main/068_SCA_Grype_scan)
+
+Mi análisis de composición de software con Grype.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="devsecops">#devsecops</a> <a class="tag" data-tag="sca">#sca</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [SSL Scan](https://github.com/apuromafo/Repositorio_Python/tree/main/069_SSL_Scan)
+
+Mi revisión de configuración TLS/SSL.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="blue-team">#blue-team</a> <a class="tag" data-tag="tls">#tls</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [Secretos Scan](https://github.com/apuromafo/Repositorio_Python/tree/main/073_Secretos_Scan)
+
+Mi detección de secretos expuestos en código.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="devsecops">#devsecops</a> <a class="tag" data-tag="secretos">#secretos</a></span>
+
+</div>
+
+<script src="{{ '/assets/filter.js' | relative_url }}"></script>
