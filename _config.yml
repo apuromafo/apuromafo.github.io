@@ -1,0 +1,6 @@
+title: apuromafo
+description: Proyectos de Python, ciberseguridad y regulación — Red, Blue y Purple Team.
+theme: minima
+plugins:
+  - jekyll-feed
+show_excerpts: false

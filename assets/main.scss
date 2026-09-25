@@ -1,0 +1,23 @@
+---
+---
+
+@import "minima";
+
+.card {
+  border: 1px solid $grey-color-light;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+}
+
+.tags {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: $grey-color;
+}
