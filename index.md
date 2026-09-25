@@ -65,7 +65,7 @@ Apuntes y resoluciones de CTF con fines documentales y de aprendizaje.
 
 Plataformas documentadas: [TryHackMe](https://github.com/apuromafo/ctf/tree/main/Tryhackme) · [HackTheBox](https://github.com/apuromafo/ctf/tree/main/Hackthebox) · [OverTheWire](https://github.com/apuromafo/ctf/tree/main/OverThewire) · [PicoCTF](https://github.com/apuromafo/ctf/tree/main/PicoCTF) · [Proving Grounds](https://github.com/apuromafo/ctf/tree/main/Proving%20Ground%20Play) · [Atenea CCN-CERT](https://github.com/apuromafo/ctf/tree/main/atenea.ccn-cert.cni.es) (histórico)
 
-**Hito:** top 100 del ranking de Atenea (CCN-CERT), plataforma española de retos.
+**Hito:** top 100 del ranking de Atenea (CCN-CERT), plataforma española de retos. Las soluciones se retiraron voluntariamente por respeto a las normas de la plataforma (no publicar soluciones, solo pequeñas pistas).
 
 <span class="tags"><a class="tag" data-tag="ctf">#ctf</a> <a class="tag" data-tag="writeups">#writeups</a> <a class="tag" data-tag="pentesting">#pentesting</a> <a class="tag" data-tag="red-team">#red-team</a></span>
 
