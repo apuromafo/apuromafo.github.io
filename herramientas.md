@@ -1,10 +1,24 @@
 ---
-layout: page
+layout: single
 title: Herramientas
 permalink: /herramientas/
+author_profile: true
+toc: true
 ---
 
 Selección de utilidades de mi [Repositorio Python](https://github.com/apuromafo/Repositorio_Python). Haz clic en cualquier hashtag para filtrar las fichas.
+
+<div class="card" markdown="1">
+
+### [Pack Mobile — Android + iOS](https://github.com/apuromafo/Repositorio_Python/tree/main/006_M%C3%B3vil)
+
+Mi automatización para pentesting móvil: mientras otros documentan el paso a paso, yo lo tengo automatizado. Incluye [Android](https://github.com/apuromafo/Repositorio_Python/tree/main/006_M%C3%B3vil/Android) (ADB, extracción de APK, Frida, Fridump, Hermes, SSL pinning, certificado Burp, JWT, logcat) e [iOS](https://github.com/apuromafo/Repositorio_Python/tree/main/006_M%C3%B3vil/iOS) (Frida server, manejo USB).
+
+**Mi historia:** años automatizando el flujo completo de análisis móvil para mis auditorías.
+
+<span class="tags"><a class="tag" data-tag="mobile">#mobile</a> <a class="tag" data-tag="android">#android</a> <a class="tag" data-tag="ios">#ios</a> <a class="tag" data-tag="frida">#frida</a> <a class="tag" data-tag="pentest">#pentest</a> <a class="tag" data-tag="automatizacion">#automatización</a></span>
+
+</div>
 
 <p id="filtro-activo" hidden>Filtrando por <strong id="filtro-nombre"></strong><button id="limpiar-filtro" type="button">Limpiar</button></p>
 

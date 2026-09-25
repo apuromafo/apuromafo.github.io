@@ -1,7 +1,9 @@
 ---
-layout: page
+layout: single
 title: Sobre mí
 permalink: /sobre-mi/
+author_profile: true
+toc: true
 ---
 
 Soy Profesor Básico especialista en Matemática (Universidad del Bío-Bío). Complementé mi base pedagógica con formación ofensiva y defensiva en ciberseguridad.

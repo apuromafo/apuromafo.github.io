@@ -1,7 +1,9 @@
 ---
-layout: page
+layout: single
 title: Red Team
 permalink: /red-team/
+author_profile: true
+toc: true
 ---
 
 Mis proyectos de ciberseguridad ofensiva, reversing y práctica. Haz clic en cualquier hashtag para filtrar las fichas.

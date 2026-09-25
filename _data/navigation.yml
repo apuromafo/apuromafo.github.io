@@ -1,0 +1,11 @@
+main:
+  - title: Red Team
+    url: /red-team/
+  - title: Programación
+    url: /programacion/
+  - title: Herramientas
+    url: /herramientas/
+  - title: Sobre mí
+    url: /sobre-mi/
+  - title: Novedades
+    url: /novedades/

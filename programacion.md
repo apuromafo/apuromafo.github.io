@@ -1,7 +1,9 @@
 ---
-layout: page
+layout: single
 title: Programación
 permalink: /programacion/
+author_profile: true
+toc: true
 ---
 
 Mis repositorios de programación por lenguaje. Haz clic en cualquier hashtag para filtrar las fichas.

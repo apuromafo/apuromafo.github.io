@@ -1,7 +1,8 @@
 ---
-layout: page
+layout: single
 title: Novedades
 permalink: /novedades/
+author_profile: true
 ---
 
 Registro de cambios del sitio y de los proyectos destacados.

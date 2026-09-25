@@ -1,9 +1,24 @@
 title: apuromafo
 description: Proyectos de Python, ciberseguridad y regulación — Red, Blue y Purple Team.
-lang: es
-author: apuromafo
-theme: minima
+locale: es
+author:
+  name: apuromafo
+  location: Chile
+  links:
+    - label: GitHub
+      icon: fab fa-github
+      url: https://github.com/apuromafo
+    - label: Telegram
+      icon: fab fa-telegram
+      url: https://t.me/Apuromafo
+    - label: Sitio
+      icon: fas fa-link
+      url: https://apuromafo.github.io
+
+remote_theme: mmistakes/minimal-mistakes@4.26.2
+minimal_mistakes_skin: dark
 plugins:
   - jekyll-feed
   - jekyll-sitemap
+  - jekyll-include-cache
 show_excerpts: false
