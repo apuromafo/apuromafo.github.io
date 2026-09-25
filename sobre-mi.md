@@ -32,3 +32,4 @@ Sigo haciendo docencia en diplomados de ciberseguridad, en cursos de unas 10 cla
 ## Comunidades
 
 Soy colaborador activo de comunidades de ciberseguridad como Fundación Sochisi, Partyhack y Blueteam Latam, entre otras, con participación como speaker.
+

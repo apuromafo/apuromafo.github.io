@@ -14,7 +14,7 @@ Selección de utilidades de mi [Repositorio Python](https://github.com/apuromafo
 
 Mi automatización para pentesting móvil: mientras otros documentan el paso a paso, yo lo tengo automatizado. Incluye [Android](https://github.com/apuromafo/Repositorio_Python/tree/main/006_M%C3%B3vil/Android) (ADB, extracción de APK, Frida, Fridump, Hermes, SSL pinning, certificado Burp, JWT, logcat) e [iOS](https://github.com/apuromafo/Repositorio_Python/tree/main/006_M%C3%B3vil/iOS) (Frida server, manejo USB).
 
-**Mi historia:** años automatizando el flujo completo de análisis móvil para mis auditorías.
+**Historia:** años automatizando el flujo completo de análisis móvil para mis auditorías.
 
 <span class="tags"><a class="tag" data-tag="mobile">#mobile</a> <a class="tag" data-tag="android">#android</a> <a class="tag" data-tag="ios">#ios</a> <a class="tag" data-tag="frida">#frida</a> <a class="tag" data-tag="pentest">#pentest</a> <a class="tag" data-tag="automatizacion">#automatización</a></span>
 
@@ -263,3 +263,4 @@ Mi extractor de correos para OSINT y enumeración.
 </div>
 
 <script src="{{ '/assets/filter.js' | relative_url }}"></script>
+

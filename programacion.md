@@ -16,7 +16,7 @@ Mis repositorios de programación por lenguaje. Haz clic en cualquier hashtag pa
 
 Mis creaciones en Python 3: herramientas, utilidades de trabajo diario y proyectos organizados por carpetas.
 
-**Mi historia:** lo abrí en 2023 como mi repositorio general de creaciones en Python.
+**Historia:** lo abrí en 2023 como mi repositorio general de creaciones en Python.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="scripting">#scripting</a> <a class="tag" data-tag="tools">#tools</a> <a class="tag" data-tag="cli">#cli</a></span>
 
@@ -28,7 +28,7 @@ Mis creaciones en Python 3: herramientas, utilidades de trabajo diario y proyect
 
 Mis pequeñas creaciones en Delphi.
 
-**Mi historia:** desde 2017, de mi etapa de desarrollo en Delphi y Pascal.
+**Historia:** desde 2017, de mi etapa de desarrollo en Delphi y Pascal.
 
 <span class="tags"><a class="tag" data-tag="delphi">#delphi</a> <a class="tag" data-tag="pascal">#pascal</a></span>
 
@@ -40,7 +40,7 @@ Mis pequeñas creaciones en Delphi.
 
 Mis pequeños códigos y utilidades en Bash.
 
-**Mi historia:** desde 2023, utilidades de terminal y automatización para mi día a día.
+**Historia:** desde 2023, utilidades de terminal y automatización para mi día a día.
 
 <span class="tags"><a class="tag" data-tag="bash">#bash</a> <a class="tag" data-tag="shell">#shell</a> <a class="tag" data-tag="linux">#linux</a> <a class="tag" data-tag="scripting">#scripting</a></span>
 
@@ -52,7 +52,7 @@ Mis pequeños códigos y utilidades en Bash.
 
 Mis pequeñas creaciones en C.
 
-**Mi historia:** desde 2018, ejercicios y programas en C.
+**Historia:** desde 2018, ejercicios y programas en C.
 
 <span class="tags"><a class="tag" data-tag="c">#c</a> <a class="tag" data-tag="programacion">#programación</a></span>
 
@@ -64,10 +64,11 @@ Mis pequeñas creaciones en C.
 
 Mi juego creado en C (Borland C): el programa guarda un número aleatorio del 1 al 100 y el jugador tiene 10 intentos para adivinarlo.
 
-**Mi historia:** uno de mis primeros juegos publicados, del repositorio de C.
+**Historia:** uno de mis primeros juegos publicados, del repositorio de C.
 
 <span class="tags"><a class="tag" data-tag="c">#c</a> <a class="tag" data-tag="juego">#juego</a> <a class="tag" data-tag="programacion">#programación</a></span>
 
 </div>
 
 <script src="{{ '/assets/filter.js' | relative_url }}"></script>
+
