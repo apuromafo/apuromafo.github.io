@@ -8,7 +8,7 @@ Proyectos de Python, ciberseguridad y regulación con corte y orden por temas.
 
 Profesor Básico especialista en Matemática (Universidad del Bío-Bío). Complementé mi base pedagógica con formación ofensiva y defensiva en ciberseguridad.
 
-Poseo casi 20 años de experiencia práctica y aprendizaje continuo en reversing, con especialización en Assembly y análisis de binarios en Windows y Linux. Actualmente me desempeño como Consultor en Ethical Hacking y DevSecOps en PentestSPA (cargo: Pentester), aplicando conocimientos ofensivos y defensivos.
+Poseo casi 20 años de experiencia práctica y aprendizaje continuo en reversing, con especialización en Assembly y análisis de binarios en Windows y Linux. Llevo unos 4 años trabajando como pentester en mi día a día. Actualmente me desempeño como Consultor en Ethical Hacking y DevSecOps en PentestSPA (cargo: Pentester), aplicando conocimientos ofensivos y defensivos.
 
 Me considero autodidacta y proactivo, motivado por el crecimiento constante. Valoro el trabajo en equipo y disfruto compartir conocimientos técnicos, ofensivos y defensivos, con respeto y empatía, en entornos colaborativos y formativos.
 
@@ -19,6 +19,10 @@ Me considero autodidacta y proactivo, motivado por el crecimiento constante. Val
 - CEHP (Ec-Council).
 - Implementador Líder ISO 27035, Gestión de Incidentes (USACH).
 - Especialización en Reversing & Exploiting (USACH).
+
+## Docencia
+
+Sigo haciendo docencia en diplomados de ciberseguridad. Formo parte del equipo docente de cursos como [Técnicas de respuesta a ciberincidentes para CSIRT](https://diplomadociberseguridad.com/implementador-equipo-de-respuesta-a-ciber-incidentes-csirt/) (diplomadociberseguridad.com), con foco práctico en operaciones de respuesta, análisis de malware, indicadores de amenaza, playbooks y reportes técnicos y ejecutivos.
 
 ## Comunidades
 
