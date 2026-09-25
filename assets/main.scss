@@ -21,3 +21,25 @@
   font-size: 0.85rem;
   color: $grey-color;
 }
+
+.tag {
+  cursor: pointer;
+  margin-right: 0.35rem;
+}
+
+.tag.activo {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#filtro-activo {
+  border: 1px solid $grey-color-light;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  margin: 1rem 0;
+}
+
+#filtro-activo button {
+  margin-left: 0.75rem;
+  cursor: pointer;
+}

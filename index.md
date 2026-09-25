@@ -2,7 +2,9 @@
 layout: home
 ---
 
-Proyectos de Python, ciberseguridad y regulación con corte y orden por temas.
+Proyectos de Python, ciberseguridad y regulación con corte y orden por temas. Haz clic en cualquier hashtag para filtrar las fichas.
+
+<p id="filtro-activo" hidden>Filtrando por <strong id="filtro-nombre"></strong><button id="limpiar-filtro" type="button">Limpiar</button></p>
 
 ## Sobre mí
 
@@ -49,7 +51,7 @@ python catalogo_ciberseguridad.py ver CL-PRV-001
 python catalogo_ciberseguridad.py mapa
 ```
 
-<span class="tags">#ciberseguridad #privacidad #banca #chile #latam #python #red-team #blue-team</span>
+<span class="tags"><a class="tag" data-tag="ciberseguridad">#ciberseguridad</a> <a class="tag" data-tag="privacidad">#privacidad</a> <a class="tag" data-tag="banca">#banca</a> <a class="tag" data-tag="chile">#chile</a> <a class="tag" data-tag="latam">#latam</a> <a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="red-team">#red-team</a> <a class="tag" data-tag="blue-team">#blue-team</a></span>
 
 </div>
 
@@ -61,7 +63,7 @@ Apuntes y resoluciones de CTF con fines documentales y de aprendizaje.
 
 **Historia:** creado en 2023 como cuaderno de resoluciones; no todo el material es de autoría propia, su fin es documentativo.
 
-<span class="tags">#ctf #writeups #pentesting #red-team</span>
+<span class="tags"><a class="tag" data-tag="ctf">#ctf</a> <a class="tag" data-tag="writeups">#writeups</a> <a class="tag" data-tag="pentesting">#pentesting</a> <a class="tag" data-tag="red-team">#red-team</a></span>
 
 </div>
 
@@ -73,7 +75,7 @@ Crackmes, keygenmes, seriales y ejercicios de ingeniería inversa.
 
 **Historia:** activo desde 2018 como laboratorio personal de ingeniería inversa.
 
-<span class="tags">#reverse-engineering #crackme #keygenme #assembly</span>
+<span class="tags"><a class="tag" data-tag="reverse-engineering">#reverse-engineering</a> <a class="tag" data-tag="crackme">#crackme</a> <a class="tag" data-tag="keygenme">#keygenme</a> <a class="tag" data-tag="assembly">#assembly</a></span>
 
 </div>
 
@@ -85,7 +87,7 @@ Scripts para OllyDbg 1.0 orientados a análisis y depuración.
 
 **Historia:** recolección iniciada en 2016, de la época clásica del reversing en Windows.
 
-<span class="tags">#ollydbg #debugging #reverse-engineering</span>
+<span class="tags"><a class="tag" data-tag="ollydbg">#ollydbg</a> <a class="tag" data-tag="debugging">#debugging</a> <a class="tag" data-tag="reverse-engineering">#reverse-engineering</a></span>
 
 </div>
 
@@ -97,7 +99,7 @@ Respaldo de máquinas de práctica de laboratorio de intrusión.
 
 **Historia:** creado en 2024 para conservar máquinas de práctica.
 
-<span class="tags">#pentesting #laboratorio #practica</span>
+<span class="tags"><a class="tag" data-tag="pentesting">#pentesting</a> <a class="tag" data-tag="laboratorio">#laboratorio</a> <a class="tag" data-tag="practica">#practica</a></span>
 
 </div>
 
@@ -111,7 +113,7 @@ Creaciones en Python 3: herramientas, utilidades de trabajo diario y proyectos o
 
 **Historia:** abierto en 2023 como repositorio general de creaciones en Python.
 
-<span class="tags">#python #scripting #tools #cli</span>
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="scripting">#scripting</a> <a class="tag" data-tag="tools">#tools</a> <a class="tag" data-tag="cli">#cli</a></span>
 
 </div>
 
@@ -123,7 +125,7 @@ Pequeñas creaciones en Delphi.
 
 **Historia:** desde 2017, de la etapa de desarrollo en Delphi y Pascal.
 
-<span class="tags">#delphi #pascal</span>
+<span class="tags"><a class="tag" data-tag="delphi">#delphi</a> <a class="tag" data-tag="pascal">#pascal</a></span>
 
 </div>
 
@@ -135,7 +137,7 @@ Pequeños códigos y utilidades en Bash.
 
 **Historia:** desde 2023, utilidades de terminal y automatización.
 
-<span class="tags">#bash #shell #linux #scripting</span>
+<span class="tags"><a class="tag" data-tag="bash">#bash</a> <a class="tag" data-tag="shell">#shell</a> <a class="tag" data-tag="linux">#linux</a> <a class="tag" data-tag="scripting">#scripting</a></span>
 
 </div>
 
@@ -147,10 +149,12 @@ Pequeñas creaciones en C.
 
 **Historia:** desde 2018, ejercicios y programas en C.
 
-<span class="tags">#c #programacion</span>
+<span class="tags"><a class="tag" data-tag="c">#c</a> <a class="tag" data-tag="programacion">#programación</a></span>
 
 </div>
 
 ## Contacto
 
 Todo el trabajo está publicado en [GitHub](https://github.com/apuromafo) con licencias abiertas según cada repositorio.
+
+<script src="{{ '/assets/filter.js' | relative_url }}"></script>
