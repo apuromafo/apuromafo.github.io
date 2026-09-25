@@ -4,6 +4,10 @@ layout: home
 
 Proyectos de Python, ciberseguridad y regulación con corte y orden por temas.
 
+## Sobre mí
+
+Publico herramientas y apuntes de trabajo en Python, ingeniería inversa, CTF y regulación de ciberseguridad, con énfasis en Chile y América Latina. Todo el código está en [GitHub](https://github.com/apuromafo) con licencias abiertas según cada repositorio.
+
 ## Ciberseguridad y Red Team
 
 <div class="card" markdown="1">
@@ -11,6 +15,14 @@ Proyectos de Python, ciberseguridad y regulación con corte y orden por temas.
 ### [Catálogo de ciberseguridad](https://github.com/apuromafo/Repositorio_Python/tree/main/064_Regulaciones)
 
 104 referencias de ciberseguridad, privacidad y regulación financiera (Chile, América Latina y banca), con CLI de consulta en Python y corte al 25-09-2026.
+
+Incluye Ley 21.719, Ley 21.663, normativa CMF, LGPD, GDPR, NIS2, DORA, PCI DSS v4.0.1, NIST CSF 2.0, MITRE ATT&CK y OWASP ASVS 5.0.0, entre otras. Ejemplos de uso:
+
+```bash
+python catalogo_ciberseguridad.py banca --rol blue-team
+python catalogo_ciberseguridad.py ver CL-PRV-001
+python catalogo_ciberseguridad.py mapa
+```
 
 <span class="tags">#ciberseguridad #privacidad #banca #chile #latam #python #red-team #blue-team</span>
 
