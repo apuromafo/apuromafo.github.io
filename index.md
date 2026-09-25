@@ -87,6 +87,18 @@ Crackmes, keygenmes, seriales y ejercicios de ingeniería inversa.
 
 <div class="card" markdown="1">
 
+### [Crackslatinos — Respaldo](https://github.com/apuromafo/Crackslatinos_/)
+
+Respaldo personal de la lista de reversing Crackslatinos, liderada por Ricardo Narvaja, incluyendo sus [teorías numeradas](https://github.com/apuromafo/Crackslatinos_/tree/master/Teorias_Numeradas).
+
+**Historia:** el sitio original desapareció y este respaldo es citado por la comunidad como referencia casi oficial de ese conocimiento.
+
+<span class="tags"><a class="tag" data-tag="reversing">#reversing</a> <a class="tag" data-tag="assembly">#assembly</a> <a class="tag" data-tag="crackslatinos">#crackslatinos</a> <a class="tag" data-tag="historia">#historia</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
 ### [OllydbgScript](https://github.com/apuromafo/OllydbgScript)
 
 Scripts para OllyDbg 1.0 orientados a análisis y depuración.
