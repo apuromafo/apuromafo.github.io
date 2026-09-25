@@ -6,7 +6,23 @@ Proyectos de Python, ciberseguridad y regulación con corte y orden por temas.
 
 ## Sobre mí
 
-Publico herramientas y apuntes de trabajo en Python, ingeniería inversa, CTF y regulación de ciberseguridad, con énfasis en Chile y América Latina. Todo el código está en [GitHub](https://github.com/apuromafo) con licencias abiertas según cada repositorio.
+Profesor Básico especialista en Matemática (Universidad del Bío-Bío). Complementé mi base pedagógica con formación ofensiva y defensiva en ciberseguridad.
+
+Poseo casi 20 años de experiencia práctica y aprendizaje continuo en reversing, con especialización en Assembly y análisis de binarios en Windows y Linux. Actualmente me desempeño como Consultor en Ethical Hacking y DevSecOps en PentestSPA (cargo: Pentester), aplicando conocimientos ofensivos y defensivos.
+
+Me considero autodidacta y proactivo, motivado por el crecimiento constante. Valoro el trabajo en equipo y disfruto compartir conocimientos técnicos, ofensivos y defensivos, con respeto y empatía, en entornos colaborativos y formativos.
+
+## Formación y certificaciones
+
+- Diplomado en Red Team (USACH).
+- eJPT — Penetration Testing.
+- CEHP (Ec-Council).
+- Implementador Líder ISO 27035, Gestión de Incidentes (USACH).
+- Especialización en Reversing & Exploiting (USACH).
+
+## Comunidades
+
+Colaborador activo de comunidades de ciberseguridad como Fundación Sochisi, Partyhack y Blueteam Latam, entre otras, con participación como speaker.
 
 ## Ciberseguridad y Red Team
 
