@@ -22,7 +22,10 @@ Me considero autodidacta y proactivo, motivado por el crecimiento constante. Val
 
 ## Docencia
 
-Sigo haciendo docencia en diplomados de ciberseguridad. Formo parte del equipo docente de cursos como [Técnicas de respuesta a ciberincidentes para CSIRT](https://diplomadociberseguridad.com/implementador-equipo-de-respuesta-a-ciber-incidentes-csirt/) (diplomadociberseguridad.com), con foco práctico en operaciones de respuesta, análisis de malware, indicadores de amenaza, playbooks y reportes técnicos y ejecutivos.
+Sigo haciendo docencia en diplomados de ciberseguridad, en cursos de unas 10 clases de 2 horas (19:30 a 22:00), fuera del horario laboral normal, por lo que no interfieren con mi día a día. Formo parte del equipo docente de:
+
+- [Técnicas de respuesta a ciberincidentes para CSIRT](https://diplomadociberseguridad.com/implementador-equipo-de-respuesta-a-ciber-incidentes-csirt/): operaciones de respuesta, análisis de malware, indicadores de amenaza, playbooks y reportes técnicos y ejecutivos.
+- [Ciberdefensa contra Ransomware](https://diplomadociberseguridad.com/ciberdefensa-contra-ransomware/): prevención, backup y recuperación, simulaciones de ataque y respuesta ante ransomware.
 
 ## Comunidades
 
