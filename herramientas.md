@@ -162,4 +162,104 @@ Mi detección de secretos expuestos en código.
 
 </div>
 
+<div class="card" markdown="1">
+
+### [Cabeceras de Seguridad](https://github.com/apuromafo/Repositorio_Python/tree/main/008_Cabeceras_Seguridad)
+
+Mi revisión de security headers en sitios web.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="blue-team">#blue-team</a> <a class="tag" data-tag="appsec">#appsec</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [IP Report](https://github.com/apuromafo/Repositorio_Python/tree/main/027_IP%20report)
+
+Mi reporte y reputación de direcciones IP.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="threat-intel">#threat-intel</a> <a class="tag" data-tag="osint">#osint</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [LinkedIn Resolver](https://github.com/apuromafo/Repositorio_Python/tree/main/044_Linkedin%20Resolver)
+
+Mi resolvedor de perfiles de LinkedIn para OSINT.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="osint">#osint</a> <a class="tag" data-tag="red-team">#red-team</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [Conversor Burp XML/JSON a cURL](https://github.com/apuromafo/Repositorio_Python/tree/main/049_Conversor%20%20Burp%20XML_JSON%20a%20cURL)
+
+Convierto peticiones de Burp (XML/JSON) a cURL para repetirlas rápido.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="burp">#burp</a> <a class="tag" data-tag="pentest">#pentest</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [Conversor Burp XML a OpenAPI](https://github.com/apuromafo/Repositorio_Python/tree/main/050_Conversor%20Burp%20XML%20a%20OpenAPI)
+
+Convierto exportaciones de Burp a especificación OpenAPI.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="burp">#burp</a> <a class="tag" data-tag="api">#api</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [Firebase Audit](https://github.com/apuromafo/Repositorio_Python/tree/main/056_test_firebase_audit)
+
+Mi auditoría de bases Firebase expuestas.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="appsec">#appsec</a> <a class="tag" data-tag="cloud">#cloud</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [RUT Chileno](https://github.com/apuromafo/Repositorio_Python/tree/main/009_Rut_Chileno)
+
+Mi validador y generador de RUT chileno para pruebas con datos locales.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="chile">#chile</a> <a class="tag" data-tag="testing">#testing</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [Luhn](https://github.com/apuromafo/Repositorio_Python/tree/main/019_Luhn)
+
+Mi implementación del algoritmo de Luhn para validar tarjetas en pruebas.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="pagos">#pagos</a> <a class="tag" data-tag="testing">#testing</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [Análisis de header EML](https://github.com/apuromafo/Repositorio_Python/tree/main/001_Analisis_header_eml)
+
+Mi análisis de cabeceras de correos para phishing e investigación.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="phishing">#phishing</a> <a class="tag" data-tag="dfir">#dfir</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [Extrae correo](https://github.com/apuromafo/Repositorio_Python/tree/main/005_extrae_correo)
+
+Mi extractor de correos para OSINT y enumeración.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="osint">#osint</a></span>
+
+</div>
+
 <script src="{{ '/assets/filter.js' | relative_url }}"></script>
