@@ -89,9 +89,9 @@ Crackmes, keygenmes, seriales y ejercicios de ingeniería inversa.
 
 ### [Crackslatinos — Respaldo](https://github.com/apuromafo/Crackslatinos_/)
 
-Respaldo personal de la lista de reversing Crackslatinos, liderada por Ricardo Narvaja, incluyendo sus [teorías numeradas](https://github.com/apuromafo/Crackslatinos_/tree/master/Teorias_Numeradas).
+Respaldo personal de la lista de reversing Crackslatinos, liderada por Ricardo Narvaja (Argentina), consultor senior de ciberseguridad ofensiva y desarrollador de exploits, incluyendo sus [teorías numeradas](https://github.com/apuromafo/Crackslatinos_/tree/master/Teorias_Numeradas).
 
-**Historia:** comunidad con 26 años de trayectoria. El sitio original desapareció y este respaldo es citado como referencia casi oficial de ese conocimiento.
+**Historia:** comunidad con 26 años de trayectoria. Ricardo comparte libremente sus conocimientos de reversing, uso de IDA y más. Lo oficial es siempre lo dicho por su autor; el punto de encuentro es [t.me/crackslatinos](https://t.me/crackslatinos), donde colaboro como un miembro más, sin jerarquías ni membresías. El sitio original desapareció y este respaldo es citado como referencia casi oficial de ese conocimiento.
 
 <span class="tags"><a class="tag" data-tag="reversing">#reversing</a> <a class="tag" data-tag="assembly">#assembly</a> <a class="tag" data-tag="crackslatinos">#crackslatinos</a> <a class="tag" data-tag="historia">#historia</a></span>
 
