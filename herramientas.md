@@ -262,5 +262,85 @@ Mi extractor de correos para OSINT y enumeración.
 
 </div>
 
+<div class="card" markdown="1">
+
+### [Palo Alto](https://github.com/apuromafo/Repositorio_Python/tree/main/017_Palo_alto)
+
+Mis utilidades de trabajo con Palo Alto.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="blue-team">#blue-team</a> <a class="tag" data-tag="firewall">#firewall</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [SonarScan demo](https://github.com/apuromafo/Repositorio_Python/tree/main/033_sonarscan_demo)
+
+Mi demo de escaneo con Sonar para calidad y seguridad de código.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="devsecops">#devsecops</a> <a class="tag" data-tag="sast">#sast</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [PortSwigger MD](https://github.com/apuromafo/Repositorio_Python/tree/main/040_md_portswigger)
+
+Mis apuntes de PortSwigger Web Security Academy.
+
+<span class="tags"><a class="tag" data-tag="appsec">#appsec</a> <a class="tag" data-tag="web">#web</a> <a class="tag" data-tag="apuntes">#apuntes</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [Google API check](https://github.com/apuromafo/Repositorio_Python/tree/main/042_Google_api_check)
+
+Mi verificación de uso de API de Google.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="api">#api</a> <a class="tag" data-tag="osint">#osint</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [DCode tool](https://github.com/apuromafo/Repositorio_Python/tree/main/047_dcode%20tool%20%20rot13+inverse%20string)
+
+Mi herramienta de rot13 e inversión de strings para análisis.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="ctf">#ctf</a> <a class="tag" data-tag="crypto">#crypto</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [PDF Info](https://github.com/apuromafo/Repositorio_Python/tree/main/057_PDF%20Info)
+
+Mi extractor de información y metadatos de PDF.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="dfir">#dfir</a> <a class="tag" data-tag="osint">#osint</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [DNS CAA](https://github.com/apuromafo/Repositorio_Python/tree/main/071_DNS_CAA)
+
+Mi revisión de registros DNS CAA de dominios.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="blue-team">#blue-team</a> <a class="tag" data-tag="dns">#dns</a></span>
+
+</div>
+
+<div class="card" markdown="1">
+
+### [URL Link](https://github.com/apuromafo/Repositorio_Python/tree/main/070_URL%20link)
+
+Mi extractor y análisis de enlaces URL.
+
+<span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="osint">#osint</a> <a class="tag" data-tag="phishing">#phishing</a></span>
+
+</div>
+
 <script src="{{ '/assets/filter.js' | relative_url }}"></script>
 
