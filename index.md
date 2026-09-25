@@ -113,7 +113,7 @@ Scripts para OllyDbg 1.0 orientados a análisis y depuración.
 
 ### [TryHackMe — Perfil](https://tryhackme.com/p/apuromafo)
 
-Jugador activo de TryHackMe, con más de 700 máquinas completadas entre laboratorios guiados y retos.
+Jugador activo de TryHackMe, con más de 700 máquinas completadas entre laboratorios guiados y retos. Al 25-09-2026 lleva 283 días seguidos de actividad (streak).
 
 **Historia:** años de práctica continua en la plataforma, complementando el reversing con pentesting aplicado.
 
