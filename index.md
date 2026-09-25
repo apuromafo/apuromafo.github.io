@@ -22,6 +22,8 @@ Me considero autodidacta y proactivo, motivado por el crecimiento constante. Val
 - Implementador Líder ISO 27035, Gestión de Incidentes (USACH).
 - Especialización en Reversing & Exploiting (USACH).
 
+Además, he completado más de 100 cursos entre diplomados, cursos intensivos y plataformas de formación. El detalle está disponible a solicitud por [Telegram](https://t.me/Apuromafo).
+
 ## Docencia
 
 Sigo haciendo docencia en diplomados de ciberseguridad, en cursos de unas 10 clases de 2 horas (19:30 a 22:00), fuera del horario laboral normal, por lo que no interfieren con mi día a día. Formo parte del equipo docente de:
