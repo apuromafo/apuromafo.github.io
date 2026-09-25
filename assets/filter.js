@@ -58,12 +58,20 @@ document.addEventListener("DOMContentLoaded", function () {
   Array.prototype.forEach.call(
     document.querySelectorAll(".tag"),
     function (el) {
-      el.addEventListener("click", function (evento) {
+      el.setAttribute("tabindex", "0");
+      el.setAttribute("role", "button");
+      const activar = function (evento) {
         evento.preventDefault();
         if (el.classList.contains("activo")) {
           limpiar();
         } else {
           filtrar(el.getAttribute("data-tag") || el.textContent, el.textContent);
+        }
+      };
+      el.addEventListener("click", activar);
+      el.addEventListener("keydown", function (evento) {
+        if (evento.key === "Enter" || evento.key === " ") {
+          activar(evento);
         }
       });
     }
