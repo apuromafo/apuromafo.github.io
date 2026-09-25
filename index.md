@@ -22,7 +22,7 @@ Me considero autodidacta y proactivo, motivado por el crecimiento constante. Val
 - Implementador Líder ISO 27035, Gestión de Incidentes (USACH).
 - Especialización en Reversing & Exploiting (USACH).
 
-Además, he completado más de 100 cursos entre diplomados, cursos intensivos y plataformas de formación. El detalle está disponible a solicitud por [Telegram](https://t.me/Apuromafo).
+Además, he completado más de 100 cursos entre diplomados, cursos intensivos y plataformas de formación. El detalle es público en mis billeteras de credenciales: [Credential.net](https://www.credential.net/profile/michelfandez/wallet), [INE](https://certs.ine.com/profile/michelfandez/wallet) y [Credly](https://www.credly.com/users/michel-alejandro-faundez-ortiz/badges).
 
 ## Docencia
 
