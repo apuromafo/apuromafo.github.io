@@ -11,6 +11,9 @@ author:
     - label: Telegram
       icon: fab fa-telegram
       url: https://t.me/Apuromafo
+    - label: TryHackMe
+      icon: fas fa-flag
+      url: https://tryhackme.com/p/apuromafo
     - label: Sitio
       icon: fas fa-link
       url: https://apuromafo.github.io

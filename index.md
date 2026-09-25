@@ -34,7 +34,7 @@ Soy jugador activo de TryHackMe, con más de 700 máquinas completadas y 283 dí
 
 ## Contacto
 
-Todo mi trabajo está publicado en [GitHub](https://github.com/apuromafo) con licencias abiertas según cada repositorio. Si deseas escribirme, me encuentras en [Telegram](https://t.me/Apuromafo) en horario hábil (lunes a viernes).
+Todo mi trabajo está publicado en [GitHub](https://github.com/apuromafo) con licencias abiertas según cada repositorio. Si deseas escribirme, me encuentras en [Telegram](https://t.me/Apuromafo) en horario hábil (lunes a viernes). Mi perfil de práctica está en [TryHackMe](https://tryhackme.com/p/apuromafo).
 
 <script src="{{ '/assets/filter.js' | relative_url }}"></script>
 
