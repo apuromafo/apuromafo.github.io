@@ -58,4 +58,16 @@ Mis pequeñas creaciones en C.
 
 </div>
 
+<div class="card" markdown="1">
+
+### [Juego Aleatorio](https://github.com/apuromafo/Repositorio_C/tree/master/Reto1)
+
+Mi juego creado en C (Borland C): el programa guarda un número aleatorio del 1 al 100 y el jugador tiene 10 intentos para adivinarlo.
+
+**Mi historia:** uno de mis primeros juegos publicados, del repositorio de C.
+
+<span class="tags"><a class="tag" data-tag="c">#c</a> <a class="tag" data-tag="juego">#juego</a> <a class="tag" data-tag="programacion">#programación</a></span>
+
+</div>
+
 <script src="{{ '/assets/filter.js' | relative_url }}"></script>
