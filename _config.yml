@@ -46,6 +46,11 @@ plugins:
 show_excerpts: false
 exclude:
   - ESTADO_LOCAL.md
+  - planificacion.md
+  # Es un .md dentro de assets/: Jekyll lo convertiría en página y aparecería
+  # en el sitemap como /assets/fonts/LICENCIAS.html. La licencia se lee en
+  # GitHub, que es donde apunta el enlace de la página de créditos.
+  - assets/fonts/LICENCIAS.md
   - utilidades
   - .sass-cache
   - README.md
