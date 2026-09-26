@@ -1,8 +1,33 @@
 ---
 layout: default
+title: Página no encontrada
 permalink: /404.html
+sitemap: false
 ---
 
-# Página no encontrada
-
-La dirección que buscas no existe en este sitio. Puedes volver al [inicio](/) o explorar las [novedades](/novedades/).
+{%- comment -%}
+  El id="main" es el destino del enlace "ir al contenido" del tema; en las
+  páginas con layout single ya viene puesto, en esta hay que añadirlo. La
+  clase "page__content" también la espera el tema (su JavaScript se cae si no
+  la encuentra).
+{%- endcomment -%}
+<div id="main" role="main" class="page__content ap-portada">
+  <section class="ap-seccion ap-error">
+    <div class="ap-ancho">
+      <p class="ap-seccion__etiqueta">Error 404</p>
+      <h1 class="ap-seccion__titulo">Esta dirección no existe</h1>
+      <p class="ap-seccion__bajada">
+        La dirección que buscas no existe en este sitio. Vuelve al inicio o
+        salta directo al índice de proyectos: igual lo que buscas está ahí.
+      </p>
+      <div class="hero__acciones">
+        <a class="ap-btn ap-btn--primario" href="{{ '/' | relative_url }}">
+          Volver al inicio
+        </a>
+        <a class="ap-btn ap-btn--fantasma" href="{{ '/indice/' | relative_url }}">
+          Buscar en los 73 proyectos
+        </a>
+      </div>
+    </div>
+  </section>
+</div>

@@ -29,11 +29,27 @@ author:
 
 remote_theme: mmistakes/minimal-mistakes@4.26.2
 minimal_mistakes_skin: default
+# El pie de cada página lleva la lista de enlaces del tema. Acá va el acceso a
+# las licencias y los créditos de lo que usa el sitio.
+footer:
+  links:
+    - label: Licencias
+      icon: fas fa-book
+      url: /licencias/
 plugins:
+  # jekyll-remote-theme va explícito porque, al declarar `plugins:` en vez de
+  # usar la lista por defecto de GitHub Pages, es el que trae el tema.
+  - jekyll-remote-theme
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-include-cache
 show_excerpts: false
+exclude:
+  - ESTADO_LOCAL.md
+  - utilidades
+  - .sass-cache
+  - README.md
+  - CHANGELOG.md
 defaults:
   - scope:
       path: ""
