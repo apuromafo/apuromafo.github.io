@@ -1,14 +1,25 @@
 ---
-layout: single
+layout: ap-seccion
 title: Herramientas
 permalink: /herramientas/
-author_profile: true
-toc: true
+antetitulo: Utilidades
+icono: terminal
+bajada: >-
+  Selección de utilidades de mi [Repositorio Python](https://github.com/apuromafo/Repositorio_Python),
+  la mayoría escritas para dejar de hacer a mano lo que ya hacía mil veces.
+  Las etiquetas de cada ficha sirven para filtrar la lista.
+cifras:
+  - valor: "33"
+    etiqueta: fichas
+  - valor: "31"
+    etiqueta: de Python
+  - valor: "37"
+    etiqueta: etiquetas distintas
+autor: true
+filtro: true
 ---
 
-Selección de utilidades de mi [Repositorio Python](https://github.com/apuromafo/Repositorio_Python). Haz clic en cualquier hashtag para filtrar las fichas.
-
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [Pack Mobile — Android + iOS](https://github.com/apuromafo/Repositorio_Python/tree/main/006_M%C3%B3vil)
 
@@ -20,9 +31,7 @@ Mi automatización para pentesting móvil: mientras otros documentan el paso a p
 
 </div>
 
-<p id="filtro-activo" hidden>Filtrando por <strong id="filtro-nombre"></strong><button id="limpiar-filtro" type="button">Limpiar</button></p>
-
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [MalApiScan](https://github.com/apuromafo/Repositorio_Python/tree/main/011_MalApiScan)
 
@@ -32,7 +41,7 @@ Escáner de API que armé con foco en abuso y malas prácticas.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [Miniscan tipo Nmap](https://github.com/apuromafo/Repositorio_Python/tree/main/015_miniscan_tipo%20nmap)
 
@@ -42,7 +51,7 @@ Mi escáner de red liviano al estilo Nmap.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [Mini assessment NIST + phishing](https://github.com/apuromafo/Repositorio_Python/tree/main/031_mini_assesment_nist_phish)
 
@@ -52,7 +61,7 @@ Mi mini evaluación de postura con base NIST y simulación de phishing.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [Mitre](https://github.com/apuromafo/Repositorio_Python/tree/main/034_Mitre)
 
@@ -62,7 +71,7 @@ Mis utilidades de trabajo con MITRE ATT&CK.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [CIS](https://github.com/apuromafo/Repositorio_Python/tree/main/036_cis)
 
@@ -72,7 +81,7 @@ Mi apoyo a la verificación de controles CIS.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [OWASP vulns](https://github.com/apuromafo/Repositorio_Python/tree/main/037_owasp_vulns)
 
@@ -82,7 +91,7 @@ Mis pruebas de vulnerabilidades OWASP en aplicaciones.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [CVE check](https://github.com/apuromafo/Repositorio_Python/tree/main/043_cve_check)
 
@@ -92,7 +101,7 @@ Mi consulta y verificación de CVE.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [Audit Burp to Risk](https://github.com/apuromafo/Repositorio_Python/tree/main/051_Audit_Burp2Risk)
 
@@ -102,7 +111,7 @@ Convierto mis auditorías de Burp en análisis de riesgo con esta utilidad.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [Orquestador PwnDoc](https://github.com/apuromafo/Repositorio_Python/tree/main/060_orquestador%20pwndoc)
 
@@ -112,7 +121,7 @@ Mi orquestación de reportes de pentest con PwnDoc.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [DefectDojo](https://github.com/apuromafo/Repositorio_Python/tree/main/062_Defect%20dojo)
 
@@ -122,7 +131,7 @@ Mi integración y trabajo con DefectDojo para gestión de hallazgos.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [Informes pentest](https://github.com/apuromafo/Repositorio_Python/tree/main/063_informes%20pentest)
 
@@ -132,7 +141,7 @@ Mi generación y apoyo a informes de pentesting.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [SCA Grype scan](https://github.com/apuromafo/Repositorio_Python/tree/main/068_SCA_Grype_scan)
 
@@ -142,7 +151,7 @@ Mi análisis de composición de software con Grype.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [SSL Scan](https://github.com/apuromafo/Repositorio_Python/tree/main/069_SSL_Scan)
 
@@ -152,7 +161,7 @@ Mi revisión de configuración TLS/SSL.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [Secretos Scan](https://github.com/apuromafo/Repositorio_Python/tree/main/073_Secretos_Scan)
 
@@ -162,7 +171,7 @@ Mi detección de secretos expuestos en código.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [Cabeceras de Seguridad](https://github.com/apuromafo/Repositorio_Python/tree/main/008_Cabeceras_Seguridad)
 
@@ -172,7 +181,7 @@ Mi revisión de security headers en sitios web.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [IP Report](https://github.com/apuromafo/Repositorio_Python/tree/main/027_IP%20report)
 
@@ -182,7 +191,7 @@ Mi reporte y reputación de direcciones IP.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [LinkedIn Resolver](https://github.com/apuromafo/Repositorio_Python/tree/main/044_Linkedin%20Resolver)
 
@@ -192,7 +201,7 @@ Mi resolvedor de perfiles de LinkedIn para OSINT.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [Conversor Burp XML/JSON a cURL](https://github.com/apuromafo/Repositorio_Python/tree/main/049_Conversor%20%20Burp%20XML_JSON%20a%20cURL)
 
@@ -202,7 +211,7 @@ Convierto peticiones de Burp (XML/JSON) a cURL para repetirlas rápido.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [Conversor Burp XML a OpenAPI](https://github.com/apuromafo/Repositorio_Python/tree/main/050_Conversor%20Burp%20XML%20a%20OpenAPI)
 
@@ -212,7 +221,7 @@ Convierto exportaciones de Burp a especificación OpenAPI.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [Firebase Audit](https://github.com/apuromafo/Repositorio_Python/tree/main/056_test_firebase_audit)
 
@@ -222,7 +231,7 @@ Mi auditoría de bases Firebase expuestas.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [RUT Chileno](https://github.com/apuromafo/Repositorio_Python/tree/main/009_Rut_Chileno)
 
@@ -232,7 +241,7 @@ Mi validador y generador de RUT chileno para pruebas con datos locales.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [Luhn](https://github.com/apuromafo/Repositorio_Python/tree/main/019_Luhn)
 
@@ -242,7 +251,7 @@ Mi implementación del algoritmo de Luhn para validar tarjetas en pruebas.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [Análisis de header EML](https://github.com/apuromafo/Repositorio_Python/tree/main/001_Analisis_header_eml)
 
@@ -252,7 +261,7 @@ Mi análisis de cabeceras de correos para phishing e investigación.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [Extrae correo](https://github.com/apuromafo/Repositorio_Python/tree/main/005_extrae_correo)
 
@@ -262,7 +271,7 @@ Mi extractor de correos para OSINT y enumeración.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [Palo Alto](https://github.com/apuromafo/Repositorio_Python/tree/main/017_Palo_alto)
 
@@ -272,7 +281,7 @@ Mis utilidades de trabajo con Palo Alto.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [SonarScan demo](https://github.com/apuromafo/Repositorio_Python/tree/main/033_sonarscan_demo)
 
@@ -282,7 +291,7 @@ Mi demo de escaneo con Sonar para calidad y seguridad de código.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [PortSwigger MD](https://github.com/apuromafo/Repositorio_Python/tree/main/040_md_portswigger)
 
@@ -292,7 +301,7 @@ Mis apuntes de PortSwigger Web Security Academy.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [Google API check](https://github.com/apuromafo/Repositorio_Python/tree/main/042_Google_api_check)
 
@@ -302,7 +311,7 @@ Mi verificación de uso de API de Google.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [DCode tool](https://github.com/apuromafo/Repositorio_Python/tree/main/047_dcode%20tool%20%20rot13+inverse%20string)
 
@@ -312,7 +321,7 @@ Mi herramienta de rot13 e inversión de strings para análisis.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [PDF Info](https://github.com/apuromafo/Repositorio_Python/tree/main/057_PDF%20Info)
 
@@ -322,7 +331,7 @@ Mi extractor de información y metadatos de PDF.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [DNS CAA](https://github.com/apuromafo/Repositorio_Python/tree/main/071_DNS_CAA)
 
@@ -332,7 +341,7 @@ Mi revisión de registros DNS CAA de dominios.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [URL Link](https://github.com/apuromafo/Repositorio_Python/tree/main/070_URL%20link)
 
@@ -341,6 +350,3 @@ Mi extractor y análisis de enlaces URL.
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="osint">#osint</a> <a class="tag" data-tag="phishing">#phishing</a></span>
 
 </div>
-
-<script src="{{ '/assets/filter.js' | relative_url }}"></script>
-

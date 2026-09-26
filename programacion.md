@@ -1,16 +1,24 @@
 ---
-layout: single
+layout: ap-seccion
 title: Programación
 permalink: /programacion/
-author_profile: true
-toc: true
+antetitulo: Código
+icono: code
+bajada: >-
+  Mis repositorios de programación, uno por lenguaje. Python 3 para el día a
+  día, y C, Delphi y Bash de etapas anteriores.
+cifras:
+  - valor: "5"
+    etiqueta: repositorios
+  - valor: "4"
+    etiqueta: "lenguajes: Python, C, Delphi y Bash"
+  - valor: "15"
+    etiqueta: etiquetas para filtrar
+autor: true
+filtro: true
 ---
 
-Mis repositorios de programación por lenguaje. Haz clic en cualquier hashtag para filtrar las fichas.
-
-<p id="filtro-activo" hidden>Filtrando por <strong id="filtro-nombre"></strong><button id="limpiar-filtro" type="button">Limpiar</button></p>
-
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [Repositorio Python](https://github.com/apuromafo/Repositorio_Python)
 
@@ -22,7 +30,7 @@ Mis creaciones en Python 3: herramientas, utilidades de trabajo diario y proyect
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [Repositorio Delphi](https://github.com/apuromafo/Repositorio_Delphi)
 
@@ -34,7 +42,7 @@ Mis pequeñas creaciones en Delphi.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [Repositorio Bash](https://github.com/apuromafo/Repositorio_bash)
 
@@ -46,7 +54,7 @@ Mis pequeños códigos y utilidades en Bash.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [Repositorio C](https://github.com/apuromafo/Repositorio_C)
 
@@ -58,7 +66,7 @@ Mis pequeñas creaciones en C.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [Juego Aleatorio](https://github.com/apuromafo/Repositorio_C/tree/master/Reto1)
 
@@ -69,6 +77,3 @@ Mi juego creado en C (Borland C): el programa guarda un número aleatorio del 1 
 <span class="tags"><a class="tag" data-tag="c">#c</a> <a class="tag" data-tag="juego">#juego</a> <a class="tag" data-tag="programacion">#programación</a></span>
 
 </div>
-
-<script src="{{ '/assets/filter.js' | relative_url }}"></script>
-

@@ -1,12 +1,29 @@
 ---
-layout: single
+layout: ap-seccion
 title: Índice completo
 permalink: /indice/
-author_profile: true
-toc: true
+antetitulo: Los 73 proyectos
+icono: list
+bajada: >-
+  Todos los proyectos del [Repositorio Python](https://github.com/apuromafo/Repositorio_Python),
+  cada uno con su descripción. Se busca por escrito: título y descripción.
+cifras:
+  - valor: "73"
+    etiqueta: proyectos, del 001 al 073
+  - valor: "100%"
+    etiqueta: con descripción
+autor: true
 ---
 
-Índice completo de mis 73 proyectos del [Repositorio Python](https://github.com/apuromafo/Repositorio_Python), cada uno con su descripción. Usa Ctrl+F para buscar.
+<div class="ap-buscador" data-buscador="lista-proyectos">
+<label class="visually-hidden" for="buscar-proyecto">Buscar entre los 73 proyectos</label>
+<input id="buscar-proyecto" type="search" placeholder="Buscar entre los 73 proyectos…" autocomplete="off" spellcheck="false">
+{% include apuromafo/icono.html nombre="search" clase="ap-buscador__lupa" %}
+<button class="ap-buscador__limpiar" type="button" data-buscador-limpiar aria-label="Borrar la búsqueda">×</button>
+</div>
+<p class="ap-conteo" data-conteo-buscador role="status">73 proyectos</p>
+
+<div class="ap-indice-lista" id="lista-proyectos" data-buscador-lista markdown="1">
 
 ### [001 Analisis header eml](https://github.com/apuromafo/Repositorio_Python/tree/main/001_Analisis_header_eml)
 Herramienta para analizar encabezados de correos electrónicos en formato EML, extraer información relevante, validar MTAs (Mail Transfer Agents) y detectar posi
@@ -226,3 +243,10 @@ Generador de exámenes interactivos para navegador, 100% offline.
 
 ### [073 Secretos Scan](https://github.com/apuromafo/Repositorio_Python/tree/main/073_Secretos_Scan)
 Estado:** Estable / Producción
+
+</div>
+
+<p class="ap-vacio" id="lista-proyectos-vacio" hidden>
+  Ningún proyecto coincide con esa búsqueda.
+  <button class="ap-buscador__limpiar" type="button" data-buscador-limpiar>Borrar la búsqueda</button>
+</p>

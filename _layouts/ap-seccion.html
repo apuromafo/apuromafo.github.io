@@ -1,0 +1,100 @@
+---
+layout: default
+---
+{%- comment -%}
+  Página de sección: encabezado propio (antetitulo, título, bajada y cifras),
+  cuerpo a una columna ancha y, si la página lo pide, un riel lateral con el
+  índice de la página y los datos del autor.
+
+  No se pisa _layouts/single.html a propósito: así las entradas del blog
+  siguen mostrándose como las saca el tema y solo estas páginas usan esta
+  plantilla. Para volver atrás, basta con poner layout: single en el
+  front matter de la página.
+
+  Qué lee del front matter:
+    icono      nombre del icono del antetitulo (_data/apuromafo_iconos.yml)
+    antetitulo texto chico sobre el título
+    bajada     una o dos frases, en Markdown
+    cifras     lista de {valor, etiqueta}, solo con datos reales
+    filtro     true para poner la barra de filtros encima de las fichas
+    toc        true para el índice "en esta página" en el riel
+    autor      true para la tarjeta del autor (en el riel, o al pie si la
+               página no lleva riel)
+{%- endcomment -%}
+{%- comment -%}
+  El riel se dibuja solo si la página pide índice (toc: true). El autor va al
+  riel cuando hay riel, y al pie del contenido cuando no: en las páginas de
+  fichas (Red Team, Programación, Herramientas) y en el índice, la numeración
+  de las fichas y la barra de filtros ya cumplen ese papel, y el ancho completo
+  se aprovecha mejor para leerlas.
+{%- endcomment -%}
+{%- assign apu_riel = false -%}
+{%- if page.toc -%}{%- assign apu_riel = true -%}{%- endif -%}
+
+<div id="main" role="main" class="ap-pagina">
+  <header class="ap-cabecera">
+    <div class="ap-cabecera__fondo" aria-hidden="true"></div>
+    <div class="ap-ancho ap-cabecera__dentro" data-reveal>
+      {%- if page.antetitulo -%}
+      <p class="ap-cabecera__antetitulo">
+        {%- if page.icono -%}{% include apuromafo/icono.html nombre=page.icono clase="ap-cabecera__icono" %}{%- endif -%}
+        <span>{{ page.antetitulo }}</span>
+      </p>
+      {%- endif -%}
+
+      <h1 class="ap-cabecera__titulo" id="page-title">{{ page.title }}</h1>
+
+      {%- if page.bajada -%}
+      {%- assign apu_bajada = page.bajada | markdownify | strip -%}
+      <div class="ap-cabecera__bajada">{{ apu_bajada | remove_first: "<p>" | remove_last: "</p>" }}</div>
+      {%- endif -%}
+
+      {%- if page.cifras -%}
+      <ul class="cifras ap-cabecera__cifras">
+        {%- for cifra in page.cifras -%}
+        <li>
+          <span class="cifra__valor">{{ cifra.valor }}</span>
+          <span class="cifra__etiqueta">{{ cifra.etiqueta }}</span>
+        </li>
+        {%- endfor -%}
+      </ul>
+      {%- endif -%}
+    </div>
+  </header>
+
+  <div class="ap-ancho ap-cuerpo{% if apu_riel %} ap-cuerpo--con-riel{% endif %}">
+    <div class="ap-cuerpo__principal">
+      {%- if page.filtro -%}
+      <div class="ap-fichas-barra" data-fichas-barra></div>
+      {%- endif -%}
+
+      <article class="page__content ap-seccion-contenido" itemprop="text">
+        {{ content }}
+      </article>
+
+      {%- if page.autor and apu_riel == false -%}
+      <footer class="ap-cierre-autor">{% include apuromafo/autor.html %}</footer>
+      {%- endif -%}
+    </div>
+
+    {%- if apu_riel -%}
+    <aside class="ap-riel" aria-label="Índice de la página y datos del autor">
+      <div class="ap-riel__interior">
+        {%- if page.toc -%}
+        <nav class="ap-riel__bloque" aria-label="En esta página">
+          <h2 class="ap-riel__titulo">
+            {% include apuromafo/icono.html nombre="list" clase="ap-riel__icono" %}
+            <span>En esta página</span>
+          </h2>
+          {% include toc.html sanitize=true html=content h_min=2 h_max=3 class="ap-toc__menu" skip_no_ids=true %}
+        </nav>
+        {%- endif -%}
+
+        {%- if page.autor -%}
+        {% include apuromafo/autor.html %}
+        {%- endif -%}
+      </div>
+    </aside>
+    {%- endif -%}
+  </div>
+</div>

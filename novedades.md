@@ -1,8 +1,21 @@
 ---
-layout: single
+layout: ap-seccion
 title: Novedades
 permalink: /novedades/
-author_profile: true
+antetitulo: Registro de cambios
+icono: calendar-alt
+bajada: >-
+  Qué cambió en el sitio y en los proyectos, con fecha. Los proyectos están
+  en GitHub; esto es la bitácora del sitio.
+cifras:
+  - valor: "2"
+    etiqueta: registros de cambios
+  - valor: "104"
+    etiqueta: entradas en el catálogo de normativa
+  - valor: "700+"
+    etiqueta: máquinas en TryHackMe
+autor: true
+toc: true
 ---
 
 Registro de cambios del sitio y de los proyectos destacados.

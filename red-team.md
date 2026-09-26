@@ -1,16 +1,25 @@
 ---
-layout: single
+layout: ap-seccion
 title: Red Team
 permalink: /red-team/
-author_profile: true
-toc: true
+antetitulo: Ciberseguridad ofensiva
+icono: crosshairs
+bajada: >-
+  Proyectos de ciberseguridad ofensiva, reversing y práctica, con el contexto
+  con el que los uso en el trabajo. Las etiquetas de cada ficha sirven para
+  filtrar la lista.
+cifras:
+  - valor: "8"
+    etiqueta: fichas documentadas
+  - valor: "104"
+    etiqueta: referencias de normativa
+  - valor: "700+"
+    etiqueta: máquinas en TryHackMe
+autor: true
+filtro: true
 ---
 
-Mis proyectos de ciberseguridad ofensiva, reversing y práctica. Haz clic en cualquier hashtag para filtrar las fichas.
-
-<p id="filtro-activo" hidden>Filtrando por <strong id="filtro-nombre"></strong><button id="limpiar-filtro" type="button">Limpiar</button></p>
-
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [Catálogo de ciberseguridad](https://github.com/apuromafo/Repositorio_Python/tree/main/064_Regulaciones)
 
@@ -30,7 +39,7 @@ python catalogo_ciberseguridad.py mapa
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [CTF — Writeups](https://github.com/apuromafo/ctf)
 
@@ -46,7 +55,7 @@ Plataformas que documento: [TryHackMe](https://github.com/apuromafo/ctf/tree/mai
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [RCE Lab](https://github.com/apuromafo/RCE_Lab)
 
@@ -58,7 +67,7 @@ Mi laboratorio de crackmes, keygenmes, seriales y ejercicios de ingeniería inve
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [Crackslatinos — Respaldo](https://github.com/apuromafo/Crackslatinos_/)
 
@@ -70,7 +79,7 @@ Mantengo un respaldo personal de la lista de reversing Crackslatinos, liderada p
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [OllydbgScript](https://github.com/apuromafo/OllydbgScript)
 
@@ -82,7 +91,7 @@ Recolecto scripts para OllyDbg 1.0 orientados a análisis y depuración.
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [TryHackMe — Perfil](https://tryhackme.com/p/apuromafo)
 
@@ -94,7 +103,7 @@ Soy jugador activo de TryHackMe, con más de 700 máquinas completadas entre lab
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [Juego 404 — Laberinto](https://github.com/apuromafo/ctf/tree/main/Tryhackme/Personal%20Profile/404_juego)
 
@@ -106,7 +115,7 @@ Mi juego de creación propia con estética TryHackMe: laberinto jugable en el na
 
 </div>
 
-<div class="card" markdown="1">
+<div class="card" markdown="1" data-spotlight data-reveal>
 
 ### [DockerLabs — Respaldo de máquinas](https://github.com/apuromafo/dockerlabs_backup)
 
@@ -117,6 +126,3 @@ Respaldo que armé de máquinas de práctica de laboratorio de intrusión.
 <span class="tags"><a class="tag" data-tag="pentesting">#pentesting</a> <a class="tag" data-tag="laboratorio">#laboratorio</a> <a class="tag" data-tag="practica">#practica</a></span>
 
 </div>
-
-<script src="{{ '/assets/filter.js' | relative_url }}"></script>
-

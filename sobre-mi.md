@@ -1,8 +1,22 @@
 ---
-layout: single
+layout: ap-seccion
 title: Sobre mí
 permalink: /sobre-mi/
-author_profile: true
+antetitulo: Quien está detrás
+icono: cap
+bajada: >-
+  Profesor de matemática, pentester y docente en ciberseguridad. Esto es lo
+  que hay para contar, sin más.
+cifras:
+  - valor: "20"
+    etiqueta: años de reversing y análisis de binarios
+  - valor: "4"
+    etiqueta: años de pentester
+  - valor: "100+"
+    etiqueta: cursos completados
+  - valor: "2"
+    etiqueta: diplomados donde hago docencia
+autor: true
 toc: true
 ---
 
