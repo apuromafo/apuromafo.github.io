@@ -8,7 +8,7 @@ bajada: >-
   Qué cambió en el sitio y en los proyectos, con fecha. Los proyectos están
   en GitHub; esto es la bitácora del sitio.
 cifras:
-  - valor: "2"
+  - valor: "3"
     etiqueta: registros de cambios
   - valor: "104"
     etiqueta: entradas en el catálogo de normativa
@@ -19,6 +19,14 @@ toc: true
 ---
 
 Registro de cambios del sitio y de los proyectos destacados.
+
+## 2026-09-26
+
+- Rediseño completo: portada, páginas de sección e índice con tipografías e iconos propios, y modo claro/oscuro.
+- Filtro por etiquetas en Red Team, Programación y Herramientas.
+- Índice de proyectos con buscador.
+- Página de licencias y créditos.
+- Blog con su propio índice y entradas con el diseño del sitio.
 
 ## 2026-09-25 (tarde)
 
