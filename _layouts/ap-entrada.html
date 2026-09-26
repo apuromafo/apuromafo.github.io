@@ -1,0 +1,70 @@
+---
+layout: default
+---
+{%- comment -%}
+  Entrada del blog: la misma cabecera y el mismo cierre que las páginas de
+  sección, con la fecha de la entrada y sus etiquetas.
+
+  No se pisa _layouts/single.html a propósito: así las entradas del blog
+  usan esta plantilla y el resto de páginas del sitio sigue con la del tema
+  o con ap-seccion. Para que una entrada vuelva al aspecto del tema, basta con
+  poner layout: single en su front matter.
+
+  Qué lee del front matter:
+    icono           nombre del icono del antetitulo (_data/apuromafo_iconos.yml)
+    antetitulo      texto chico sobre el título
+    antetitulo_url  si viene, el antetitulo se vuelve un enlace (por ejemplo
+                    al índice del blog)
+    bajada          una o dos frases, en Markdown
+
+  El cuerpo no lleva riel: en una entrada la columna de lectura va centrada y
+  ancha, y el autor queda al pie, como en las páginas de fichas.
+{%- endcomment -%}
+
+<div id="main" role="main" class="ap-pagina">
+  <header class="ap-cabecera">
+    <div class="ap-cabecera__fondo" aria-hidden="true"></div>
+    <div class="ap-ancho ap-cabecera__dentro" data-reveal>
+      <p class="ap-cabecera__antetitulo">
+        {%- if page.icono -%}{% include apuromafo/icono.html nombre=page.icono clase="ap-cabecera__icono" %}{%- endif -%}
+        {%- if page.antetitulo_url -%}
+        <a href="{{ page.antetitulo_url | relative_url }}">{{ page.antetitulo | default: "Volver" }}</a>
+        {%- else -%}
+        <span>{{ page.antetitulo }}</span>
+        {%- endif -%}
+      </p>
+
+      <h1 class="ap-cabecera__titulo" id="page-title">{{ page.title }}</h1>
+
+      {%- if page.bajada -%}
+      {%- assign apu_bajada = page.bajada | markdownify | strip -%}
+      <div class="ap-cabecera__bajada">{{ apu_bajada | remove_first: "<p>" | remove_last: "</p>" }}</div>
+      {%- endif -%}
+
+      {%- if page.date -%}
+      <p class="ap-entrada__fecha">
+        {% include apuromafo/icono.html nombre="calendar-alt" clase="ap-entrada__icono" %}
+        <time datetime="{{ page.date | date_to_xmlschema }}">{% include apuromafo/fecha.html fecha=page.date %}</time>
+      </p>
+      {%- endif -%}
+    </div>
+  </header>
+
+  <div class="ap-ancho ap-cuerpo">
+    <div class="ap-cuerpo__principal ap-cuerpo__principal--lectura">
+      <article class="page__content ap-seccion-contenido" itemprop="text">
+        {{ content }}
+      </article>
+
+      {%- if page.tags and page.tags.size > 0 -%}
+      <ul class="ap-chips ap-entrada__etiquetas">
+        {%- for etiqueta in page.tags -%}
+        <li class="ap-chip">#{{ etiqueta }}</li>
+        {%- endfor -%}
+      </ul>
+      {%- endif -%}
+
+      <footer class="ap-cierre-autor">{% include apuromafo/autor.html %}</footer>
+    </div>
+  </div>
+</div>

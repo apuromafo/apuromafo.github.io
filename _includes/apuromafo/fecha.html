@@ -1,0 +1,22 @@
+{%- comment -%}
+  Escribe una fecha en español: "25 de septiembre de 2026".
+
+  No se usa el %B de Liquid porque devuelve el mes en inglés: el nombre del
+  mes lo decide la configuración regional del proceso, no el `locale: es` de
+  _config.yml. Con la lista de abajo el texto sale siempre en español y no
+  depende de dónde se compile.
+
+  Ojo con el índice del mes: tiene que ir en una variable. Liquid no evalúa
+  filtros dentro de los corchetes, así que apu_meses[include.fecha.month |
+  minus: 1] devuelve la posición 0 en vez del mes. Por eso primero se saca el
+  número con date: "%m" y después se usa la variable.
+
+  Uso: {% include apuromafo/fecha.html fecha=page.date %}
+{%- endcomment -%}
+{%- assign apu_meses = "enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre" | split: "|" -%}
+{%- assign apu_dia = include.fecha | date: "%d" -%}
+{%- assign apu_num_mes = include.fecha | date: "%m" | plus: 0 -%}
+{%- assign apu_indice = apu_num_mes | minus: 1 -%}
+{%- assign apu_mes = apu_meses[apu_indice] -%}
+{%- assign apu_anio = include.fecha | date: "%Y" -%}
+{{ apu_dia }} de {{ apu_mes }} de {{ apu_anio }}

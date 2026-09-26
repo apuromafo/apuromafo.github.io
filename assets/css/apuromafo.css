@@ -2210,6 +2210,140 @@ li::marker {
   letter-spacing: -0.03em;
 }
 
+/* --- Entradas del blog ----------------------------------------------------- */
+
+.ap-cabecera__antetitulo a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.ap-cabecera__antetitulo a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.28em;
+}
+
+.ap-entrada__fecha {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.15rem 0 0;
+  font-family: var(--ap-fuente-mono);
+  /* En px y no en rem: la raíz del sitio es de 22 px, así que 0.8rem serían
+     17.6 px y la fecha quedaría más grande que el texto que está debajo. */
+  font-size: 15px;
+  letter-spacing: 0.07em;
+  color: var(--ap-fg-tenue);
+}
+
+.ap-entrada__icono {
+  width: 1rem;
+  height: 1rem;
+  flex: none;
+  color: var(--ap-jade-texto);
+}
+
+/* La columna de lectura se angosta al ancho cómodo y se centra: en una
+   pantalla ancha, una línea de 1100 px no se lee. */
+.ap-cuerpo__principal--lectura {
+  max-width: 72ch;
+  margin-inline: auto;
+}
+
+/* Las etiquetas de la entrada son de lectura, no controles: sin el alto
+   mínimo de 2.25 rem que usan los chips de la barra de filtros, que esos sí
+   son cosas que se tocan. */
+.ap-entrada__etiquetas,
+.ap-entrada-fila__etiquetas {
+  margin-top: 1.5rem;
+}
+
+.ap-entrada__etiquetas .ap-chip,
+.ap-entrada-fila__etiquetas .ap-chip {
+  min-height: 0;
+  padding: 0.2rem 0.6rem;
+  font-size: 15px;
+}
+
+/* --- Índice del blog ------------------------------------------------------- */
+
+.ap-entradas {
+  display: grid;
+  gap: 1.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+
+.ap-entrada-fila {
+  min-width: 0;
+  padding: 1.4rem 1.6rem;
+  background: var(--ap-superficie);
+  border: 1px solid var(--ap-linea);
+  border-radius: var(--ap-br);
+  box-shadow: var(--ap-sombra);
+}
+
+/* Selector compuesto porque el tema pone ".page__content p { font-size: 1em }",
+   que gana a una clase suelta: sin esto la fecha de la tarjeta sale del
+   tamaño del texto. */
+.ap-seccion-contenido .ap-entrada-fila__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.55rem;
+  font-family: var(--ap-fuente-mono);
+  font-size: 15px;
+  letter-spacing: 0.07em;
+  color: var(--ap-fg-tenue);
+}
+
+.ap-entrada-fila__icono {
+  width: 0.95rem;
+  height: 0.95rem;
+  flex: none;
+  color: var(--ap-jade-texto);
+}
+
+/* Selector compuesto a propósito: el h2 de .ap-seccion-contenido trae la
+   marquita de jade y un margen grande, y acá el título va dentro de una
+   tarjeta, no abriendo una sección. */
+h2.ap-entrada-fila__titulo,
+.ap-seccion-contenido h2.ap-entrada-fila__titulo {
+  margin: 0 0 0.5rem;
+  padding-bottom: 0;
+  border-bottom: 0;
+  font-family: var(--ap-fuente-titulo);
+  font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+h2.ap-entrada-fila__titulo::before,
+.ap-seccion-contenido h2.ap-entrada-fila__titulo::before {
+  content: none;
+}
+
+.ap-entrada-fila__titulo a {
+  color: var(--ap-fg);
+  text-decoration: none;
+}
+
+.ap-entrada-fila__titulo a:hover {
+  color: var(--ap-jade);
+}
+
+.ap-entrada-fila__bajada {
+  margin: 0;
+  max-width: 62ch;
+  color: var(--ap-fg-suave);
+}
+
+.ap-entrada-fila__etiquetas {
+  margin-top: 1rem;
+}
+
 /* ---------------------------------------------------------------------------
    14. Pie de página
    --------------------------------------------------------------------------- */

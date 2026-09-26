@@ -60,7 +60,9 @@ defaults:
       path: ""
       type: posts
     values:
-      layout: post
+      # ap-entrada es el diseño del sitio; layout: post deja la entrada como la
+      # saca el tema. Cambiarlo acá evita tener que acordarse en cada entrada.
+      layout: ap-entrada
       author_profile: true
       show_date: true
   - scope:

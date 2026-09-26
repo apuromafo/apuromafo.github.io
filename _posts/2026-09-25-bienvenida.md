@@ -1,9 +1,10 @@
 ---
-layout: single
+layout: ap-entrada
 title: "Bienvenida al blog"
+antetitulo: Blog
+antetitulo_url: /blog/
+icono: file-alt
 tags: [general]
-author_profile: true
 ---
 
 Parto este espacio para publicar notas, writeups y apuntes de ciberseguridad.
-

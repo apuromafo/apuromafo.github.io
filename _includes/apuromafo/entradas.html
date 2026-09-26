@@ -1,0 +1,41 @@
+{%- comment -%}
+  Lista las entradas del blog para el índice (/blog/).
+
+  La lista se arma sola con site.posts: publicar una entrada nueva la agrega
+  aquí sin tocar nada. De la entrada usa el título, la fecha, las etiquetas y
+  el primer párrafo (el excerpt que arma Jekyll), no el cuerpo entero.
+
+  Cada fila entra en cascada (data-reveal-group + data-reveal), así que con
+  JavaScript las entradas aparecen de a una; sin JavaScript se ven todas.
+{%- endcomment -%}
+{%- if site.posts.size == 0 -%}
+<p class="ap-vacio">Todavía no hay entradas publicadas.</p>
+{%- else -%}
+<ol class="ap-entradas" data-reveal-group>
+  {%- for entrada in site.posts -%}
+  <li class="ap-entrada-fila" data-reveal>
+    <p class="ap-entrada-fila__meta">
+      {% include apuromafo/icono.html nombre="calendar-alt" clase="ap-entrada-fila__icono" %}
+      <time datetime="{{ entrada.date | date_to_xmlschema }}">{% include apuromafo/fecha.html fecha=entrada.date %}</time>
+    </p>
+
+    <h2 class="ap-entrada-fila__titulo">
+      <a href="{{ entrada.url | relative_url }}">{{ entrada.title }}</a>
+    </h2>
+
+    {%- assign apu_resumen = entrada.excerpt | strip_html | strip_newlines | normalize_whitespace -%}
+    {%- if apu_resumen and apu_resumen != "" -%}
+    <p class="ap-entrada-fila__bajada">{{ apu_resumen | truncate: 240, "…" }}</p>
+    {%- endif -%}
+
+    {%- if entrada.tags and entrada.tags.size > 0 -%}
+    <ul class="ap-chips ap-entrada-fila__etiquetas">
+      {%- for etiqueta in entrada.tags -%}
+      <li class="ap-chip">#{{ etiqueta }}</li>
+      {%- endfor -%}
+    </ul>
+    {%- endif -%}
+  </li>
+  {%- endfor -%}
+</ol>
+{%- endif -%}
