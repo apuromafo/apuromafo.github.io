@@ -1,0 +1,5 @@
+# El tema trae sus textos en inglés. Acá se redefinen solo las etiquetas que
+# llegan a verse en este sitio, para que no aparezca "Powered by" en una página
+# que está toda en español. Lo que no esté en este archivo sigue falling back al
+# valor por defecto que el tema pone en cada include.
+powered_by: "Hecho con"
