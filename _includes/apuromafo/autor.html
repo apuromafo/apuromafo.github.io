@@ -1,0 +1,40 @@
+{%- comment -%}
+  Tarjeta del autor para las páginas de sección.
+
+  Es propia y no la del tema (author-profile.html) por dos razones concretas:
+  la del tema trae un botón "Follow" en inglés y un aviso de "sidebar", y usa
+  las tipografías del tema en vez de las del sitio. Los datos salen de
+  site.author en _config.yml; los iconos, de _data/apuromafo_iconos.yml.
+
+  En _config.yml los iconos vienen con la clase de Font Awesome ("fab fa-github"
+  y compañía). Se les quita el prefijo para poder buscar el SVG con el mismo
+  nombre: fa-github -> github.
+{%- endcomment -%}
+{%- assign apu_autor = page.author | default: site.author -%}
+<div class="ap-autor">
+  <div class="ap-autor__texto">
+    <p class="ap-autor__etiqueta">Autor</p>
+    <p class="ap-autor__nombre">{{ apu_autor.name }}</p>
+
+    {%- if apu_autor.location -%}
+    <p class="ap-autor__lugar">
+      {% include apuromafo/icono.html nombre="map-marker-alt" clase="ap-autor__glifo" %}
+      <span>{{ apu_autor.location }}</span>
+    </p>
+    {%- endif -%}
+
+    <p class="ap-autor__nota">Todos los proyectos, abiertos y con licencia.</p>
+  </div>
+
+  <ul class="ap-autor__enlaces">
+    {%- for enlace in apu_autor.links -%}
+    {%- assign apu_icono = enlace.icon | remove: "fab " | remove: "fas " | remove: "fa-" -%}
+    <li>
+      <a class="ap-autor__enlace" href="{{ enlace.url }}" rel="nofollow noopener noreferrer me" title="{{ enlace.label }}">
+        {% include apuromafo/icono.html nombre=apu_icono clase="ap-autor__glifo" %}
+        <span class="visually-hidden">{{ enlace.label }}</span>
+      </a>
+    </li>
+    {%- endfor -%}
+  </ul>
+</div>

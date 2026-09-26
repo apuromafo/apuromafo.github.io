@@ -1,0 +1,9 @@
+# Jekyll
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+Gemfile.lock
+
+# Notas de trabajo: no se publican ni se suben.
+ESTADO_LOCAL.md

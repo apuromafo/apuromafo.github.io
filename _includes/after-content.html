@@ -1,0 +1,14 @@
+{%- comment -%}
+  Va justo después del contenido de cada página.
+
+  · la barra de progreso: app.js la mueve con la lectura, sin esto no hay
+    nada que mover y no se ve nada raro.
+  · el botón de volver arriba: aparece solo después de pasar la primera
+    pantalla. Sin JavaScript queda oculto y no molesta.
+{%- endcomment -%}
+<div class="ap-progreso" data-progress role="presentation"></div>
+
+<button class="ap-volver" type="button" data-back-top>
+  {% include apuromafo/icono.html nombre="arrow-up" %}
+  <span>Arriba</span>
+</button>

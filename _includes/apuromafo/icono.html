@@ -1,0 +1,11 @@
+{%- comment -%}
+  Dibuja un icono SVG. Origen: _data/apuromafo_iconos.yml (Font Awesome Free
+  6, CC BY 4.0). Se pinta con currentColor, así que el color y el tamaño los
+  decide la hoja de estilos.
+
+  Uso: {% include apuromafo/icono.html nombre="github" %}
+{%- endcomment -%}
+{%- assign apu_icono = site.data.apuromafo_iconos[include.nombre] -%}
+{%- if apu_icono -%}
+<svg class="{{ include.clase }}" viewBox="{{ apu_icono.viewBox }}" aria-hidden="true" focusable="false">{{ apu_icono.cuerpo }}</svg>
+{%- endif -%}

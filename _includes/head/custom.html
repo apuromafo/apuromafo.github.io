@@ -1,1 +1,26 @@
-<script src="{{ '/assets/theme-toggle.js' | relative_url }}"></script>
+{%- comment -%}
+  Lo que el sitio agrega al <head> del tema.
+  Va después de _includes/head.html, así que la hoja de diseño pisa a la del
+  tema sin necesidad de !important.
+
+  · apuromafo.css   la capa de diseño (tokens, portada, fichas, índices).
+  · iconos-tema.css los iconos que escribe el tema con clases de Font Awesome,
+                    redibujados como máscara para no depender de la CDN.
+  · filter.js       el filtro de etiquetas. No hace nada si la página no
+                    tiene etiquetas, así que va en todas en vez de repetirse
+                    en cada página con fichas.
+  · La plantilla del botón de tema: theme-toggle.js la clona dentro del botón
+    y el CSS muestra el icono y el texto que corresponden a data-tema.
+{%- endcomment -%}
+<link rel="stylesheet" href="{{ '/assets/css/apuromafo.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/iconos-tema.css' | relative_url }}">
+
+<span data-plantilla-tema hidden>
+  {% include apuromafo/icono.html nombre="sun" clase="theme-toggle__glifo theme-toggle__glifo--sol" %}
+  {% include apuromafo/icono.html nombre="moon" clase="theme-toggle__glifo theme-toggle__glifo--luna" %}
+  <span class="theme-toggle__texto" aria-hidden="true"></span>
+</span>
+
+<script src="{{ '/assets/js/theme-toggle.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/app.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/filter.js' | relative_url }}" defer></script>

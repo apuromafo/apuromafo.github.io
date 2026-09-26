@@ -1,0 +1,71 @@
+{%- comment -%}
+  Copia de _includes/head.html de Minimal Mistakes 4.26.2, con tres cambios
+  deliberados. Todo lo demás es idéntico al tema; al actualizar el tema hay
+  que volver a comparar este archivo.
+
+    1. Se decide el tema (claro u oscuro) ANTES de pedir la hoja de estilos,
+       para que no haya un cambio de color después de pintar la página.
+    2. Se quitó la fuente de iconos de jsDelivr: los iconos del sitio son SVG
+       en línea (_data/apuromafo_iconos.yml), así que el sitio no depende de
+       ninguna red externa.
+    3. Se cargan primero las tipografías locales, que se usan en casi todo el
+       texto y conviene tenerlas antes del primer pintado.
+
+  Theme: Minimal Mistakes 4.26.2 (MIT).
+{%- endcomment -%}
+<meta charset="utf-8">
+
+{% include seo.html %}
+
+{% unless site.atom_feed.hide %}
+  <link href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ '/feed.xml' | relative_url }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed">
+{% endunless %}
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0e14" id="ap-color-navegador">
+
+<script type="text/javascript">
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  {% if site.enable_copy_code_button -%}
+    window.enable_copy_code_button = true;
+  {%- endif %}
+
+  // (1) Tema antes de pintar. Sin esto, el sitio aparecería claro un instante
+  //     aunque el visitante pida oscuro.
+  (function () {
+    var modo = null;
+    try { modo = localStorage.getItem("tema"); } catch (e) {}
+    if (modo !== "claro" && modo !== "oscuro") {
+      modo = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ? "oscuro" : "claro";
+    }
+    document.documentElement.setAttribute("data-tema", modo);
+  })();
+</script>
+
+{%- comment -%} (3) Las dos tipografías, primero. {%- endcomment -%}
+<link rel="preload" href="{{ '/assets/fonts/space-grotesk-latin-var.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ '/assets/fonts/inter-latin-var.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+
+<!-- For all browsers -->
+<link rel="stylesheet" id="ap-tema-hoja" href="{{ '/assets/css/main.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/fonts.css' | relative_url }}">
+{%- comment -%}
+  La hoja del tema tiene dos versiones: main.css (clara) y main-dark.css
+  (oscura). Aquí se cambia la que se acaba de enlazar, justo después de
+  insertarla y antes de pintar, para que quien llegue en oscuro no vea un
+  fogonazo claro. Es la única forma correcta de hacerlo sin duplicar la hoja.
+{%- endcomment -%}
+<script>
+  if (document.documentElement.getAttribute("data-tema") === "oscuro") {
+    document.getElementById("ap-tema-hoja").href = document
+      .getElementById("ap-tema-hoja")
+      .href.replace(/main\.css$/, "main-dark.css");
+  }
+</script>
+
+{% if site.head_scripts %}
+  {% for script in site.head_scripts %}
+    <script src="{{ script | relative_url }}"></script>
+  {% endfor %}
+{% endif %}

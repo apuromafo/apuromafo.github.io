@@ -1,0 +1,2718 @@
+/* ===========================================================================
+   Apuromafo — capa de diseño
+   ===========================================================================
+   Este archivo va DESPUÉS de la hoja del tema y no depende de variables SCSS
+   del tema: todo vive aquí, con tokens propios y el atributo [data-tema] en
+   <html>. Consecuencias prácticas:
+
+   · si algo se ve mal, se borra el <link> y el sitio vuelve a lo de antes;
+   · claro y oscuro se controlan con un solo atributo, sin parpadeo;
+   · funciona aunque el visitante tenga JavaScript apagado (el tema se decide
+     por prefers-color-scheme cuando no hay atributo).
+
+   Índice
+     1. Tokens
+     2. Base
+     3. Tipografía
+     4. Contenedores
+     5. Encabezado y navegación
+     6. Portada: hero
+     7. Portada: cifras
+     8. Botones
+     9. Fichas (tarjetas de proyecto)
+    10. Etiquetas y filtro
+    11. Índice de proyectos (buscador)
+    12. Páginas de contenido
+    13. Blog y archivo
+    14. Pie de página
+    15. Utilidades de página (progreso, volver arriba)
+    16. Movimiento
+    17. Adaptación a pantallas chicas
+   =========================================================================== */
+
+/* ---------------------------------------------------------------------------
+   1. Tokens
+   --------------------------------------------------------------------------- */
+
+:root {
+  --ap-jade: #0a7f5c;
+  /* El jade de arriba se ve bien de filling y de borde, pero como texto sobre
+     un panel tintado se queda en 4.4:1. Este es el mismo verde oscurecido, para
+     rótulos y etiquetas. Sobre el panel del encabezado da 5.6:1. */
+  --ap-jade-texto: #0a6d50;
+  --ap-lapis: #2f4fd0;
+  --ap-terra: #c2410c;
+  --ap-oro: #a16207;
+
+  --ap-fg: #0e141c;
+  --ap-fg-suave: #5b6675;
+  /* El gris más apagado se usa para notas al pie y contadores. Con #6b7686 se
+     quedaba en 4.1:1 sobre el fondo de las secciones alternas, por debajo del
+     4.5:1 que pide WCAG AA para texto normal. Oscurecido a #5f6a7a queda en
+     4.8:1 sobre ese mismo fondo, y sigue siendo visiblemente más suave que el
+     texto de lectura. */
+  --ap-fg-tenue: #5f6a7a;
+
+  --ap-bg: #f6f8fa;
+  --ap-bg-2: #eef1f6;
+  --ap-superficie: #ffffff;
+  --ap-linea: #d8dee8;
+  --ap-linea-fuerte: #c2cad6;
+
+  --ap-sombra: 0 1px 2px rgba(14, 20, 28, 0.06), 0 8px 24px rgba(14, 20, 28, 0.07);
+  --ap-sombra-alta: 0 2px 6px rgba(14, 20, 28, 0.08), 0 20px 48px rgba(14, 20, 28, 0.14);
+
+  --ap-br: 14px;
+  --ap-br-ch: 10px;
+  --ap-ancho: 1120px;
+  --ap-alto-tap: 44px;
+  /* Alto del encabezado fijo. .greedy-nav tiene min-height 68px, pero el
+     encabezado suma el relleno y el borde: da 103 px. Lo usan las cosas que se
+     quedan pegadas al bajar (la barra de filtros y el riel de sección).
+     app.js lo vuelve a medir y lo escribe, para que no dependa de esta
+     cuenta. */
+  --ap-alto-masthead: 103px;
+
+  --ap-transicion: 220ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ap-fuente: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --ap-fuente-titulo: "Space Grotesk", var(--ap-fuente);
+  --ap-fuente-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+
+  --ap-textil: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1'%3E%3Cpath d='M22 3 41 22 22 41 3 22Z'/%3E%3Cpath d='M22 11 33 22 22 33 11 22Z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Sin atributo: se respeta la preferencia del sistema. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) {
+    color-scheme: dark;
+    --ap-jade: #4ade9b;
+    --ap-jade-texto: #7ef0bb;
+    --ap-lapis: #8aa4ff;
+    --ap-terra: #ff9270;
+    --ap-oro: #f5c451;
+
+    --ap-fg: #e7edf6;
+    --ap-fg-suave: #9dabbd;
+    --ap-fg-tenue: #8a97a8;
+
+    --ap-bg: #0a0e14;
+    --ap-bg-2: #0e141c;
+    --ap-superficie: #121924;
+    --ap-linea: #222d3d;
+    --ap-linea-fuerte: #2f3d51;
+
+    --ap-sombra: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.45);
+    --ap-sombra-alta: 0 2px 6px rgba(0, 0, 0, 0.45), 0 20px 48px rgba(0, 0, 0, 0.6);
+  }
+}
+
+:root[data-tema="oscuro"] {
+  color-scheme: dark;
+  --ap-jade: #4ade9b;
+  --ap-jade-texto: #7ef0bb;
+  --ap-lapis: #8aa4ff;
+  --ap-terra: #ff9270;
+  --ap-oro: #f5c451;
+
+  --ap-fg: #e7edf6;
+  --ap-fg-suave: #9dabbd;
+  --ap-fg-tenue: #8a97a8;
+
+  --ap-bg: #0a0e14;
+  --ap-bg-2: #0e141c;
+  --ap-superficie: #121924;
+  --ap-linea: #222d3d;
+  --ap-linea-fuerte: #2f3d51;
+
+  --ap-sombra: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.45);
+  --ap-sombra-alta: 0 2px 6px rgba(0, 0, 0, 0.45), 0 20px 48px rgba(0, 0, 0, 0.6);
+}
+
+:root[data-tema="claro"] {
+  color-scheme: light;
+}
+
+/* ---------------------------------------------------------------------------
+   2. Base
+   --------------------------------------------------------------------------- */
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* El encabezado está fijo y mide más de 100 px. Sin esto, al seguir un enlace
+   del índice de la página (o cualquier ancla interna) el título de destino
+   queda tapado debajo. Vale también para los saltos sin animación, que es lo
+   que pasa sin JavaScript o con movimiento reducido. */
+html {
+  scroll-padding-top: calc(var(--ap-alto-masthead) + 1.5rem);
+}
+
+body {
+  background: var(--ap-bg);
+  color: var(--ap-fg);
+  font-family: var(--ap-fuente);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* el texto largo (correos, rutas, hashes) nunca debe romper el ancho */
+  overflow-wrap: break-word;
+}
+
+a {
+  color: var(--ap-jade);
+  text-decoration-color: color-mix(in srgb, var(--ap-jade) 40%, transparent);
+  text-underline-offset: 0.22em;
+  transition: color var(--ap-transicion),
+    text-decoration-color var(--ap-transicion);
+}
+
+a:hover,
+a:focus {
+  color: var(--ap-lapis);
+  text-decoration-color: currentColor;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ap-lapis);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--ap-jade) 30%, transparent);
+  color: var(--ap-fg);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--ap-linea);
+  margin: 3rem 0;
+}
+
+/* ---------------------------------------------------------------------------
+   3. Tipografía
+   --------------------------------------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--ap-fuente-titulo);
+  color: var(--ap-fg);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 6vw, 3.4rem);
+}
+h2 {
+  font-size: clamp(1.6rem, 3.6vw, 2.15rem);
+}
+h3 {
+  font-size: clamp(1.2rem, 2.4vw, 1.4rem);
+}
+h4 {
+  font-size: 1.1rem;
+}
+
+.page-content h2,
+.page__content h2 {
+  margin-top: 3.25rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--ap-linea);
+}
+
+.page-content h2:first-child,
+.page__content h2:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.page-content strong,
+.page__content strong {
+  font-weight: 650;
+  color: var(--ap-fg);
+}
+
+code,
+kbd,
+samp {
+  font-family: var(--ap-fuente-mono);
+  font-size: 0.86em;
+  font-variant-numeric: tabular-nums;
+}
+
+:not(pre) > code {
+  background: color-mix(in srgb, var(--ap-fg) 8%, transparent);
+  border: 1px solid var(--ap-linea);
+  border-radius: 6px;
+  padding: 0.1em 0.4em;
+  /* Un nombre de archivo o un hash largo no se parte solo, y en un teléfono
+     eso empuja la página de lado. Se parte en cualquier punto antes de que
+     aparezca la barra de desplazamiento horizontal. */
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+pre {
+  background: var(--ap-bg-2);
+  border: 1px solid var(--ap-linea);
+  border-radius: var(--ap-br-ch);
+  padding: 1.1rem 1.25rem;
+  overflow-x: auto;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--ap-fg) 4%, transparent);
+}
+
+pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: inherit;
+  color: var(--ap-fg);
+}
+
+.highlight,
+.highlighter-rouge .highlight {
+  background: none;
+}
+
+blockquote {
+  margin: 2rem 0;
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  border-left: 3px solid var(--ap-jade);
+  color: var(--ap-fg-suave);
+  font-style: normal;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  display: block;
+  overflow-x: auto;
+}
+
+th,
+td {
+  border-bottom: 1px solid var(--ap-linea);
+  padding: 0.7rem 0.85rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  font-family: var(--ap-fuente-titulo);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ap-fg-suave);
+}
+
+ul,
+ol {
+  padding-left: 1.35rem;
+}
+
+li {
+  margin-bottom: 0.4rem;
+}
+
+li::marker {
+  color: var(--ap-fg-tenue);
+}
+
+/* ---------------------------------------------------------------------------
+   4. Contenedores
+   --------------------------------------------------------------------------- */
+
+.wrapper {
+  max-width: 1080px;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.ap-ancho {
+  width: 100%;
+  max-width: var(--ap-ancho);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  min-width: 0;
+}
+
+.ap-seccion {
+  padding: clamp(3.5rem, 8vw, 6rem) 0;
+}
+
+.ap-seccion--alt {
+  background: var(--ap-bg-2);
+  border-top: 1px solid var(--ap-linea);
+  border-bottom: 1px solid var(--ap-linea);
+}
+
+/* --------------------------------------------------------------------------
+   Las páginas con layout default (la portada y el error 404) no traen
+   .page__content, que es lo que el tema usa como contenedor del contenido. Sin
+   él, el JavaScript del tema se cae a mitad de su rutina y deja de poner los
+   enlaces a los títulos y el botón de copiar código. Se le pone la clase a
+   mano, y después se deshace lo que el tema le hace a los párrafos y a los
+   títulos, porque en estas páginas manda el diseño de más abajo.
+
+   Los selectores llevan dos clases a propósito: el tema usa ".page__content p"
+   (una clase y un tipo), que gana en especificidad a un ".ap-seccion__bajada"
+   suelto. Por eso hay que llamarlos con ".page__content.ap-portada p".
+   -------------------------------------------------------------------------- */
+.page__content.ap-portada p,
+.page__content.ap-portada li,
+.page__content.ap-portada dl {
+  font-size: inherit;
+}
+
+.page__content.ap-portada p {
+  margin: 0;
+}
+
+.page__content.ap-portada h2 {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.page__content.ap-portada a:not(.btn):hover {
+  text-decoration: none;
+}
+
+/* El tema pone un "#" junto a cada título al pasar el puntero por encima. En
+   la portada los títulos son de sección, no de un artículo, así que queda
+   fuera. */
+.page__content.ap-portada .header-link {
+  display: none;
+}
+
+/* Página de error */
+.ap-error {
+  min-height: 62vh;
+  display: flex;
+  align-items: center;
+}
+
+.ap-error .ap-seccion__titulo {
+  font-size: clamp(2.1rem, 6vw, 3.2rem);
+}
+
+.ap-error .hero__acciones {
+  margin-bottom: 0;
+  margin-top: 2rem;
+}
+
+/* Banda de cifras: va pegada al héroe, así que respira menos que una sección
+   normal. */
+.ap-banda-cifras {
+  padding: clamp(2.25rem, 5vw, 3.25rem) 0 clamp(1rem, 3vw, 2rem);
+}
+
+.ap-seccion__bajada code {
+  font-size: 0.85em;
+}
+
+/* Línea de nota con icono: billeteras de credenciales, novedades, etc. */
+.ap-nota-enlaces {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.55rem;
+  margin: 1.75rem 0 0;
+  font-size: 0.92rem;
+  color: var(--ap-fg-suave);
+  min-width: 0;
+}
+
+.ap-nota-enlaces svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+  color: var(--ap-fg-tenue);
+  flex: 0 0 auto;
+}
+
+.ap-seccion__cabeza {
+  max-width: 44rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.ap-seccion__etiqueta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--ap-fuente-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ap-jade);
+  margin: 0 0 0.85rem;
+}
+
+.ap-seccion__etiqueta::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: currentColor;
+}
+
+.ap-seccion__titulo {
+  margin: 0 0 0.75rem;
+}
+
+.ap-seccion__bajada {
+  margin: 0;
+  color: var(--ap-fg-suave);
+  font-size: 1.05rem;
+}
+
+/* ---------------------------------------------------------------------------
+   5. Encabezado y navegación
+   --------------------------------------------------------------------------- */
+
+.masthead {
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background var(--ap-transicion), border-color var(--ap-transicion),
+    backdrop-filter var(--ap-transicion);
+}
+
+.ap-desplazado .masthead,
+.masthead.ap-desplazado {
+  background: color-mix(in srgb, var(--ap-bg) 82%, transparent);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom-color: var(--ap-linea);
+}
+
+.greedy-nav {
+  min-height: 68px;
+}
+
+.site-title {
+  font-family: var(--ap-fuente-titulo);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ap-fg) !important;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.site-title::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: linear-gradient(135deg, var(--ap-jade), var(--ap-lapis));
+  align-self: center;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ap-jade) 18%, transparent);
+}
+
+.site-title:hover,
+.site-title:focus {
+  color: var(--ap-jade) !important;
+}
+
+.site-subtitle {
+  font-family: var(--ap-fuente-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--ap-fg-tenue);
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.visible-links .masthead__menu-item > a {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ap-fg-suave);
+  padding: 0.35rem 0.1rem;
+  position: relative;
+}
+
+.visible-links .masthead__menu-item > a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--ap-jade);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--ap-transicion);
+}
+
+.visible-links .masthead__menu-item > a:hover,
+.visible-links .masthead__menu-item > a:focus {
+  color: var(--ap-fg);
+}
+
+.visible-links .masthead__menu-item > a:hover::after,
+.visible-links .masthead__menu-item > a:focus::after {
+  transform: scaleX(1);
+}
+
+.greedy-nav__toggle {
+  color: var(--ap-fg) !important;
+  border-radius: 8px;
+  min-width: var(--ap-alto-tap);
+  min-height: var(--ap-alto-tap);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navicon {
+  background: var(--ap-fg) !important;
+  box-shadow: 0 6px 0 var(--ap-fg), 0 12px 0 var(--ap-fg) !important;
+  position: relative;
+}
+
+.drawer {
+  background: var(--ap-bg);
+  padding: 1.25rem;
+  border-bottom: 1px solid var(--ap-linea);
+  box-shadow: var(--ap-sombra);
+}
+
+.drawer li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--ap-linea);
+  min-width: 0;
+}
+
+.drawer li:last-child {
+  border-bottom: 0;
+}
+
+.drawer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+  color: var(--ap-fg);
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+/* Botón de tema */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-width: var(--ap-alto-tap);
+  min-height: var(--ap-alto-tap);
+  padding: 0 0.75rem;
+  background: transparent;
+  border: 1px solid var(--ap-linea);
+  border-radius: 10px;
+  color: var(--ap-fg-suave);
+  font-family: var(--ap-fuente-mono);
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: border-color var(--ap-transicion), color var(--ap-transicion),
+    background var(--ap-transicion);
+}
+
+.theme-toggle:hover {
+  color: var(--ap-fg);
+  border-color: var(--ap-linea-fuerte);
+  background: color-mix(in srgb, var(--ap-fg) 5%, transparent);
+}
+
+.theme-toggle__glifo {
+  width: 1.05rem;
+  height: 1.05rem;
+  fill: currentColor;
+  flex: 0 0 auto;
+}
+
+/* El icono muestra a qué se cambia, no en qué modo se está. */
+.theme-toggle__glifo--sol {
+  display: none;
+}
+
+[data-tema="oscuro"] .theme-toggle__glifo--sol {
+  display: block;
+}
+
+[data-tema="oscuro"] .theme-toggle__glifo--luna {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) .theme-toggle__glifo--sol {
+    display: block;
+  }
+
+  :root:not([data-tema="claro"]) .theme-toggle__glifo--luna {
+    display: none;
+  }
+}
+
+.ap-tema-item {
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 53.75em) {
+  .theme-toggle__texto {
+    display: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   6. Portada: hero
+   --------------------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(4rem, 11vw, 8.5rem) 0 clamp(3.5rem, 8vw, 6rem);
+  border-bottom: 1px solid var(--ap-linea);
+}
+
+.hero__fondo {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.hero__fondo::before {
+  /* trama textil andina, muy tenue */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--ap-textil);
+  background-size: 44px 44px;
+  opacity: 0.035;
+}
+
+.hero__fondo::after {
+  /* rejilla técnica + dos focos de color */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+      to right,
+      color-mix(in srgb, var(--ap-fg) 7%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--ap-fg) 7%, transparent) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      52rem 30rem at 12% -10%,
+      color-mix(in srgb, var(--ap-jade) 26%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      44rem 28rem at 92% 8%,
+      color-mix(in srgb, var(--ap-lapis) 22%, transparent),
+      transparent 70%
+    );
+  background-size: 72px 72px, 72px 72px, 100% 100%, 100% 100%;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
+}
+
+.hero__contenido {
+  max-width: 52rem;
+  min-width: 0;
+}
+
+.hero__antetitulo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--ap-fuente-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ap-fg-suave);
+  border: 1px solid var(--ap-linea);
+  background: color-mix(in srgb, var(--ap-bg) 60%, transparent);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  margin: 0 0 1.6rem;
+}
+
+.hero__antetitulo::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ap-jade);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ap-jade) 22%, transparent);
+}
+
+.hero__titulo {
+  margin: 0 0 0.5rem;
+  font-size: clamp(2.6rem, 8vw, 4.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+.hero__titulo span {
+  color: var(--ap-fg-tenue);
+}
+
+.hero__roles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 0.7rem;
+  margin: 0 0 1.6rem;
+  font-family: var(--ap-fuente-titulo);
+  font-size: clamp(1.15rem, 3.4vw, 1.7rem);
+  font-weight: 500;
+  color: var(--ap-fg);
+  letter-spacing: -0.02em;
+  min-height: 2.4rem;
+}
+
+.hero__rotador {
+  position: relative;
+  display: inline-grid;
+  vertical-align: baseline;
+}
+
+.hero__rotador > * {
+  grid-area: 1 / 1;
+  opacity: 0;
+  transform: translateY(0.35em);
+  transition: opacity 220ms ease,
+    transform 220ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  white-space: nowrap;
+}
+
+/* Sin JavaScript se ve el primero, quieto, y el resto ni se pinta. */
+:root:not(.ap-js) .hero__rotador > *:not(:first-child) {
+  display: none;
+}
+
+:root:not(.ap-js) .hero__rotador > :first-child {
+  opacity: 1;
+  transform: none;
+  color: var(--ap-jade);
+}
+
+/* Con JavaScript manda la clase es-activo, que el script mueve de uno en uno.
+   Estas dos reglas van acotadas a .ap-js a propósito: antes el primero
+   quedaba visible "por si acaso" con un :first-child sin acotar, y se montaba
+   encima del texto que estaba activo, así que se leían los dos superpuestos. */
+.ap-js .hero__rotador > * {
+  display: block;
+}
+
+.ap-js .hero__rotador > .es-activo {
+  opacity: 1;
+  transform: none;
+  color: var(--ap-jade);
+  /* El que entra espera a que el otro haya salido. Los dos textos comparten la
+     misma celda, así que un fundido a la vez los superpone y se leen revueltos;
+     encadenados se ve uno, y luego el otro. Entre la salida y la entrada queda
+     un hueco de un fotograma, que no se ve; lo que sí molestaba era el
+     solapamiento de varios segundos. */
+  transition-delay: 180ms;
+}
+
+.hero__rotador > *::after {
+  content: "▌";
+  margin-left: 0.15em;
+  color: var(--ap-fg-tenue);
+}
+
+.hero__puntos {
+  display: inline-flex;
+  gap: 0.4rem;
+  margin-left: 0.4rem;
+  align-self: center;
+}
+
+.hero__punto {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__punto::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ap-linea-fuerte);
+  transition: background var(--ap-transicion), transform var(--ap-transicion);
+}
+
+.hero__punto.es-activo::before {
+  background: var(--ap-jade);
+  transform: scale(1.35);
+}
+
+.hero__bajada {
+  max-width: 40rem;
+  font-size: clamp(1.05rem, 2.3vw, 1.18rem);
+  color: var(--ap-fg-suave);
+  margin: 0 0 2.2rem;
+}
+
+.hero__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-bottom: 2.75rem;
+}
+
+.hero__nota {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.9rem;
+  font-size: 0.88rem;
+  color: var(--ap-fg-tenue);
+}
+
+.hero__nota a {
+  color: var(--ap-fg-suave);
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.hero__nota a:hover {
+  color: var(--ap-jade);
+}
+
+.hero__nota svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+  color: var(--ap-fg-tenue);
+  flex: 0 0 auto;
+}
+
+/* ---------------------------------------------------------------------------
+   7. Portada: cifras
+   --------------------------------------------------------------------------- */
+
+.cifras {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 10.5rem), 1fr));
+  gap: 1px;
+  background: var(--ap-linea);
+  border: 1px solid var(--ap-linea);
+  border-radius: var(--ap-br);
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cifras li {
+  margin: 0;
+  padding: 1.5rem 1.4rem;
+  background: var(--ap-bg);
+  min-width: 0;
+}
+
+.cifra__valor {
+  display: block;
+  font-family: var(--ap-fuente-titulo);
+  font-size: clamp(1.65rem, 4.2vw, 2.1rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--ap-fg);
+  font-variant-numeric: tabular-nums;
+}
+
+.cifra__valor em {
+  font-style: normal;
+  color: var(--ap-jade);
+}
+
+.cifra__etiqueta {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: var(--ap-fg-suave);
+  overflow-wrap: anywhere;
+}
+
+/* ---------------------------------------------------------------------------
+   8. Botones
+   --------------------------------------------------------------------------- */
+
+.btn,
+.ap-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: var(--ap-alto-tap);
+  padding: 0.6rem 1.3rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-family: var(--ap-fuente-titulo);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform var(--ap-transicion), background var(--ap-transicion),
+    border-color var(--ap-transicion), color var(--ap-transicion),
+    box-shadow var(--ap-transicion);
+}
+
+.ap-btn {
+  transform: translate3d(var(--ap-mx, 0), var(--ap-my, 0), 0);
+}
+
+.ap-btn--primario {
+  background: var(--ap-jade);
+  color: #fff;
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--ap-jade) 30%, transparent);
+}
+
+:root[data-tema="oscuro"] .ap-btn--primario {
+  color: #06231a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) .ap-btn--primario {
+    color: #06231a;
+  }
+}
+
+.ap-btn--primario:hover,
+.ap-btn--primario:focus {
+  background: color-mix(in srgb, var(--ap-jade) 88%, #fff);
+  color: #fff;
+  box-shadow: 0 10px 26px color-mix(in srgb, var(--ap-jade) 38%, transparent);
+}
+
+:root[data-tema="oscuro"] .ap-btn--primario:hover,
+:root[data-tema="oscuro"] .ap-btn--primario:focus {
+  color: #06231a;
+}
+
+.ap-btn--fantasma {
+  background: color-mix(in srgb, var(--ap-fg) 4%, transparent);
+  border-color: var(--ap-linea-fuerte);
+  color: var(--ap-fg);
+}
+
+.ap-btn--fantasma:hover,
+.ap-btn--fantasma:focus {
+  border-color: var(--ap-jade);
+  color: var(--ap-jade);
+  background: color-mix(in srgb, var(--ap-jade) 10%, transparent);
+}
+
+.ap-btn__flecha {
+  transition: transform var(--ap-transicion);
+}
+
+.ap-btn:hover .ap-btn__flecha {
+  transform: translateX(3px);
+}
+
+/* Botones que trae el tema */
+.btn--primary,
+.btn--inverse {
+  border-radius: 999px;
+  font-family: var(--ap-fuente-titulo);
+  min-height: var(--ap-alto-tap);
+  padding: 0.6rem 1.3rem;
+  background: var(--ap-jade);
+  color: #fff;
+  border: 0;
+}
+
+.btn--primary:hover,
+.btn--inverse:hover {
+  background: color-mix(in srgb, var(--ap-jade) 88%, #fff);
+  color: #fff;
+}
+
+:root[data-tema="oscuro"] .btn--primary,
+:root[data-tema="oscuro"] .btn--inverse {
+  color: #06231a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) .btn--primary,
+  :root:not([data-tema="claro"]) .btn--inverse {
+    color: #06231a;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   9. Fichas (tarjetas de proyecto)
+   --------------------------------------------------------------------------- */
+
+.card {
+  position: relative;
+  background: var(--ap-superficie);
+  border: 1px solid var(--ap-linea);
+  border-radius: var(--ap-br);
+  padding: 1.6rem 1.7rem;
+  margin: 1.1rem 0;
+  box-shadow: var(--ap-sombra);
+  overflow: hidden;
+  transition: transform var(--ap-transicion), box-shadow var(--ap-transicion),
+    border-color var(--ap-transicion);
+}
+
+.card::before {
+  /* resplandor que sigue al puntero */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    18rem 18rem at var(--ap-x, 50%) var(--ap-y, 0%),
+    color-mix(in srgb, var(--ap-jade) 12%, transparent),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity var(--ap-transicion);
+  pointer-events: none;
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--ap-jade) 45%, var(--ap-linea));
+  box-shadow: var(--ap-sombra-alta);
+}
+
+.card:hover::before,
+.card:focus-within::before {
+  opacity: 1;
+}
+
+.card > * {
+  position: relative;
+}
+
+/* El filtro de etiquetas oculta fichas con el atributo hidden; conviene
+   decirlo, porque si no el navegador no lo aplica. */
+.card[hidden] {
+  display: none;
+}
+
+.card h3 {
+  margin: 0 0 0.55rem;
+  font-size: 1.3rem;
+  line-height: 1.25;
+}
+
+.card h3 a {
+  color: var(--ap-fg);
+  text-decoration: none;
+  background-image: linear-gradient(var(--ap-jade), var(--ap-jade));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 2px;
+  transition: color var(--ap-transicion), background-size var(--ap-transicion);
+}
+
+.card h3 a:hover,
+.card h3 a:focus {
+  color: var(--ap-jade);
+  background-size: 100% 2px;
+}
+
+.card p {
+  margin: 0 0 0.9rem;
+  color: var(--ap-fg-suave);
+}
+
+.card pre {
+  margin: 0.9rem 0 1rem;
+  font-size: 0.82rem;
+}
+
+/* ---------------------------------------------------------------------------
+   10. Etiquetas y filtro
+   --------------------------------------------------------------------------- */
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.9rem 0 0;
+  min-width: 0;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.15rem 0.7rem;
+  border: 1px solid var(--ap-linea);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ap-fg) 4%, transparent);
+  color: var(--ap-fg-suave);
+  font-family: var(--ap-fuente-mono);
+  font-size: 0.76rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--ap-transicion), color var(--ap-transicion),
+    border-color var(--ap-transicion), transform var(--ap-transicion);
+}
+
+.tag:hover,
+.tag:focus {
+  background: color-mix(in srgb, var(--ap-jade) 14%, transparent);
+  border-color: color-mix(in srgb, var(--ap-jade) 50%, transparent);
+  color: var(--ap-jade);
+  transform: translateY(-1px);
+}
+
+.tag.activo {
+  background: var(--ap-jade);
+  border-color: var(--ap-jade);
+  color: #fff;
+  font-weight: 600;
+}
+
+:root[data-tema="oscuro"] .tag.activo {
+  color: #06231a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) .tag.activo {
+    color: #06231a;
+  }
+}
+
+#filtro-activo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  background: color-mix(in srgb, var(--ap-jade) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ap-jade) 35%, transparent);
+  border-radius: var(--ap-br-ch);
+  padding: 0.7rem 1rem;
+  margin: 1.5rem 0;
+  font-size: 0.92rem;
+}
+
+#filtro-activo[hidden] {
+  display: none;
+}
+
+#limpiar-filtro {
+  min-height: 2.25rem;
+  padding: 0.2rem 0.85rem;
+  margin-left: auto;
+  background: transparent;
+  border: 1px solid var(--ap-linea-fuerte);
+  border-radius: 999px;
+  color: var(--ap-fg);
+  font-family: var(--ap-fuente);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: border-color var(--ap-transicion), color var(--ap-transicion);
+}
+
+#limpiar-filtro:hover {
+  border-color: var(--ap-jade);
+  color: var(--ap-jade);
+}
+
+/* Ficha de resultado del filtro */
+.ap-conteo {
+  font-family: var(--ap-fuente-mono);
+  font-size: 0.8rem;
+  color: var(--ap-fg-tenue);
+  margin: 0 0 0.75rem;
+}
+
+/* ---------------------------------------------------------------------------
+   11. Índice de proyectos (buscador)
+   --------------------------------------------------------------------------- */
+
+.ap-buscador {
+  position: relative;
+  margin: 1.75rem 0 2.25rem;
+  max-width: 34rem;
+}
+
+.ap-buscador input {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.7rem 2.6rem 0.7rem 1rem;
+  background: var(--ap-superficie);
+  border: 1px solid var(--ap-linea-fuerte);
+  border-radius: 999px;
+  color: var(--ap-fg);
+  font-family: var(--ap-fuente);
+  font-size: 1rem;
+  transition: border-color var(--ap-transicion), box-shadow var(--ap-transicion);
+}
+
+.ap-buscador input::placeholder {
+  color: var(--ap-fg-tenue);
+}
+
+.ap-buscador input:focus {
+  outline: none;
+  border-color: var(--ap-jade);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ap-jade) 18%, transparent);
+}
+
+.ap-buscador__lupa {
+  position: absolute;
+  right: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: var(--ap-fg-tenue);
+  pointer-events: none;
+}
+
+.ap-buscador__limpiar {
+  position: absolute;
+  right: 0.45rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.25rem;
+  height: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ap-fg-suave);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.ap-buscador__limpiar:hover {
+  background: color-mix(in srgb, var(--ap-fg) 8%, transparent);
+  color: var(--ap-fg);
+}
+
+.ap-buscador__limpiar[hidden] {
+  display: none;
+}
+
+.ap-indice-lista h3 {
+  padding-top: 1.35rem;
+  margin-top: 1.6rem;
+  border-top: 1px solid var(--ap-linea);
+  font-size: 1.08rem;
+}
+
+.ap-indice-lista h3:first-of-type {
+  border-top: 0;
+  margin-top: 0;
+}
+
+.ap-indice-lista h3 a {
+  color: var(--ap-fg);
+  text-decoration: none;
+}
+
+.ap-indice-lista h3 a:hover {
+  color: var(--ap-jade);
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+}
+
+.ap-indice-lista h3 + p {
+  margin: 0.35rem 0 0;
+  color: var(--ap-fg-suave);
+  font-size: 0.96rem;
+}
+
+.ap-indice-lista > [hidden] {
+  display: none !important;
+}
+
+.ap-vacio {
+  padding: 2rem 1.25rem;
+  border: 1px dashed var(--ap-linea-fuerte);
+  border-radius: var(--ap-br);
+  text-align: center;
+  color: var(--ap-fg-suave);
+}
+
+/* ---------------------------------------------------------------------------
+   12. Páginas de contenido
+   --------------------------------------------------------------------------- */
+
+.page__title-wrap {
+  margin-bottom: 1.5rem;
+}
+
+.page__title {
+  font-size: clamp(2rem, 5.2vw, 2.9rem);
+  letter-spacing: -0.03em;
+  margin-bottom: 0.5rem;
+}
+
+.page__title a {
+  color: var(--ap-fg);
+  text-decoration: none;
+}
+
+.page__title a:hover {
+  color: var(--ap-jade);
+}
+
+.page__lead {
+  font-size: 1.1rem;
+  color: var(--ap-fg-suave);
+}
+
+.page__meta {
+  font-family: var(--ap-fuente-mono);
+  font-size: 0.8rem;
+  color: var(--ap-fg-tenue);
+  letter-spacing: 0.03em;
+}
+
+.page__content {
+  min-width: 0;
+}
+
+.sidebar {
+  min-width: 0;
+}
+
+.author-profile {
+  border: 1px solid var(--ap-linea);
+  border-radius: var(--ap-br);
+  background: var(--ap-superficie);
+  padding: 1.5rem;
+  box-shadow: var(--ap-sombra);
+}
+
+.author-profile > .profile img {
+  border-radius: 50%;
+  border: 2px solid var(--ap-linea-fuerte);
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+}
+
+.author-profile > .profile .author__name,
+.author-profile .author__name {
+  font-family: var(--ap-fuente-titulo);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ap-fg);
+}
+
+.author-profile .author__bio,
+.author-profile p {
+  color: var(--ap-fg-suave);
+  font-size: 0.94rem;
+}
+
+.author-profile__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+  min-width: 0;
+}
+
+.author-profile__links a,
+.author-profile__links .btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+  padding: 0.2rem 0.7rem;
+  border: 1px solid var(--ap-linea);
+  border-radius: 999px;
+  color: var(--ap-fg-suave);
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+
+.author-profile__links a:hover {
+  border-color: var(--ap-jade);
+  color: var(--ap-jade);
+}
+
+.toc {
+  font-size: 0.9rem;
+  border-left: 2px solid var(--ap-linea);
+  padding-left: 0.9rem;
+  min-width: 0;
+}
+
+.toc__menu {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.toc__menu li {
+  margin-bottom: 0.3rem;
+}
+
+.toc__menu a {
+  color: var(--ap-fg-suave);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.75rem;
+  overflow-wrap: anywhere;
+}
+
+.toc__menu a:hover {
+  color: var(--ap-jade);
+}
+
+.toc__menu ul {
+  padding-left: 0.85rem;
+  list-style: none;
+  margin: 0;
+}
+
+/* Banner de héroe del tema en páginas de sección */
+.page__hero {
+  background-color: var(--ap-bg-2) !important;
+  background-image: linear-gradient(
+      to right,
+      color-mix(in srgb, var(--ap-fg) 6%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--ap-fg) 6%, transparent) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      40rem 22rem at 8% 0%,
+      color-mix(in srgb, var(--ap-jade) 24%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      36rem 20rem at 96% 10%,
+      color-mix(in srgb, var(--ap-lapis) 20%, transparent),
+      transparent 70%
+    ) !important;
+  background-size: 68px 68px, 68px 68px, 100% 100%, 100% 100% !important;
+  border-bottom: 1px solid var(--ap-linea);
+  min-height: 46vh;
+  display: flex;
+  align-items: center;
+}
+
+.page__hero .wrapper {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  width: 100%;
+  max-width: 1080px;
+}
+
+.page__hero .page__title {
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  color: var(--ap-fg);
+}
+
+.page__hero .page__lead,
+.page__hero .page__meta {
+  color: var(--ap-fg-suave);
+}
+
+/* ---------------------------------------------------------------------------
+   12 bis. Páginas de sección
+   ---------------------------------------------------------------------------
+   Lo que usa _layouts/ap-seccion.html: encabezado, riel lateral, barra de
+   filtros y la ficha de autor. El fondo del encabezado es el mismo tramado y
+   los mismos halos que usa el héroe de la portada, para que las dos cosas se
+   lean como la misma página.
+   --------------------------------------------------------------------------- */
+
+.ap-pagina {
+  padding-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+
+.ap-cabecera {
+  position: relative;
+  padding: clamp(2.75rem, 6vw, 4.25rem) 0 clamp(2rem, 4vw, 2.75rem);
+  background: var(--ap-bg-2);
+  border-bottom: 1px solid var(--ap-linea);
+  overflow: hidden;
+}
+
+.ap-cabecera__fondo {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      to right,
+      color-mix(in srgb, var(--ap-fg) 6%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--ap-fg) 6%, transparent) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      38rem 20rem at 4% 0%,
+      color-mix(in srgb, var(--ap-jade) 22%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      32rem 18rem at 98% 6%,
+      color-mix(in srgb, var(--ap-lapis) 18%, transparent),
+      transparent 70%
+    );
+  background-size: 68px 68px, 68px 68px, 100% 100%, 100% 100%;
+  /* El tramado se desvanece hacia abajo para que el borde no se vea como un
+     corte: si no, la página entera parece un tablero. */
+  -webkit-mask-image: linear-gradient(to bottom, #000 58%, transparent);
+  mask-image: linear-gradient(to bottom, #000 58%, transparent);
+  pointer-events: none;
+}
+
+.ap-cabecera__dentro {
+  position: relative;
+  z-index: 1;
+}
+
+.ap-cabecera__antetitulo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 1rem;
+  font-family: var(--ap-fuente-mono);
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  /* El jade de marca se queda en 4.4:1 sobre el panel tintado del
+     encabezado, y un rótulo de 17 px no es texto grande: hace falta el jade
+     oscurecido, que llega a 5.6:1. */
+  color: var(--ap-jade-texto);
+}
+
+.ap-cabecera__icono {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  flex: 0 0 auto;
+}
+
+.ap-cabecera__titulo {
+  margin: 0;
+  max-width: 20ch;
+  font-family: var(--ap-fuente-titulo);
+  font-size: clamp(2.3rem, 6.4vw, 3.85rem);
+  font-weight: 600;
+  line-height: 1.03;
+  letter-spacing: -0.038em;
+  color: var(--ap-fg);
+}
+
+.ap-cabecera__bajada {
+  margin: 1.15rem 0 0;
+  max-width: 54ch;
+  font-size: clamp(1.02rem, 1.5vw, 1.14rem);
+  line-height: 1.6;
+  color: var(--ap-fg-suave);
+}
+
+.ap-cabecera__bajada a {
+  color: var(--ap-jade);
+}
+
+.ap-cabecera__cifras {
+  margin: clamp(1.75rem, 3.5vw, 2.5rem) 0 0;
+}
+
+.ap-cabecera__cifras .cifra__valor {
+  font-size: clamp(1.5rem, 3.6vw, 1.95rem);
+}
+
+/* --- Cuerpo: una columna ancha, y dos si la página pide riel ------------- */
+
+.ap-cuerpo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  padding-top: clamp(2rem, 4vw, 3rem);
+  min-width: 0;
+}
+
+.ap-cuerpo__principal {
+  min-width: 0;
+}
+
+/* El riel aparece recién cuando hay ancho de sobra. Antes de eso, dos columnas
+   dejarían el texto en 646 px, que es justo lo que se vino a cambiar. */
+@media (min-width: 72rem) {
+  .ap-cuerpo--con-riel {
+    grid-template-columns: minmax(0, 1fr) 252px;
+    gap: 3rem;
+    align-items: start;
+  }
+}
+
+/* --- Riel: índice de la página y autor ----------------------------------- */
+
+.ap-riel {
+  min-width: 0;
+}
+
+@media (min-width: 72rem) {
+  .ap-riel__interior {
+    position: sticky;
+    top: calc(var(--ap-alto-masthead) + 1.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-height: calc(100vh - var(--ap-alto-masthead) - 3rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
+.ap-riel__bloque {
+  padding: 1.15rem 1.25rem 1.25rem;
+  background: var(--ap-superficie);
+  border: 1px solid var(--ap-linea);
+  border-radius: var(--ap-br);
+  box-shadow: var(--ap-sombra);
+  min-width: 0;
+}
+
+.ap-riel__titulo {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 0.7rem;
+  font-family: var(--ap-fuente-mono);
+  font-size: 0.71rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ap-fg-tenue);
+}
+
+.ap-riel__icono {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+  flex: 0 0 auto;
+}
+
+.ap-toc__menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.88rem;
+  min-width: 0;
+}
+
+.ap-toc__menu li {
+  margin: 0;
+}
+
+.ap-toc__menu a {
+  display: block;
+  padding: 0.35rem 0.55rem;
+  margin-left: -0.55rem;
+  border-left: 2px solid transparent;
+  border-radius: 0 var(--ap-br-ch) var(--ap-br-ch) 0;
+  line-height: 1.35;
+  color: var(--ap-fg-suave);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  transition: color var(--ap-transicion), border-color var(--ap-transicion),
+    background var(--ap-transicion);
+}
+
+.ap-toc__menu a:hover,
+.ap-toc__menu a:focus {
+  color: var(--ap-jade);
+  border-left-color: var(--ap-jade);
+  background: color-mix(in srgb, var(--ap-jade) 8%, transparent);
+}
+
+/* --- Tarjeta del autor --------------------------------------------------- */
+
+.ap-autor {
+  padding: 1.25rem 1.35rem;
+  background: var(--ap-superficie);
+  border: 1px solid var(--ap-linea);
+  border-radius: var(--ap-br);
+  box-shadow: var(--ap-sombra);
+  min-width: 0;
+}
+
+.ap-autor__etiqueta {
+  margin: 0 0 0.4rem;
+  font-family: var(--ap-fuente-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ap-fg-tenue);
+}
+
+.ap-autor__nombre {
+  margin: 0;
+  font-family: var(--ap-fuente-titulo);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ap-fg);
+}
+
+.ap-autor__lugar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.35rem 0 0;
+  font-size: 0.85rem;
+  color: var(--ap-fg-suave);
+}
+
+.ap-autor__enlaces {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.ap-autor__enlace {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 1px solid var(--ap-linea);
+  border-radius: 999px;
+  color: var(--ap-fg-suave);
+  transition: color var(--ap-transicion), border-color var(--ap-transicion),
+    background var(--ap-transicion), transform var(--ap-transicion);
+}
+
+.ap-autor__enlace:hover,
+.ap-autor__enlace:focus {
+  color: var(--ap-jade);
+  border-color: var(--ap-jade);
+  background: color-mix(in srgb, var(--ap-jade) 10%, transparent);
+  transform: translateY(-2px);
+}
+
+.ap-autor__glifo {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  flex: 0 0 auto;
+}
+
+.ap-autor__nota {
+  margin: 1rem 0 0;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--ap-linea);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--ap-fg-tenue);
+}
+
+/* Al pie del contenido la tarjeta se tiende en una fila: el texto a la
+   izquierda y los iconos a la derecha, sin gastar media columna. */
+@media (min-width: 48rem) {
+  .ap-cierre-autor {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem 2rem;
+    flex-wrap: wrap;
+    padding: 1.5rem 1.75rem;
+  }
+
+  .ap-cierre-autor .ap-autor__texto {
+    flex: 1 1 18rem;
+    min-width: 0;
+  }
+
+  .ap-cierre-autor .ap-autor__enlaces {
+    margin: 0;
+  }
+
+  .ap-cierre-autor .ap-autor__nota {
+    margin: 0.75rem 0 0;
+  }
+}
+
+/* --- Tablas ---------------------------------------------------------------
+   El tema las pinta con su propia tipografía (system), en 1.6rem y con una
+   línea negra al pie: en una página que usa Inter y líneas suaves se ve de
+   otro sitio. Se conservan el comportamiento del tema (ancho completo, y
+   scroll horizontal en vez de desbordar la página) y se cambia solo el
+   aspecto. Las tablas que rouge genera para los números de línea de un bloque
+   de código quedan fuera: esas son código, no contenido. */
+.page__content table:not(.rouge-table) {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  font-family: var(--ap-fuente);
+  /* En px y no en rem a propósito: la raíz tipográfica es de 22 px (los
+     títulos usan rem), pero el texto de lectura son 17 px, y 0.95rem salía
+     más grande que el párrafo. */
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ap-fg);
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0 0 1.6rem;
+}
+
+.page__content table:not(.rouge-table) th,
+.page__content table:not(.rouge-table) td {
+  padding: 0.55rem 0.8rem;
+  text-align: left;
+  vertical-align: top;
+  border: 0;
+  border-bottom: 1px solid var(--ap-linea);
+}
+
+.page__content table:not(.rouge-table) th {
+  font-family: var(--ap-fuente-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ap-fg-tenue);
+  background: color-mix(in srgb, var(--ap-superficie) 70%, transparent);
+  border-bottom-color: var(--ap-linea-fuerte);
+  white-space: nowrap;
+}
+
+.page__content table:not(.rouge-table) tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* En el teléfono la tabla se puede deslizar, pero no debería hacer falta:
+   con menos relleno y sin obligar a los encabezados a una línea, la de la
+   página de licencias entra en 317 px. */
+@media (max-width: 40em) {
+  .page__content table:not(.rouge-table) {
+    font-size: 15px;
+  }
+
+  .page__content table:not(.rouge-table) th,
+  .page__content table:not(.rouge-table) td {
+    padding: 0.5rem 0.55rem;
+  }
+
+  .page__content table:not(.rouge-table) th {
+    white-space: normal;
+  }
+}
+
+.ap-cierre-autor {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  background: var(--ap-superficie);
+  border: 1px solid var(--ap-linea);
+  border-radius: var(--ap-br);
+  box-shadow: var(--ap-sombra);
+}
+
+/* --- Barra de filtros ---------------------------------------------------- */
+
+.ap-fichas-barra {
+  position: sticky;
+  top: var(--ap-alto-masthead);
+  z-index: 5;
+  margin: 0 0 1.5rem;
+  padding: 0.85rem 1.1rem 1rem;
+  background: color-mix(in srgb, var(--ap-superficie) 86%, transparent);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  backdrop-filter: saturate(180%) blur(12px);
+  border: 1px solid var(--ap-linea);
+  border-radius: var(--ap-br);
+  box-shadow: var(--ap-sombra);
+  min-width: 0;
+}
+
+.ap-fichas-barra__fila {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1rem;
+  min-width: 0;
+}
+
+.ap-fichas-barra__conteo {
+  margin: 0;
+  font-family: var(--ap-fuente-mono);
+  font-size: 0.8rem;
+  color: var(--ap-fg-suave);
+  overflow-wrap: anywhere;
+}
+
+.ap-fichas-barra__limpiar {
+  margin-left: auto;
+  min-height: 2.1rem;
+  padding: 0.15rem 0.85rem;
+  background: transparent;
+  border: 1px solid var(--ap-linea-fuerte);
+  border-radius: 999px;
+  color: var(--ap-fg);
+  font-family: var(--ap-fuente);
+  font-size: 0.84rem;
+  cursor: pointer;
+  transition: border-color var(--ap-transicion), color var(--ap-transicion);
+}
+
+.ap-fichas-barra__limpiar:hover,
+.ap-fichas-barra__limpiar:focus {
+  border-color: var(--ap-jade);
+  color: var(--ap-jade);
+}
+
+.ap-fichas-barra__limpiar[hidden] {
+  display: none;
+}
+
+.ap-fichas-barra__chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.8rem 0 0;
+  padding: 0.8rem 0 0;
+  border-top: 1px solid var(--ap-linea);
+  min-width: 0;
+}
+
+.ap-fichas-barra__rotulo {
+  margin-right: 0.15rem;
+  font-family: var(--ap-fuente-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ap-fg-tenue);
+}
+
+.ap-fichas-barra__nota {
+  font-size: 0.77rem;
+  color: var(--ap-fg-tenue);
+}
+
+.ap-ficha-etiqueta {
+  gap: 0.4rem;
+  font-family: var(--ap-fuente-mono);
+}
+
+.ap-ficha-etiqueta__n {
+  opacity: 0.55;
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Contenido de la sección --------------------------------------------- */
+
+.ap-seccion-contenido {
+  counter-reset: ap-ficha;
+}
+
+/* El tema pone borde inferior y cuerpo propio a los h2 de .page__content; aquí
+   manda el diseño del sitio, con una marquita de jade en vez del borde. */
+.ap-seccion-contenido h2 {
+  margin: clamp(2.25rem, 4vw, 2.9rem) 0 1rem;
+  padding-bottom: 0;
+  border-bottom: 0;
+  font-family: var(--ap-fuente-titulo);
+  font-size: clamp(1.4rem, 2.6vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.022em;
+  color: var(--ap-fg);
+}
+
+.ap-seccion-contenido h2::before {
+  content: "";
+  display: block;
+  width: 26px;
+  height: 2px;
+  margin-bottom: 0.7rem;
+  border-radius: 2px;
+  background: var(--ap-jade);
+}
+
+.ap-seccion-contenido > p:first-child {
+  font-size: 1.06rem;
+  color: var(--ap-fg-suave);
+}
+
+.ap-seccion-contenido > ul,
+.ap-seccion-contenido > ol {
+  list-style: none;
+  margin: 1rem 0 1.75rem;
+  padding-left: 0;
+}
+
+.ap-seccion-contenido > ul > li {
+  position: relative;
+  margin: 0 0 0.55rem;
+  padding-left: 1.55rem;
+  color: var(--ap-fg-suave);
+}
+
+.ap-seccion-contenido > ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0.1rem;
+  top: 0.72em;
+  width: 6px;
+  height: 6px;
+  border-radius: 2px;
+  background: var(--ap-jade);
+  opacity: 0.7;
+}
+
+.ap-seccion-contenido > ul > li:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Fichas numeradas ---------------------------------------------------- */
+
+.ap-seccion-contenido .card {
+  counter-increment: ap-ficha;
+  padding: 1.75rem 1.85rem;
+}
+
+.ap-seccion-contenido .card h3 {
+  font-size: 1.35rem;
+}
+
+/* El número va antes del título, en monoespaciada y en jade. Sale de un
+   contador de CSS: así las 46 fichas de las tres secciones no llevan el
+   número escrito a mano (y si mañana se agrega una, se renumera sola). */
+.ap-seccion-contenido .card h3::before {
+  content: counter(ap-ficha, decimal-leading-zero);
+  display: inline-block;
+  margin-right: 0.7rem;
+  font-family: var(--ap-fuente-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--ap-jade);
+  opacity: 0.9;
+  vertical-align: 0.3em;
+}
+
+/* Las líneas de "Historia" son una nota al pie de la ficha, no el cuerpo de
+   ella: bajan de tamaño, se obscurecen y se despegan con una filete. */
+.ap-seccion-contenido .card p:has(> strong:first-child) {
+  margin: 1.15rem 0 0;
+  padding: 0.1rem 0 0.1rem 1rem;
+  border-left: 2px solid var(--ap-linea);
+  font-size: 0.93rem;
+  color: var(--ap-fg-tenue);
+}
+
+.ap-seccion-contenido .card p > strong:first-child {
+  color: var(--ap-fg-suave);
+}
+
+/* ---------------------------------------------------------------------------
+   13. Blog y archivo
+   --------------------------------------------------------------------------- */
+
+.archive__item {
+  border-bottom: 1px solid var(--ap-linea);
+}
+
+.archive__item-title {
+  font-family: var(--ap-fuente-titulo);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.archive__item-title a {
+  color: var(--ap-fg);
+  text-decoration: none;
+}
+
+.archive__item-title a:hover {
+  color: var(--ap-jade);
+}
+
+.archive__item-excerpt,
+.archive__item p {
+  color: var(--ap-fg-suave);
+}
+
+.archive__subtitle {
+  font-family: var(--ap-fuente-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ap-fg-tenue);
+  font-weight: 500;
+}
+
+.post__title {
+  font-family: var(--ap-fuente-titulo);
+  letter-spacing: -0.03em;
+}
+
+/* ---------------------------------------------------------------------------
+   14. Pie de página
+   --------------------------------------------------------------------------- */
+
+.site-footer {
+  background: var(--ap-bg-2);
+  border-top: 1px solid var(--ap-linea);
+  padding: 3rem 0 2.5rem;
+  font-size: 0.9rem;
+  color: var(--ap-fg-suave);
+}
+
+.site-footer p {
+  margin-bottom: 0.5rem;
+}
+
+.site-footer a {
+  color: var(--ap-fg-suave);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.site-footer a:hover {
+  color: var(--ap-jade);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.site-footer__inner-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2.5rem;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.site-footer__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.4rem;
+}
+
+.site-footer__links li {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.75rem;
+}
+
+/* ---------------------------------------------------------------------------
+   15. Utilidades de página
+   --------------------------------------------------------------------------- */
+
+.ap-progreso {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 200;
+  background: transparent;
+  pointer-events: none;
+}
+
+.ap-progreso::after {
+  content: "";
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--ap-jade), var(--ap-lapis));
+  transform: scaleX(var(--ap-avance, 0));
+  transform-origin: left;
+  will-change: transform;
+}
+
+.ap-volver {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 90;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0 0.95rem;
+  border: 1px solid var(--ap-linea-fuerte);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ap-bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--ap-fg-suave);
+  font-family: var(--ap-fuente-mono);
+  font-size: 0.78rem;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity var(--ap-transicion), transform var(--ap-transicion),
+    color var(--ap-transicion), border-color var(--ap-transicion);
+}
+
+.ap-volver.es-visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.ap-volver:hover {
+  color: var(--ap-jade);
+  border-color: var(--ap-jade);
+}
+
+.ap-volver svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+  flex: 0 0 auto;
+}
+
+/* Rejilla de áreas (portada) */
+.ap-rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16.5rem), 1fr));
+  gap: 1.1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ap-rejilla > li {
+  margin: 0;
+  min-width: 0;
+}
+
+.ap-area {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+  padding: 1.5rem;
+  background: var(--ap-superficie);
+  border: 1px solid var(--ap-linea);
+  border-radius: var(--ap-br);
+  box-shadow: var(--ap-sombra);
+  text-decoration: none;
+  color: var(--ap-fg);
+  overflow: hidden;
+  transition: transform var(--ap-transicion), box-shadow var(--ap-transicion),
+    border-color var(--ap-transicion);
+}
+
+.ap-area::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    16rem 16rem at var(--ap-x, 50%) var(--ap-y, 0%),
+    color-mix(in srgb, var(--ap-lapis) 14%, transparent),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity var(--ap-transicion);
+  pointer-events: none;
+}
+
+.ap-area:hover,
+.ap-area:focus-visible {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--ap-lapis) 50%, var(--ap-linea));
+  box-shadow: var(--ap-sombra-alta);
+  color: var(--ap-fg);
+}
+
+.ap-area:hover::before,
+.ap-area:focus-visible::before {
+  opacity: 1;
+}
+
+.ap-area > * {
+  position: relative;
+}
+
+.ap-area__icono {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
+  border: 1px solid var(--ap-linea);
+  background: color-mix(in srgb, var(--ap-fg) 5%, transparent);
+  color: var(--ap-jade);
+  margin-bottom: 0.35rem;
+}
+
+.ap-area__icono svg {
+  width: 19px;
+  height: 19px;
+  fill: currentColor;
+}
+
+.ap-area__titulo {
+  font-family: var(--ap-fuente-titulo);
+  font-size: 1.12rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.ap-area__conteo {
+  font-family: var(--ap-fuente-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--ap-jade);
+  border: 1px solid color-mix(in srgb, var(--ap-jade) 35%, transparent);
+  background: color-mix(in srgb, var(--ap-jade) 10%, transparent);
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
+  white-space: nowrap;
+}
+
+.ap-area__texto {
+  margin: 0;
+  font-size: 0.94rem;
+  line-height: 1.55;
+  color: var(--ap-fg-suave);
+}
+
+.ap-area__flecha {
+  margin-top: auto;
+  padding-top: 0.9rem;
+  font-family: var(--ap-fuente-mono);
+  font-size: 0.78rem;
+  color: var(--ap-fg-tenue);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.ap-area__flecha svg {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+  transition: transform var(--ap-transicion);
+}
+
+.ap-area:hover .ap-area__flecha svg {
+  transform: translateX(3px);
+}
+
+.ap-area:hover .ap-area__flecha {
+  color: var(--ap-jade);
+}
+
+/* Tira de chips (credenciales) */
+.ap-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+
+.ap-chips li {
+  margin: 0;
+  min-width: 0;
+}
+
+.ap-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+  padding: 0.25rem 0.9rem;
+  border: 1px solid var(--ap-linea);
+  border-radius: 999px;
+  background: var(--ap-superficie);
+  color: var(--ap-fg-suave);
+  font-size: 0.86rem;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  transition: border-color var(--ap-transicion), color var(--ap-transicion),
+    transform var(--ap-transicion);
+}
+
+a.ap-chip:hover,
+a.ap-chip:focus {
+  border-color: var(--ap-jade);
+  color: var(--ap-jade);
+  transform: translateY(-2px);
+}
+
+/* Tira de contacto */
+.ap-contacto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 0.85rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ap-contacto li {
+  margin: 0;
+  min-width: 0;
+}
+
+.ap-canal {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-height: 3.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--ap-superficie);
+  border: 1px solid var(--ap-linea);
+  border-radius: var(--ap-br);
+  text-decoration: none;
+  color: var(--ap-fg);
+  transition: transform var(--ap-transicion), border-color var(--ap-transicion),
+    box-shadow var(--ap-transicion);
+}
+
+.ap-canal:hover,
+.ap-canal:focus {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--ap-jade) 50%, var(--ap-linea));
+  box-shadow: var(--ap-sombra);
+  color: var(--ap-fg);
+}
+
+.ap-canal__icono {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--ap-jade) 12%, transparent);
+  color: var(--ap-jade);
+}
+
+.ap-canal__icono svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.ap-canal__texto {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ap-canal__nombre {
+  font-family: var(--ap-fuente-titulo);
+  font-weight: 600;
+  font-size: 0.98rem;
+  line-height: 1.25;
+}
+
+.ap-canal__valor {
+  font-family: var(--ap-fuente-mono);
+  font-size: 0.78rem;
+  color: var(--ap-fg-tenue);
+  line-height: 1.35;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* ---------------------------------------------------------------------------
+   16. Movimiento
+   --------------------------------------------------------------------------- */
+
+/* Solo se ocultan cuando hay JavaScript para volver a mostrarlas: sin él, la
+   página se lee entera de una. */
+.ap-js [data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 620ms ease var(--ap-reveal-delay, 0ms),
+    transform 620ms cubic-bezier(0.22, 0.61, 0.36, 1)
+      var(--ap-reveal-delay, 0ms);
+}
+
+.ap-js [data-reveal].es-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.ap-js [data-reveal] {
+  will-change: opacity, transform;
+}
+
+.ap-js [data-reveal].es-visible {
+  will-change: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal],
+  .ap-js [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero__rotador > * {
+    transition: none;
+  }
+}
+
+.visually-hidden {
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* ---------------------------------------------------------------------------
+   17. Adaptación a pantallas chicas
+   --------------------------------------------------------------------------- */
+
+@media screen and (max-width: 53.75em) {
+  .page__hero {
+    min-height: 0;
+  }
+
+  .sidebar {
+    order: 2;
+    margin-top: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 42.5em) {
+  body {
+    font-size: 16.5px;
+  }
+
+  .card {
+    padding: 1.25rem 1.15rem;
+  }
+
+  .cifras li {
+    padding: 1.15rem 1.1rem;
+  }
+
+  .hero__acciones .ap-btn {
+    width: 100%;
+  }
+
+  .ap-volver {
+    right: 0.9rem;
+    bottom: 0.9rem;
+  }
+
+  .cifras {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 8.5rem), 1fr));
+  }
+}
+
+@media screen and (max-width: 22.5em) {
+  .ap-btn,
+  .tag,
+  .ap-chip {
+    max-width: 100%;
+  }
+
+  .hero__titulo {
+    font-size: 2.1rem;
+  }
+}
+
+@media print {
+  .ap-progreso,
+  .ap-volver,
+  .masthead,
+  .hero__fondo {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+}
