@@ -276,16 +276,38 @@ LEER_VIGILIA = """() => {
 """
 
 
-def asentar(pag, margen=350, vueltas=40):
-    """Espera a que window.scrollY deje de moverse (el scroll suave termina)."""
+def asentar(pag, vueltas=40, moviendo_esperado=False):
+    """Espera a que window.scrollY deje de moverse (el scroll suave termina).
+
+    Con moviendo_esperado=True primero espera a que la página se mueva de
+    verdad. Sin eso pasa esto: el clic se despacha, la auditoría lee scrollY
+    otra vez a los 30 ms, los dos valores son 0 porque el scroll suave todavía
+    no ha dado su primer fotograma (con la máquina ocupada por la auditoría
+    anterior tarda más), y la función devuelve "ya está quieto". Lo que se mide
+    entonces es el estado de antes del clic, con la entrada todavía sin marcar.
+    Es un fallo de la medición y salía cada dos o tres pasadas en la suite
+    completa, que es cuando la máquina está ocupada.
+
+    Devuelve (scrollY, se_movio): si con moviendo_esperado=True la página no se
+    mueve en el tiempo dado, se_movio=False y quien llama lo dice, porque eso
+    no es un fallo del sitio sino de la comprobación.
+    """
+    if moviendo_esperado:
+        y0 = pag.evaluate("window.scrollY")
+        for _ in range(vueltas):
+            if abs(pag.evaluate("window.scrollY") - y0) > 0.5:
+                break
+            pag.wait_for_timeout(30)
+        else:
+            return y0, False
     quieto = -1
     for _ in range(vueltas):
         y = pag.evaluate("window.scrollY")
         if abs(y - quieto) < 0.5:
-            return y
+            return y, True
         quieto = y
         pag.wait_for_timeout(30)
-    return quieto
+    return quieto, True
 
 
 
@@ -465,7 +487,7 @@ def main():
             objetivo = resueltos[0][0]
             pag.evaluate(VIGILAR, objetivo["href"])
             pag.click('.ap-toc__menu a[href="' + objetivo["href"] + '"]')
-            y = asentar(pag)
+            y, se_movio = asentar(pag, moviendo_esperado=True)
             rastro = pag.evaluate(LEER_VIGILIA)
             m = pag.evaluate(MEDIR)
             activos_clic = activos(m)
@@ -474,11 +496,15 @@ def main():
                   f"la página se mueve a los {rastro['mueve']} ms")
             print(f"       asienta en scrollY={y}; marcadas al final del salto: "
                   f"{[(e['texto'], e['aria']) for e in activos_clic]}")
+            chequear(se_movio, "al hacer clic la página se mueve de verdad",
+                     "" if se_movio else
+                     f"se quedó en scrollY={y}: con el scroll en auto el clic "
+                     f"no llegó a moverla y no hay nada que medir")
             chequear(rastro["anade"] is not None and rastro["clic"] is not None
                      and 0 <= rastro["anade"] - rastro["clic"] <= 20,
                      "el clic marca esa entrada en el mismo clic",
                      f"clic {rastro['clic']} ms, marca {rastro['anade']} ms")
-            chequear(len(activos_clic) == 1 and
+            chequear(se_movio and len(activos_clic) == 1 and
                      activos_clic[0]["texto"] == objetivo["texto"],
                      "al terminar el salto sigue marcada esa entrada",
                      str([e["texto"] for e in activos_clic]))

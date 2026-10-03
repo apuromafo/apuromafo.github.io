@@ -4,7 +4,7 @@ El sitio está en español y los archivos en UTF-8, así que acentos, eñes y
 rayas están bien. Lo que sale es otra cosa: cirílico o chino colado de un
 copiado y pegado, o un carácter de reemplazo (U+FFFD) que aparece cuando algo
 se leyó con la codificación equivocada. Eso no se ve en una revisión visual
-porque el navegador lo画出 o lo esconde, pero rompe las búsquedas y deja
+porque el navegador lo dibuja o lo esconde, pero rompe las búsquedas y deja
 basura en el sitio publicado.
 
 Solo mira lo que git rastrea, más planificacion.md, que está en .gitignore y es
@@ -44,6 +44,7 @@ permitidos = set(range(0x20, 0x7F)) | set(range(0xA0, 0x180)) | {
 saltados = {".woff2", ".woff", ".png", ".jpg", ".jpeg", ".gif", ".ico", ".pdf"}
 raiz = contexto.REPO
 problemas = 0
+donde = set()
 
 archivos = subprocess.run(["git", "ls-files"], capture_output=True, text=True,
                           cwd=raiz).stdout.split()
@@ -63,11 +64,15 @@ for rel in archivos:
         for ch in linea:
             if ord(ch) > 127 and ord(ch) not in permitidos:
                 malos.setdefault(ch, []).append(i)
+    if malos:
+        donde.add(rel)
     for ch, ls in malos.items():
+        # Un problema por carácter raro, no por archivo: si un archivo tiene
+        # tres, salir con "1 archivo(s)" daba a entender que solo había uno.
         problemas += 1
         print(f"{rel}: U+{ord(ch):04X} {ch!r} lineas {sorted(set(ls))[:6]}")
 
 if problemas:
-    print(f"{problemas} archivo(s) con caracteres raros")
+    print(f"{problemas} carácter(es) raro(s) en {len(donde)} archivo(s)")
     sys.exit(1)
 print("ningún carácter raro")
