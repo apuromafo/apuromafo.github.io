@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Favicon de apuromafo.
+
+  Qué es: la A del nombre, sola, sobre una ficha de esquinas redondeadas. Es el
+  mismo gesto que ya usan las áreas de la portada (una inicial o una etiqueta
+  corta dentro de una caja con el radio del sitio), así que el ícono no inventa
+  un símbolo nuevo: es la marca del sitio reducida a 16 px.
+
+  Por qué trazados y no texto: el favicon se carga como una imagen aparte, sin
+  las hojas de estilo de la página y sin la tipografía de títulos, así que una A
+  escrita con font-family se vería distinta en cada máquina. Los puntos están
+  calculados sobre una retícula de 64 y con las aristas separadas, sin curvas: a
+  16 px (una unidad = 0,25 px) la A sigue siendo la misma figura.
+
+  Cómo está dividida la A: un triángulo exterior y dos huecos (el de arriba y el
+  de debajo de la barra), con fill-rule="evenodd". Con regla par da igual en qué
+  sentido quedó cada subtrazo, que es justo lo que se rompe en silencio cuando
+  el trazado se edita a mano.
+
+  Por qué los colores están escritos aquí y no tomados de apuromafo.css: un
+  favicon es un documento aparte, no alcanza la hoja de la página. Son los
+  mismos tokens de la sección 1 de apuromafo.css, con el prefijo de dos guiones
+  que llevan las custom properties:
+
+    claro   ap-superficie   #ffffff   fondo de la ficha
+            ap-linea-fuerte #c2cad6   borde de la ficha
+            ap-jade         #0a7f5c   la letra
+    oscuro  ap-superficie   #121924
+            ap-linea-fuerte #2f3d51
+            ap-jade         #4ade9b
+
+  Los de abajo, sin @media, son los que usan los lectores que no respetan la
+  preferencia del sistema (Safari, entre otros): por eso la versión de base es la
+  clara, que también es la que se ve sobre la barra clara de la pestaña.
+
+  Lo regenera utilidades/generar_favicon.py, y utilidades/comprobar_favicon.py
+  mide el archivo para que un cambio a mano no rompa la figura en silencio.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Apuromafo">
+  <title>Apuromafo</title>
+  <style>
+    .fondo { fill: #ffffff; stroke: #c2cad6; }
+    .letra { fill: #0a7f5c; }
+    @media (prefers-color-scheme: dark) {
+      .fondo { fill: #121924; stroke: #2f3d51; }
+      .letra { fill: #4ade9b; }
+    }
+  </style>
+  <rect class="fondo" x="0.75" y="0.75" width="62.5" height="62.5" rx="15" stroke-width="1.5"/>
+  <path class="letra" fill-rule="evenodd" d="M32 10 L51 54 L13 54 Z M32 23 L27.65 38 L36.35 38 Z M25.61 45 L23 54 L41 54 L38.39 45 Z"/>
+</svg>

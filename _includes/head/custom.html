@@ -3,15 +3,34 @@
   Va después de _includes/head.html, así que la hoja de diseño pisa a la del
   tema sin necesidad de !important.
 
-  · apuromafo.css   la capa de diseño (tokens, portada, fichas, índices).
-  · iconos-tema.css los iconos que escribe el tema con clases de Font Awesome,
-                    redibujados como máscara para no depender de la CDN.
-  · filter.js       el filtro de etiquetas. No hace nada si la página no
-                    tiene etiquetas, así que va en todas en vez de repetirse
-                    en cada página con fichas.
+  · favicon.svg        el ícono del sitio: la A de la marca, en SVG, que
+                       decide solo si se ve en claro o en oscuro. El PNG es
+                       para iOS, que en apple-touch-icon no acepta SVG.
+  · apuromafo.css      la capa de diseño (tokens, portada, fichas, índices).
+  · iconos-tema.css    los iconos que escribe el tema con clases de Font Awesome,
+                       redibujados como máscara para no depender de la CDN.
+  · filter.js          el filtro de etiquetas. No hace nada si la página no
+                       tiene etiquetas, así que va en todas en vez de repetirse
+                       en cada página con fichas.
   · La plantilla del botón de tema: theme-toggle.js la clona dentro del botón
     y el CSS muestra el icono y el texto que corresponden a data-tema.
 {%- endcomment -%}
+
+{%- comment -%}
+  Los <link> del ícono van primero porque son dos peticiones chicas y no entran
+  en la cascada: así la pestaña ya tiene algo que mostrar mientras arrives el
+  CSS. El SVG lo toman los navegadores actuales y trae su propio
+  prefers-color-scheme adentro, así que no hace falta una versión aparte para el
+  tema oscuro ni JavaScript. El PNG es solo para iOS.
+
+  En el <head> no se declara el favicon.ico: cuando un .ico convive con el SVG
+  hay navegadores que se quedan con el de 32 px. El que sí está, en la raíz del
+  sitio, es para los lectores de RSS y las vistas previas de enlaces, que piden
+  /favicon.ico sin leer el HTML.
+{%- endcomment -%}
+<link rel="icon" href="{{ '/assets/img/favicon.svg' | relative_url }}" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{{ '/assets/img/apple-touch-icon.png' | relative_url }}">
+
 <link rel="stylesheet" href="{{ '/assets/css/apuromafo.css' | relative_url }}">
 <link rel="stylesheet" href="{{ '/assets/css/iconos-tema.css' | relative_url }}">
 
