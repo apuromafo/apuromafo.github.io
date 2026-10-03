@@ -140,6 +140,11 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  /* La forma sin prefijo es la que sigue el estándar y la que usan el resto de
+     navegadores. Con la de WebKit solamente, el zoom automático de texto en
+     Chrome para Android queda sin control: el sitio se ve a un tamaño distinto
+     del que se diseñó, que es justo lo que el usuario agranda sin querer. */
+  text-size-adjust: 100%;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -499,6 +504,11 @@ li::marker {
   position: sticky;
   top: 0;
   z-index: 100;
+  /* En los teléfonos con muesca ( notch o punch hole) el encabezado se queda
+     debajo de la cámara y del reloj, y el título queda medio tapado. La
+     declaración va aparte a propósito: donde env() no existe se descarta esta
+     línea y sigue mandando el padding del tema, en vez de perderlo. */
+  padding-top: env(safe-area-inset-top, 0px);
   transition: background var(--ap-transicion), border-color var(--ap-transicion),
     backdrop-filter var(--ap-transicion);
 }
@@ -2377,6 +2387,11 @@ h2.ap-entrada-fila__titulo::before,
   background: var(--ap-bg-2);
   border-top: 1px solid var(--ap-linea);
   padding: 3rem 0 2.5rem;
+  /* La barra de gestos de iOS y los gestos de Android se comen los últimos
+     píxeles de la pantalla: sin esto, la línea de créditos queda debajo de
+     ellos. Igual que en el encabezado, va en su propia declaración para que un
+     navegador sin env() conserve el padding de arriba. */
+  padding-bottom: calc(2.5rem + env(safe-area-inset-bottom, 0px));
   font-size: 0.9rem;
   color: var(--ap-fg-suave);
 }

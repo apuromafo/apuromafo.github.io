@@ -228,6 +228,39 @@ MEDIR_VIEWPORT = """() => {
 }"""
 
 
+# Lo que el navegador se guardó de la hoja de estilos, para los selectores y
+# propiedades que le pidan. Se lee del CSSOM y no del archivo porque una
+# declaración inválida no se guarda: escribir env() mal no da error en la
+# consola, simplemente el navegador se la come y el relleno no se aplica nunca.
+# Devuelve {"selector|propiedad": "valor tal como quedó guardado"}.
+LEER_DECLARACIONES = """(pares) => {
+  const salida = {};
+  for (const [sel, prop] of pares) {
+    salida[sel + '|' + prop] = '';
+    for (const hoja of document.styleSheets) {
+      let reglas;
+      try { reglas = hoja.cssRules; } catch (e) { continue; }
+      for (const r of reglas) {
+        if (!r.selectorText) { continue; }
+        const coincide = r.selectorText.split(',')
+          .some(s => s.trim() === sel);
+        const valor = coincide ? r.style.getPropertyValue(prop) : '';
+        if (valor) {
+          salida[sel + '|' + prop] +=
+            (salida[sel + '|' + prop] ? ' ; ' : '') + valor.trim();
+        }
+      }
+    }
+  }
+  return salida;
+}"""
+
+PARES_SAFE_AREA = [
+    [".masthead", "padding-top"],
+    [".site-footer", "padding-bottom"],
+]
+
+
 def abrir_perfil(p, nombre, respaldo):
     """Las medidas de un contexto de navegador para un teléfono, y si es real.
 
@@ -582,8 +615,11 @@ def main():
             chequear(bool(extras["nombre"]), "el buscador tiene nombre accesible",
                      str(extras["nombre"]))
             if not extras["enterkey"]:
-                nota("el buscador no declara enterkeyhint, así que en el "
-                     "teclado del teléfono la tecla no diría 'buscar'")
+                chequear(False, "el buscador declara enterkeyhint",
+                         "en el teclado del teléfono la tecla no diría 'buscar'")
+            else:
+                chequear(True, "el buscador declara enterkeyhint",
+                         extras["enterkey"])
             campo = pag.locator("[data-buscador] input").first
             campo.tap()
             campo.type("python", delay=60)
@@ -645,6 +681,59 @@ def main():
                          "como un botón que se quedó pulsado")
         ctx.close()
 
+        # ------------------------------------------------------------------
+        seccion("F-bis. la muesca y el zoom de texto del teléfono")
+        # Esto no se puede ver en el emulador: Playwright no da un inset de
+        # muesca distinto de cero. Lo que sí se puede comprobar, y es donde se
+        # cae casi siempre, es que la declaración exista y que el navegador la
+        # haya aceptado: una env() mal escrita se descarta en silencio y el
+        # padding nunca se aplica. Por eso se lee del CSSOM (lo que el
+        # navegador guardó de la hoja) y no del archivo de texto.
+        ctx = navegador.new_context(**vertical)
+        pag = ctx.new_page()
+        pag.goto(BASE + contexto.PAGINAS[0][1], wait_until="load")
+        pag.wait_for_timeout(250)
+        leidas = pag.evaluate(LEER_DECLARACIONES, PARES_SAFE_AREA)
+        masthead = leidas.get(".masthead|padding-top", "") or ""
+        pie = leidas.get(".site-footer|padding-bottom", "") or ""
+        chequear("safe-area-inset-top" in masthead,
+                 "el encabezado se aparta de la muesca",
+                 f"padding-top: {masthead}" if masthead else
+                 "el navegador no guardó ninguna padding-top con env() en .masthead")
+        chequear("safe-area-inset-bottom" in pie,
+                 "el pie se aparta de la barra de inicio del teléfono",
+                 f"padding-bottom: {pie}" if pie else
+                 "el navegador no guardó ninguna padding-bottom con env() en .site-footer")
+        # El texto que se agranda solo: tiene que estar la declaración sin
+        # prefijo. Aquí el navegador no sirve de testigo: Chromium guarda la
+        # propiedad con prefijo como si fuera la misma (preguntado: el CSSOM
+        # devuelve 100% con las dos líneas y también con solo la de WebKit) y
+        # el valor calculado tampoco cambia. Así que se lee el archivo, que es
+        # el único lugar donde se puede saber si la línea sin prefijo existe.
+        fuente = contexto.CSS.read_text("utf-8")
+        sin_prefijo = re.search(r"(?<!-)\btext-size-adjust\s*:", fuente)
+        ajuste = pag.evaluate(
+            "() => getComputedStyle(document.documentElement)"
+            ".getPropertyValue('text-size-adjust')").strip()
+        chequear(bool(sin_prefijo),
+                 "el texto no se agranda solo al girar el teléfono",
+                 f"text-size-adjust: {ajuste or '(sin valor)'}" if sin_prefijo else
+                 "el CSS solo trae -webkit-text-size-adjust: sin la forma sin "
+                 "prefijo, Chrome para Android agranda el texto por su cuenta y "
+                 "la maqueta se ve a otro tamaño")
+        # Y que el alto del encabezado siga siendo el real: con padding de
+        # muesca, el token que usan los saltos de ancla tiene que cambiar con él.
+        alto_masthead = pag.evaluate(
+            "() => document.querySelector('.masthead').getBoundingClientRect().height")
+        token = pag.evaluate(
+            "() => getComputedStyle(document.documentElement)"
+            ".getPropertyValue('--ap-alto-masthead').trim()")
+        chequear(token != "" and token.lower() != "auto",
+                 "el token del alto del encabezado está definido",
+                 f"--ap-alto-masthead: {token or '(vacío)'}, "
+                 f"masthead mide {alto_masthead:.0f} px")
+        ctx.close()
+
         navegador.close()
 
     # ----------------------------------------------------------------------
@@ -671,20 +760,9 @@ def main():
     seccion("G. lo que un emulador no puede comprobar")
     # No son fallas ni aciertos: son cosas que hay que mirar en un teléfono de
     # verdad, y conviene tenerlas escritas para no creer que el sitio está
-    # comprobado en la mano cuando no lo está.
+    # comprobado en la mano cuando no lo está. Las tres que se arreglaron para
+    # la muesca y el zoom de texto están más arriba, como comprobaciones.
     css = contexto.CSS.read_text("utf-8")
-    if "text-size-adjust" in css and "-webkit-text-size-adjust" in css:
-        nota("el CSS solo trae -webkit-text-size-adjust. Safari ya entiende "
-             "la propiedad sin prefijo; conviene tener las dos")
-    else:
-        nota("el CSS no declara text-size-adjust: en iPhone, al girar el "
-             "teléfono el texto se infla solo y puede romper la maqueta")
-    if "safe-area-inset" in css:
-        print("  ok    el CSS ya usa env(safe-area-inset-) para la muesca")
-    else:
-        nota("el CSS no usa env(safe-area-inset-): en un iPhone con muesca, "
-             "el botón de volver arriba y el pie pueden quedar bajo la barra "
-             "de inicio. Es lo primero que se mira en un teléfono de verdad")
     if re.search(r"touch-action\s*:\s*none", css):
         fallos.append("el CSS pone touch-action: none en algún sitio, que "
                       "impide hacer zoom con los dedos")

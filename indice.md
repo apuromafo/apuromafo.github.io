@@ -17,7 +17,7 @@ autor: true
 
 <div class="ap-buscador" data-buscador="lista-proyectos">
 <label class="visually-hidden" for="buscar-proyecto">Buscar entre los 73 proyectos</label>
-<input id="buscar-proyecto" type="search" placeholder="Buscar entre los 73 proyectos…" autocomplete="off" spellcheck="false">
+<input id="buscar-proyecto" type="search" placeholder="Buscar entre los 73 proyectos…" autocomplete="off" spellcheck="false" enterkeyhint="search" inputmode="search">
 {% include apuromafo/icono.html nombre="search" clase="ap-buscador__lupa" %}
 <button class="ap-buscador__limpiar" type="button" data-buscador-limpiar aria-label="Borrar la búsqueda">×</button>
 </div>
