@@ -25,6 +25,7 @@ Registro de cambios del sitio y de los proyectos destacados.
 - Ocho auditorías automáticas del sitio: compilación, caracteres raros, iconos, diseño en claro y oscuro, contraste y accesibilidad, blog, índice lateral y teléfono.
 - Dos auditorías reparadas: una llevaba un texto equivocado en su propio comentario y la otra daba por quieta la página antes de que terminara el salto, con lo cual fallaba de vez en cuando sin que el sitio tuviera nada que ver.
 - El índice lateral marca la sección que se está leyendo, con la misma línea de referencia que usa el salto al hacer clic, para que no señalen filas distintas.
+- Arreglos para el teléfono: el encabezado se aparta de la cámara en los modelos con muesca, el pie no queda debajo de la barra de inicio y el buscador pone «buscar» en la tecla del teclado en vez de «intro».
 
 ## 2026-10-02
 

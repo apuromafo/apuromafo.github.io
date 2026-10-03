@@ -384,6 +384,14 @@ li::marker {
    mano, y después se deshace lo que el tema le hace a los párrafos y a los
    títulos, porque en estas páginas manda el diseño de más abajo.
 
+   Ojo con el nombre: "ap-portada" no significa "solo la portada". Quiere decir
+   "esta página está hecha de secciones (.ap-seccion) y no de prosa", que es
+   exactamente lo que hacen las dos. Lo que comparte con .ap-seccion__etiqueta,
+   .ap-seccion__titulo y .ap-seccion__bajada es el vocabulario de las páginas
+   escritas a mano; las que usan _layouts/ap-seccion.html llevan su propio
+   encabezado (.ap-cabecera__*). Con dos nombres distintos para lo mismo se
+   acaba buscando la regla en el lugar equivocado.
+
    Los selectores llevan dos clases a propósito: el tema usa ".page__content p"
    (una clase y un tipo), que gana en especificidad a un ".ap-seccion__bajada"
    suelto. Por eso hay que llamarlos con ".page__content.ap-portada p".

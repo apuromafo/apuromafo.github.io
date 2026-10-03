@@ -10,6 +10,10 @@ sitemap: false
   páginas con layout single ya viene puesto, en esta hay que añadirlo. La
   clase "page__content" también la espera el tema (su JavaScript se cae si no
   la encuentra).
+  La clase "ap-portada" y las "ap-seccion__*" no son un resto de la portada
+  vieja: son el mismo vocabulario que usa index.md, y lo que quieren decir es
+  "esta página está hecha de secciones". Está explicado en el CSS, junto a la
+  regla que las usa.
 {%- endcomment -%}
 <div id="main" role="main" class="page__content ap-portada">
   <section class="ap-seccion ap-error">
