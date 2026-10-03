@@ -42,6 +42,29 @@
     );
   }
 
+  /* El href de un ancla y el id de su destino no siempre están escritos de la
+     misma manera. Hoy el include toc.html del tema los escribe tal cual (con la
+     tilde puesta), pero el mismo fragmento se ve percent-encoded en a.href y
+     en la barra de direcciones, y el tema podría cambiarlo en cualquier
+     momento. Se prueba primero lo decodificado y, si no aparece nada, lo crudo:
+     así el mismo código sirve para las dos formas. Un href raro (un % suelto,
+     por ejemplo) no debe romper nada, y si no encuentra destino devuelve null
+     para que el llamador siga su camino como hasta ahora. */
+  function porId(href) {
+    var crudo = String(href || "").replace(/^#/, "");
+    if (!crudo) {
+      return null;
+    }
+    var destino = null;
+    try {
+      destino = document.getElementById(decodeURIComponent(crudo));
+    } catch (error) {
+      // decodeURIComponent tira con lo que no es una secuencia válida; el
+      // intento con el texto tal cual, de abajo, es el plan B.
+    }
+    return destino || document.getElementById(crudo);
+  }
+
   /* ------------------------------------------------------------------------
    * 1. Revelado al entrar en pantalla
    * ---------------------------------------------------------------------- */
@@ -387,11 +410,10 @@
       if (!enlace) {
         return;
       }
-      var id = enlace.getAttribute("href").slice(1);
-      if (!id) {
-        return;
-      }
-      var destino = document.getElementById(id);
+      // El href se copia tal cual: porId descodifica para buscar, pero la URL
+      // que ve la gente se deja escrita como estaba en el atributo.
+      var href = enlace.getAttribute("href");
+      var destino = porId(href);
       if (!destino) {
         return;
       }
@@ -404,7 +426,7 @@
       destino.setAttribute("tabindex", "-1");
       destino.focus({ preventScroll: true });
       if (history.replaceState) {
-        history.replaceState(null, "", "#" + id);
+        history.replaceState(null, "", href);
       }
     });
   }
@@ -540,6 +562,131 @@
   }
 
   /* ------------------------------------------------------------------------
+   * 10. Índice del riel: marcar la sección que se está leyendo
+   * ---------------------------------------------------------------------- */
+  function indiceRiel() {
+    var menu = document.querySelector(".ap-toc__menu");
+    if (!menu) {
+      return;
+    }
+
+    var secciones = [];
+    Array.prototype.forEach.call(
+      menu.querySelectorAll('a[href^="#"]'),
+      function (enlace) {
+        var destino = porId(enlace.getAttribute("href"));
+        // Una entrada que no apunta a ningún título se deja como está: la
+        // escribió el tema y, sin este módulo, el índice se ve igual.
+        if (destino) {
+          secciones.push({ enlace: enlace, destino: destino });
+        }
+      }
+    );
+    if (!secciones.length) {
+      return;
+    }
+
+    var activa = null;
+
+    function marcar(indice) {
+      if (indice === activa) {
+        return;
+      }
+      activa = indice;
+      secciones.forEach(function (seccion, i) {
+        var esActiva = i === indice;
+        seccion.enlace.classList.toggle("es-activo", esActiva);
+        // aria-current le dice a quien navega con lector de pantalla cuál de
+        // estas secciones es la que se está leyendo ahora.
+        if (esActiva) {
+          seccion.enlace.setAttribute("aria-current", "true");
+        } else {
+          seccion.enlace.removeAttribute("aria-current");
+        }
+      });
+    }
+
+    // La línea de referencia es la misma que usa el salto de ancla: el
+    // scroll-padding-top del html, que sale de --ap-alto-masthead y que app.js
+    // reescribe con el alto real del encabezado. Si acá se inventara un número,
+    // el título que queda marcado y el título al que salta el clic terminarían
+    // en dos filas distintas.
+    function linea() {
+      var relleno = parseFloat(
+        window.getComputedStyle(RAIZ).scrollPaddingTop
+      );
+      return isNaN(relleno) || relleno <= 0 ? 0 : relleno;
+    }
+
+    function revisar() {
+      var ref = linea();
+      var indice = -1;
+      for (var i = 0; i < secciones.length; i++) {
+        if (secciones[i].destino.getBoundingClientRect().top <= ref + 1) {
+          indice = i;
+        }
+      }
+
+      // Abajo del todo manda la última, aunque su título siga por debajo de la
+      // línea: la página no da para más, y quedarse en la anterior daría la
+      // sensación de que al índice le falta la última entrada.
+      var hasta = RAIZ.scrollHeight - window.innerHeight;
+      if (hasta > 0 && hasta - window.scrollY <= 2) {
+        indice = secciones.length - 1;
+      }
+
+      // Arriba del todo no se marca nada, y no hace falta ninguna regla
+      // especial: el encabezado de la página ocupa más que la línea, así que el
+      // primer título todavía está por debajo y nadie quedó leído.
+      marcar(indice);
+    }
+
+    var pedido = false;
+    function alMover() {
+      if (pedido) {
+        return;
+      }
+      pedido = true;
+      window.requestAnimationFrame(function () {
+        pedido = false;
+        revisar();
+      });
+    }
+
+    window.addEventListener("scroll", alMover, { passive: true });
+    window.addEventListener("resize", alMover, { passive: true });
+    // Las fuentes del tema llegan después y mueven todo: se vuelve a medir.
+    window.addEventListener("load", alMover, { passive: true });
+
+    // Al hacer clic se marca el destino de entrada, sin esperar a que termine
+    // el desplazamiento. Después manda la geometría, que va corrigiendo durante
+    // el viaje y deja el marcador donde corresponde. Congelarlo hasta que
+    // pare el scroll pediría un temporizador que se desincroniza en cuanto el
+    // visitante scrollea con la rueda en el medio, y ahí el marcador queda
+    // mintiendo.
+    //
+    // La marca dura poco y está bien que dure poco: en cuanto la página se
+    // mueve, la geometría dice que todavía no se ha leído nada (el título de la
+    // sección sigue por debajo de la línea) y la quita. Eso no es un fallo del
+    // clic: es el indicador diciendo la verdad sobre dónde está el visitante.
+    menu.addEventListener("click", function (evento) {
+      var enlace = evento.target.closest &&
+        evento.target.closest('a[href^="#"]');
+      if (!enlace) {
+        return;
+      }
+      for (var i = 0; i < secciones.length; i++) {
+        if (secciones[i].enlace === enlace) {
+          marcar(i);
+          return;
+        }
+      }
+    });
+
+    revisar();
+  }
+
+  /* ------------------------------------------------------------------------
    * Arranque
    * ---------------------------------------------------------------------- */
   function iniciar() {
@@ -557,7 +704,8 @@
       ["volver arriba", volverArriba],
       ["texto rotativo", rotador],
       ["anchas", anclas],
-      ["buscador", busqueda]
+      ["buscador", busqueda],
+      ["índice del riel", indiceRiel]
     ].forEach(function (par) {
       try {
         par[1]();

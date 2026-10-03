@@ -1784,6 +1784,31 @@ li::marker {
   background: color-mix(in srgb, var(--ap-jade) 8%, transparent);
 }
 
+/* --- Índice: la sección que se está leyendo ------------------------------- */
+
+/* Mismo jade de marca del sitio, con el texto en el token de rótulos
+   (--ap-jade-texto) y no en el de relleno: el riel tiene letra chica y este
+   estado no es pasajero como el :hover, así que tiene que aguantar 4.5:1 en
+   los dos temas. La letra gruesa marca la posición sin depender del color, y
+   la transición no hace falta declararla otra vez: la de .ap-toc__menu a ya
+   cubre color, borde y fondo, y el bloque de prefers-reduced-motion la
+   apaga para todo. */
+.ap-toc__menu a.es-activo {
+  color: var(--ap-jade-texto);
+  border-left-color: var(--ap-jade);
+  background: color-mix(in srgb, var(--ap-jade) 12%, transparent);
+  font-weight: 600;
+}
+
+/* Con el puntero encima o el foco puesto se ve eso, no el estado de lectura:
+   se repite el par con es-activo para que ganen de nuevo. */
+.ap-toc__menu a.es-activo:hover,
+.ap-toc__menu a.es-activo:focus {
+  color: var(--ap-jade-texto);
+  background: color-mix(in srgb, var(--ap-jade) 18%, transparent);
+  font-weight: 600;
+}
+
 /* --- Tarjeta del autor --------------------------------------------------- */
 
 .ap-autor {
