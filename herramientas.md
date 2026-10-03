@@ -5,8 +5,8 @@ permalink: /herramientas/
 antetitulo: Utilidades
 icono: terminal
 bajada: >-
-  Selección de utilidades de mi [Repositorio Python](https://github.com/apuromafo/Repositorio_Python),
-  la mayoría escritas para dejar de hacer a mano lo que ya hacía mil veces.
+  Selección de utilidades del [Repositorio Python](https://github.com/apuromafo/Repositorio_Python),
+  la mayoría escritas para dejar de hacer a mano lo que ya se hacía mil veces.
   Las etiquetas de cada ficha sirven para filtrar la lista.
 cifras:
   - valor: "33"
@@ -23,9 +23,9 @@ filtro: true
 
 ### [Pack Mobile — Android + iOS](https://github.com/apuromafo/Repositorio_Python/tree/main/006_M%C3%B3vil)
 
-Mi automatización para pentesting móvil: mientras otros documentan el paso a paso, yo lo tengo automatizado. Incluye [Android](https://github.com/apuromafo/Repositorio_Python/tree/main/006_M%C3%B3vil/Android) (ADB, extracción de APK, Frida, Fridump, Hermes, SSL pinning, certificado Burp, JWT, logcat) e [iOS](https://github.com/apuromafo/Repositorio_Python/tree/main/006_M%C3%B3vil/iOS) (Frida server, manejo USB).
+Automatización del flujo de pentesting móvil, de principio a fin. Incluye [Android](https://github.com/apuromafo/Repositorio_Python/tree/main/006_M%C3%B3vil/Android) (ADB, extracción de APK, Frida, Fridump, Hermes, SSL pinning, certificado Burp, JWT, logcat) e [iOS](https://github.com/apuromafo/Repositorio_Python/tree/main/006_M%C3%B3vil/iOS) (Frida server, manejo USB).
 
-**Historia:** años automatizando el flujo completo de análisis móvil para mis auditorías.
+**Historia:** años de práctica automatizando el flujo completo de análisis móvil en las auditorías.
 
 <span class="tags"><a class="tag" data-tag="mobile">#mobile</a> <a class="tag" data-tag="android">#android</a> <a class="tag" data-tag="ios">#ios</a> <a class="tag" data-tag="frida">#frida</a> <a class="tag" data-tag="pentest">#pentest</a> <a class="tag" data-tag="automatizacion">#automatización</a></span>
 
@@ -35,7 +35,7 @@ Mi automatización para pentesting móvil: mientras otros documentan el paso a p
 
 ### [MalApiScan](https://github.com/apuromafo/Repositorio_Python/tree/main/011_MalApiScan)
 
-Escáner de API que armé con foco en abuso y malas prácticas.
+Escáner de API con foco en abuso y malas prácticas.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="api">#api</a> <a class="tag" data-tag="appsec">#appsec</a></span>
 
@@ -45,7 +45,7 @@ Escáner de API que armé con foco en abuso y malas prácticas.
 
 ### [Miniscan tipo Nmap](https://github.com/apuromafo/Repositorio_Python/tree/main/015_miniscan_tipo%20nmap)
 
-Mi escáner de red liviano al estilo Nmap.
+Escáner de red liviano al estilo Nmap.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="red-team">#red-team</a> <a class="tag" data-tag="scanning">#scanning</a></span>
 
@@ -55,7 +55,7 @@ Mi escáner de red liviano al estilo Nmap.
 
 ### [Mini assessment NIST + phishing](https://github.com/apuromafo/Repositorio_Python/tree/main/031_mini_assesment_nist_phish)
 
-Mi mini evaluación de postura con base NIST y simulación de phishing.
+Mini evaluación de postura con base NIST y simulación de phishing.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="blue-team">#blue-team</a> <a class="tag" data-tag="phishing">#phishing</a></span>
 
@@ -65,7 +65,7 @@ Mi mini evaluación de postura con base NIST y simulación de phishing.
 
 ### [Mitre](https://github.com/apuromafo/Repositorio_Python/tree/main/034_Mitre)
 
-Mis utilidades de trabajo con MITRE ATT&CK.
+Utilidades de trabajo con MITRE ATT&CK.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="mitre">#mitre</a> <a class="tag" data-tag="threat-intel">#threat-intel</a></span>
 
@@ -75,7 +75,7 @@ Mis utilidades de trabajo con MITRE ATT&CK.
 
 ### [CIS](https://github.com/apuromafo/Repositorio_Python/tree/main/036_cis)
 
-Mi apoyo a la verificación de controles CIS.
+Apoyo a la verificación de controles CIS.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="blue-team">#blue-team</a> <a class="tag" data-tag="hardening">#hardening</a></span>
 
@@ -85,7 +85,7 @@ Mi apoyo a la verificación de controles CIS.
 
 ### [OWASP vulns](https://github.com/apuromafo/Repositorio_Python/tree/main/037_owasp_vulns)
 
-Mis pruebas de vulnerabilidades OWASP en aplicaciones.
+Pruebas de vulnerabilidades OWASP en aplicaciones.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="appsec">#appsec</a> <a class="tag" data-tag="owasp">#owasp</a></span>
 
@@ -95,7 +95,7 @@ Mis pruebas de vulnerabilidades OWASP en aplicaciones.
 
 ### [CVE check](https://github.com/apuromafo/Repositorio_Python/tree/main/043_cve_check)
 
-Mi consulta y verificación de CVE.
+Consulta y verificación de CVE.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="vulnerabilidades">#vulnerabilidades</a></span>
 
@@ -105,7 +105,7 @@ Mi consulta y verificación de CVE.
 
 ### [Audit Burp to Risk](https://github.com/apuromafo/Repositorio_Python/tree/main/051_Audit_Burp2Risk)
 
-Convierto mis auditorías de Burp en análisis de riesgo con esta utilidad.
+Convierte las auditorías de Burp en análisis de riesgo.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="burp">#burp</a> <a class="tag" data-tag="pentest">#pentest</a></span>
 
@@ -115,7 +115,7 @@ Convierto mis auditorías de Burp en análisis de riesgo con esta utilidad.
 
 ### [Orquestador PwnDoc](https://github.com/apuromafo/Repositorio_Python/tree/main/060_orquestador%20pwndoc)
 
-Mi orquestación de reportes de pentest con PwnDoc.
+Orquestación de reportes de pentest con PwnDoc.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="pentest">#pentest</a> <a class="tag" data-tag="reportes">#reportes</a></span>
 
@@ -125,7 +125,7 @@ Mi orquestación de reportes de pentest con PwnDoc.
 
 ### [DefectDojo](https://github.com/apuromafo/Repositorio_Python/tree/main/062_Defect%20dojo)
 
-Mi integración y trabajo con DefectDojo para gestión de hallazgos.
+Integración y trabajo con DefectDojo para gestión de hallazgos.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="appsec">#appsec</a> <a class="tag" data-tag="devsecops">#devsecops</a></span>
 
@@ -135,7 +135,7 @@ Mi integración y trabajo con DefectDojo para gestión de hallazgos.
 
 ### [Informes pentest](https://github.com/apuromafo/Repositorio_Python/tree/main/063_informes%20pentest)
 
-Mi generación y apoyo a informes de pentesting.
+Generación y apoyo a informes de pentesting.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="pentest">#pentest</a> <a class="tag" data-tag="reportes">#reportes</a></span>
 
@@ -145,7 +145,7 @@ Mi generación y apoyo a informes de pentesting.
 
 ### [SCA Grype scan](https://github.com/apuromafo/Repositorio_Python/tree/main/068_SCA_Grype_scan)
 
-Mi análisis de composición de software con Grype.
+Análisis de composición de software con Grype.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="devsecops">#devsecops</a> <a class="tag" data-tag="sca">#sca</a></span>
 
@@ -155,7 +155,7 @@ Mi análisis de composición de software con Grype.
 
 ### [SSL Scan](https://github.com/apuromafo/Repositorio_Python/tree/main/069_SSL_Scan)
 
-Mi revisión de configuración TLS/SSL.
+Revisión de configuración TLS/SSL.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="blue-team">#blue-team</a> <a class="tag" data-tag="tls">#tls</a></span>
 
@@ -165,7 +165,7 @@ Mi revisión de configuración TLS/SSL.
 
 ### [Secretos Scan](https://github.com/apuromafo/Repositorio_Python/tree/main/073_Secretos_Scan)
 
-Mi detección de secretos expuestos en código.
+Detección de secretos expuestos en código.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="devsecops">#devsecops</a> <a class="tag" data-tag="secretos">#secretos</a></span>
 
@@ -175,7 +175,7 @@ Mi detección de secretos expuestos en código.
 
 ### [Cabeceras de Seguridad](https://github.com/apuromafo/Repositorio_Python/tree/main/008_Cabeceras_Seguridad)
 
-Mi revisión de security headers en sitios web.
+Revisión de security headers en sitios web.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="blue-team">#blue-team</a> <a class="tag" data-tag="appsec">#appsec</a></span>
 
@@ -185,7 +185,7 @@ Mi revisión de security headers en sitios web.
 
 ### [IP Report](https://github.com/apuromafo/Repositorio_Python/tree/main/027_IP%20report)
 
-Mi reporte y reputación de direcciones IP.
+Reporte y reputación de direcciones IP.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="threat-intel">#threat-intel</a> <a class="tag" data-tag="osint">#osint</a></span>
 
@@ -195,7 +195,7 @@ Mi reporte y reputación de direcciones IP.
 
 ### [LinkedIn Resolver](https://github.com/apuromafo/Repositorio_Python/tree/main/044_Linkedin%20Resolver)
 
-Mi resolvedor de perfiles de LinkedIn para OSINT.
+Resolvedor de perfiles de LinkedIn para OSINT.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="osint">#osint</a> <a class="tag" data-tag="red-team">#red-team</a></span>
 
@@ -205,7 +205,7 @@ Mi resolvedor de perfiles de LinkedIn para OSINT.
 
 ### [Conversor Burp XML/JSON a cURL](https://github.com/apuromafo/Repositorio_Python/tree/main/049_Conversor%20%20Burp%20XML_JSON%20a%20cURL)
 
-Convierto peticiones de Burp (XML/JSON) a cURL para repetirlas rápido.
+Convierte peticiones de Burp (XML/JSON) a cURL para repetirlas rápido.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="burp">#burp</a> <a class="tag" data-tag="pentest">#pentest</a></span>
 
@@ -215,7 +215,7 @@ Convierto peticiones de Burp (XML/JSON) a cURL para repetirlas rápido.
 
 ### [Conversor Burp XML a OpenAPI](https://github.com/apuromafo/Repositorio_Python/tree/main/050_Conversor%20Burp%20XML%20a%20OpenAPI)
 
-Convierto exportaciones de Burp a especificación OpenAPI.
+Convierte exportaciones de Burp a especificación OpenAPI.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="burp">#burp</a> <a class="tag" data-tag="api">#api</a></span>
 
@@ -225,7 +225,7 @@ Convierto exportaciones de Burp a especificación OpenAPI.
 
 ### [Firebase Audit](https://github.com/apuromafo/Repositorio_Python/tree/main/056_test_firebase_audit)
 
-Mi auditoría de bases Firebase expuestas.
+Auditoría de bases Firebase expuestas.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="appsec">#appsec</a> <a class="tag" data-tag="cloud">#cloud</a></span>
 
@@ -235,7 +235,7 @@ Mi auditoría de bases Firebase expuestas.
 
 ### [RUT Chileno](https://github.com/apuromafo/Repositorio_Python/tree/main/009_Rut_Chileno)
 
-Mi validador y generador de RUT chileno para pruebas con datos locales.
+Validador y generador de RUT chileno para pruebas con datos locales.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="chile">#chile</a> <a class="tag" data-tag="testing">#testing</a></span>
 
@@ -245,7 +245,7 @@ Mi validador y generador de RUT chileno para pruebas con datos locales.
 
 ### [Luhn](https://github.com/apuromafo/Repositorio_Python/tree/main/019_Luhn)
 
-Mi implementación del algoritmo de Luhn para validar tarjetas en pruebas.
+Implementación del algoritmo de Luhn para validar tarjetas en pruebas.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="pagos">#pagos</a> <a class="tag" data-tag="testing">#testing</a></span>
 
@@ -255,7 +255,7 @@ Mi implementación del algoritmo de Luhn para validar tarjetas en pruebas.
 
 ### [Análisis de header EML](https://github.com/apuromafo/Repositorio_Python/tree/main/001_Analisis_header_eml)
 
-Mi análisis de cabeceras de correos para phishing e investigación.
+Análisis de cabeceras de correos para phishing e investigación.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="phishing">#phishing</a> <a class="tag" data-tag="dfir">#dfir</a></span>
 
@@ -265,7 +265,7 @@ Mi análisis de cabeceras de correos para phishing e investigación.
 
 ### [Extrae correo](https://github.com/apuromafo/Repositorio_Python/tree/main/005_extrae_correo)
 
-Mi extractor de correos para OSINT y enumeración.
+Extractor de correos para OSINT y enumeración.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="osint">#osint</a></span>
 
@@ -275,7 +275,7 @@ Mi extractor de correos para OSINT y enumeración.
 
 ### [Palo Alto](https://github.com/apuromafo/Repositorio_Python/tree/main/017_Palo_alto)
 
-Mis utilidades de trabajo con Palo Alto.
+Utilidades de trabajo con Palo Alto.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="blue-team">#blue-team</a> <a class="tag" data-tag="firewall">#firewall</a></span>
 
@@ -285,7 +285,7 @@ Mis utilidades de trabajo con Palo Alto.
 
 ### [SonarScan demo](https://github.com/apuromafo/Repositorio_Python/tree/main/033_sonarscan_demo)
 
-Mi demo de escaneo con Sonar para calidad y seguridad de código.
+Demo de escaneo con Sonar para calidad y seguridad de código.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="devsecops">#devsecops</a> <a class="tag" data-tag="sast">#sast</a></span>
 
@@ -295,7 +295,7 @@ Mi demo de escaneo con Sonar para calidad y seguridad de código.
 
 ### [PortSwigger MD](https://github.com/apuromafo/Repositorio_Python/tree/main/040_md_portswigger)
 
-Mis apuntes de PortSwigger Web Security Academy.
+Apuntes de PortSwigger Web Security Academy.
 
 <span class="tags"><a class="tag" data-tag="appsec">#appsec</a> <a class="tag" data-tag="web">#web</a> <a class="tag" data-tag="apuntes">#apuntes</a></span>
 
@@ -305,7 +305,7 @@ Mis apuntes de PortSwigger Web Security Academy.
 
 ### [Google API check](https://github.com/apuromafo/Repositorio_Python/tree/main/042_Google_api_check)
 
-Mi verificación de uso de API de Google.
+Verificación de uso de API de Google.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="api">#api</a> <a class="tag" data-tag="osint">#osint</a></span>
 
@@ -315,7 +315,7 @@ Mi verificación de uso de API de Google.
 
 ### [DCode tool](https://github.com/apuromafo/Repositorio_Python/tree/main/047_dcode%20tool%20%20rot13+inverse%20string)
 
-Mi herramienta de rot13 e inversión de strings para análisis.
+Herramienta de rot13 e inversión de strings para análisis.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="ctf">#ctf</a> <a class="tag" data-tag="crypto">#crypto</a></span>
 
@@ -325,7 +325,7 @@ Mi herramienta de rot13 e inversión de strings para análisis.
 
 ### [PDF Info](https://github.com/apuromafo/Repositorio_Python/tree/main/057_PDF%20Info)
 
-Mi extractor de información y metadatos de PDF.
+Extractor de información y metadatos de PDF.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="dfir">#dfir</a> <a class="tag" data-tag="osint">#osint</a></span>
 
@@ -335,7 +335,7 @@ Mi extractor de información y metadatos de PDF.
 
 ### [DNS CAA](https://github.com/apuromafo/Repositorio_Python/tree/main/071_DNS_CAA)
 
-Mi revisión de registros DNS CAA de dominios.
+Revisión de registros DNS CAA de dominios.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="blue-team">#blue-team</a> <a class="tag" data-tag="dns">#dns</a></span>
 
@@ -345,7 +345,7 @@ Mi revisión de registros DNS CAA de dominios.
 
 ### [URL Link](https://github.com/apuromafo/Repositorio_Python/tree/main/070_URL%20link)
 
-Mi extractor y análisis de enlaces URL.
+Extractor y análisis de enlaces URL.
 
 <span class="tags"><a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="osint">#osint</a> <a class="tag" data-tag="phishing">#phishing</a></span>
 

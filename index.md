@@ -43,14 +43,14 @@ description: >-
       </p>
 
       <p class="hero__bajada">
-        Llevo casi 20 años entre reversing y assembler, y unos 4 haciendo
-        pentest. Todo lo que hago queda escrito: herramientas, writeups,
-        catálogos y el código de cada proyecto, con licencia abierta.
+        Casi 20 años entre reversing y assembler, y unos 4 haciendo pentest.
+        Todo queda escrito: herramientas, writeups, catálogos y el código de
+        cada proyecto, con licencia abierta.
       </p>
 
       <div class="hero__acciones">
         <a class="ap-btn ap-btn--primario" data-magnetic href="{{ '/red-team/' | relative_url }}">
-          Ver mis proyectos
+          Ver los proyectos
           {% include apuromafo/icono.html nombre="arrow-right" %}
         </a>
         <a class="ap-btn ap-btn--fantasma" data-magnetic href="{{ '/indice/' | relative_url }}">
@@ -131,7 +131,7 @@ description: >-
             <span class="ap-area__conteo">5 fichas</span>
           </span>
           <span class="ap-area__texto">
-            Python, Delphi, Bash y C: lo que escribo para resolver algo.
+            Python, Delphi, Bash y C: lo escrito para resolver algo.
           </span>
           <span class="ap-area__flecha">
             Abrir
@@ -186,7 +186,7 @@ description: >-
 
 ### [Catálogo de ciberseguridad](https://github.com/apuromafo/Repositorio_Python/tree/main/064_Regulaciones)
 
-Reuní 104 referencias de ciberseguridad, privacidad y regulación financiera (Chile, América Latina y banca), con CLI de consulta en Python y corte al 25-09-2026.
+104 referencias de ciberseguridad, privacidad y regulación financiera (Chile, América Latina y banca), con CLI de consulta en Python y corte al 25-09-2026.
 
 <span class="tags"><a class="tag" data-tag="ciberseguridad">#ciberseguridad</a> <a class="tag" data-tag="python">#python</a> <a class="tag" data-tag="chile">#chile</a></span>
 
@@ -196,7 +196,7 @@ Reuní 104 referencias de ciberseguridad, privacidad y regulación financiera (C
 
 ### [TryHackMe — Perfil](https://tryhackme.com/p/apuromafo)
 
-Soy jugador activo de TryHackMe, con más de 700 máquinas completadas y 283 días seguidos de actividad al 25-09-2026.
+Perfil activo en TryHackMe: más de 700 máquinas completadas y 283 días seguidos de actividad al 25-09-2026.
 
 <span class="tags"><a class="tag" data-tag="tryhackme">#tryhackme</a> <a class="tag" data-tag="pentesting">#pentesting</a> <a class="tag" data-tag="red-team">#red-team</a></span>
 
@@ -211,7 +211,7 @@ Soy jugador activo de TryHackMe, con más de 700 máquinas completadas y 283 dí
       <h2 class="ap-seccion__titulo" id="titulo-formacion">Formación y docencia</h2>
       <p class="ap-seccion__bajada">
         Diplomados y certificaciones. El detalle de más de 100 cursos está en
-        mis billeteras de credenciales, todas públicas.
+        las billeteras de credenciales, todas públicas.
       </p>
     </div>
 
@@ -239,10 +239,10 @@ Soy jugador activo de TryHackMe, con más de 700 máquinas completadas y 283 dí
   <div class="ap-ancho">
     <div class="ap-seccion__cabeza" data-reveal>
       <p class="ap-seccion__etiqueta">Contacto</p>
-      <h2 class="ap-seccion__titulo" id="titulo-contacto">Escríbeme o mira lo que hago</h2>
+      <h2 class="ap-seccion__titulo" id="titulo-contacto">Contacto y código abierto</h2>
       <p class="ap-seccion__bajada">
-        Todo mi trabajo está publicado en GitHub con licencias abiertas según
-        cada repositorio. Telegram es el mejor lugar para escribirme.
+        El trabajo está publicado en GitHub con licencias abiertas según cada
+        repositorio. Telegram es el canal más directo para escribir.
       </p>
     </div>
 
