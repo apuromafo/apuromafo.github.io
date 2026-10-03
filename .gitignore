@@ -8,3 +8,9 @@ Gemfile.lock
 # Notas de trabajo: no se publican ni se suben.
 ESTADO_LOCAL.md
 planificacion.md
+
+# Las utilidades son herramientas locales de Python: lo que generan al
+# ejecutarse no va al repo.
+utilidades/__pycache__/
+utilidades/auditorias/__pycache__/
+*.pyc

@@ -1,0 +1,79 @@
+{
+  "_que_es": "Configuración de las utilidades del sitio. Un solo lugar para cambiar el repositorio, la carpeta de compilación, el puerto y las páginas que se revisan. Nada de esto se escribe dentro del código: las auditorías lo leen de aquí. Formato JSON a propósito, para que la biblioteca estándar de Python lo lea sin instalar nada (YAML en Python exigiría PyYAML, y una herramienta de desarrollo no debería obligar a instalar dependencias). Las claves que empiezan con guion bajo son notas y la herramienta las ignora.",
+
+  "_como_se_pisa": "Desde la línea de comandos: ap.py build --repo RUTA, --build CARPETA, --puerto N y --capturas CARPETA. Con variables de entorno: AP_REPO, AP_BUILD, AP_PUERTO y AP_CAPTURAS. Precedencia: variable de entorno, luego lo de la línea de comandos, luego este archivo. Sirve para trabajar sobre una copia sin tocar nada, que es lo que hace falta cuando hay otra cosa mirando las mismas páginas.",
+
+  "repositorio": "C:\\Users\\pente\\Documents\\Github\\apuromafo.github.io",
+  "build": "C:\\Users\\pente\\AppData\\Local\\Temp\\opencode\\build",
+  "capturas": "C:\\Users\\pente\\AppData\\Local\\Temp\\opencode\\capturas",
+
+  "_ruby": "Ruby y Jekyll no están en el PATH del sistema: hay que agregarlos en cada terminal. Estas dos rutas se suman al PATH del propio proceso, así que compilar funciona desde cualquier terminal sin tocar la configuración de Windows.",
+  "ruby": {
+    "bin": "C:\\Ruby33-x64\\bin",
+    "msys": "C:\\Ruby33-x64\\msys64\\usr\\bin"
+  },
+
+  "servidor": {
+    "_que_es": "El servidor estático que sirve la carpeta de compilación. Lo usan las auditorías que necesitan un navegador de verdad; las que solo leen el _site no lo necesitan.",
+    "host": "127.0.0.1",
+    "puerto": 8099
+  },
+
+  "paginas": [
+    { "nombre": "portada",      "ruta": "/" },
+    { "nombre": "red-team",     "ruta": "/red-team/" },
+    { "nombre": "programacion", "ruta": "/programacion/" },
+    { "nombre": "herramientas", "ruta": "/herramientas/" },
+    { "nombre": "indice",       "ruta": "/indice/" },
+    { "nombre": "sobre-mi",     "ruta": "/sobre-mi/" },
+    { "nombre": "novedades",    "ruta": "/novedades/" },
+    { "nombre": "licencias",    "ruta": "/licencias/" },
+    { "nombre": "blog",         "ruta": "/blog/" },
+    { "nombre": "articulo",     "ruta": "/2026/09/25/bienvenida.html" },
+    { "nombre": "error",        "ruta": "/404.html" }
+  ],
+
+  "anchos": [
+    { "nombre": "escritorio", "ancho": 1440, "alto": 900 },
+    { "nombre": "telefono",   "ancho":  390, "alto": 844 }
+  ],
+
+  "temas": ["light", "dark"],
+
+  "_grupos": "Algunas auditorías solo miran un grupo de páginas, y con razón: la de contraste con las once sería lenta de más. Se nombran por el 'nombre' de 'paginas', no por la ruta, para que un cambio de dirección no rompa nada y una errata se note al cargar. 'blog' es el índice y la entrada, en ese orden.",
+  "grupos": {
+    "contraste": ["portada", "red-team", "indice", "licencias", "blog", "articulo"],
+    "riel": ["sobre-mi", "novedades", "licencias"],
+    "blog": ["blog", "articulo"]
+  },
+
+  "_movil": "Lo que necesita la auditoría del teléfono y no la revisión general. Vive aparte a propósito: la revisión general multiplica páginas por anchos por temas, así que agregar aquí un ancho más la dispararía. El perfil es un teléfono real de la lista de Playwright: eso activa la emulación de pantalla táctil, el factor de escala del dispositivo y las métricas de una pantalla de verdad, en vez de una ventana angosta con ratón. Con ratón, la mitad de los fallos de teléfono no se ven.",
+  "movil": {
+    "perfil": "Galaxy S24",
+    "perfiles_horizontales": ["Galaxy S24 landscape"],
+    "ancho_mas_estrecho": { "ancho": 320, "alto": 568 },
+    "minimo_area_tactil": 24,
+    "area_tactil_recomendada": 44,
+    "minimo_fuente_campos": 16
+  },
+
+  "_auditorias": "El registro de auditorías. Agregar una es agregar UNA entrada aquí y su archivo en esta misma carpeta: el CLI arma el resto. 'red' quiere decir que necesita el servidor levantado (por eso el CLI avisa si no está). El código de salida no se configura: es siempre el mismo en todos los scripts (0 = no encontró nada, 1 = encontró algo, 2 = no pudo ni arrancar).",
+  "auditorias": [
+    { "nombre": "build",      "titulo": "el _site ya construido",     "script": "revisar_build.py",      "red": false },
+    { "nombre": "caracteres", "titulo": "caracteres raros en el repo", "script": "revisar_caracteres.py", "red": false },
+    { "nombre": "iconos",     "titulo": "lo que deja el tema",         "script": "revisar_iconos.py",     "red": false },
+    { "nombre": "visual",     "titulo": "páginas por anchos y temas",  "script": "revisar_visual.py",     "red": true  },
+    { "nombre": "extra",      "titulo": "contraste, sin JS, teclado",  "script": "revisar_extra.py",      "red": true  },
+    { "nombre": "blog",       "titulo": "medidas del blog",            "script": "revisar_blog.py",       "red": true  },
+    { "nombre": "riel",       "titulo": "el riel y la sección activa", "script": "revisar_riel.py",       "red": true  },
+    { "nombre": "movil",      "titulo": "el teléfono de verdad",       "script": "revisar_movil.py",      "red": true  }
+  ],
+
+  "_generadores": "Scripts que producen archivos del sitio. Se invocan desde el CLI para que quede escrito en un solo lado de dónde sale cada archivo generado.",
+  "generadores": [
+    { "nombre": "iconos",  "titulo": "iconos SVG y máscaras del tema", "script": "generar_iconos.py",
+      "nota": "Necesita el tarball de Font Awesome descomprimido en ./fa (ver la ayuda del script)." },
+    { "nombre": "favicon", "titulo": "favicon para iOS y /favicon.ico", "script": "generar_favicon.py",
+      "nota": "Toma el SVG como única fuente; no necesita nada externo." }
+  ]
+}
