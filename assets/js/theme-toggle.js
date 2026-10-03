@@ -10,7 +10,7 @@
    texto se ven los decide el CSS según data-tema; a este script solo le toca
    conectarlo al clic y al cambio de hoja del tema.
 
-   El atributo data-tema manda para la hoja de diseño; el href de main.css ↔
+   El atributo data-tema manda para la hoja de diseño; el href de main.css y
    main-dark.css se cambia para que los colores base del tema acompañen. Las
    dos cosas siempre dicen lo mismo.
    =========================================================================== */

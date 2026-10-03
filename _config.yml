@@ -36,6 +36,16 @@ footer:
     - label: Licencias
       icon: fas fa-book
       url: /licencias/
+    # La atribución de los iconos tiene que estar a la vista en cada página, no
+    # solo en /licencias/: CC BY 4.0 la pide. Va con el nombre de la licencia en
+    # el texto porque "Font Awesome" a secas no la identifica, y el detalle
+    # completo (copyright de Fonticons, Inc., versión) queda en /licencias/.
+    # El ícono es fa-globe porque marca lo que viene de afuera y no pisa el
+    # fa-book de Licencias ni el fa-rss-square del feed; el tema escribe la
+    # clase tal cual, así que tiene que existir en iconos-tema.css.
+    - label: "Iconos: Font Awesome Free 6 (CC BY 4.0)"
+      icon: fas fa-globe
+      url: /licencias/
 plugins:
   # jekyll-remote-theme va explícito porque, al declarar `plugins:` en vez de
   # usar la lista por defecto de GitHub Pages, es el que trae el tema.
