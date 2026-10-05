@@ -148,6 +148,16 @@ GRUPOS = {g: en_paginas(lista) for g, lista in CFG["grupos"].items()}
 #: La hoja de diseño, para las comprobaciones que la leen como texto.
 CSS = REPO / "assets" / "css" / "apuromafo.css"
 
+#: Cuántas entradas debe tener el índice (y cuántas carpetas numeradas tiene el
+#: Repositorio Python). Vive en la configuración y no en el código: el sitio lo
+#: enseña en varios lugares a la vez, y con el número escrito en tres scripts
+#: basta con agregar un proyecto para que uno de los tres se quede atrás.
+PROYECTOS = int(CFG["cifras"]["proyectos"])
+
+#: Cuánto puede medir de largo la descripción de un proyecto antes de que se
+#: considere cortada. Es el techo del que salió el corte de palabras.
+LARGO_DESCRIPCION = int(CFG["cifras"]["largo_maximo_descripcion"])
+
 
 def ruta_de_auditoria(script):
     """La ruta de una auditoría del registro, o None si el archivo no está.

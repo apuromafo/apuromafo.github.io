@@ -7,6 +7,7 @@ que se note, sobre todo en el HTML que genera el tema.
 import pathlib
 import re
 import sys
+from html import unescape
 from urllib.parse import urlparse
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
@@ -85,7 +86,7 @@ for i, ficha in enumerate(fichas, 1):
     revisar("<h3" in ficha, f"portada: la ficha {i} quedó sin <h3>")
     revisar("class=\"tag\"" in ficha, f"portada: la ficha {i} quedó sin etiquetas")
 
-# --- 4. El índice de 73 proyectos -------------------------------------------
+# --- 4. El índice de proyectos ----------------------------------------------
 indice = (RAIZ / "indice" / "index.html").read_text(encoding="utf-8",
                                                      errors="replace")
 lista = re.search(r'<div class="ap-indice-lista"[^>]*id="lista-proyectos"'
@@ -94,12 +95,66 @@ revisar(lista is not None, "índice: no se encontró la lista de proyectos")
 if lista:
     interior = lista.group(1)
     titulos = re.findall(r"<h3", interior)
-    revisar(len(titulos) == 73,
-            f"índice: {len(titulos)} proyectos (deben ser 73)")
+    revisar(len(titulos) == contexto.PROYECTOS,
+            f"índice: {len(titulos)} proyectos "
+            f"(deben ser {contexto.PROYECTOS})")
     revisar("<pre>" not in interior and "<code>" not in interior,
             "índice: algún proyecto se convirtió en bloque de código")
+    # Cada proyecto es un <h3> seguido de su descripción. La descripción se
+    # acorta para que la lista no quede sin fin, y al acortarla se pasó a
+    # cortar palabras a mitad: 48 de las 73 entradas acababan en "detectar posi"
+    # o "validación cr". Se comprueba que ninguna descripción termine a media
+    # frase y que ninguna pase del largo que dice la configuración.
+    entradas = re.findall(r"<h3[^>]*>.*?</h3>\s*(.*?)(?=<h3|</div>|\Z)",
+                          interior, re.S)
+    sin_frase = []
+    demasiado_largo = []
+    sin_texto = []
+    for trozo in entradas:
+        # La descripción es lo que va entre el </h3> y el siguiente <h3>, sin
+        # las etiquetas: el texto es lo que se lee en la página. Las entidades
+        # se deshacen antes de medir, porque "ATT&amp;CK" ocupa 10 caracteres
+        # en el archivo y "ATT&CK" son 6 los que lee el lector; sin deshacerlo,
+        # esa descripción parecía 4 caracteres más larga de lo que es.
+        desc = re.sub(r"<[^>]+>", " ", trozo)
+        desc = re.sub(r"\s+", " ", unescape(desc)).strip()
+        if not desc:
+            sin_texto.append("una entrada sin descripción")
+            continue
+        if len(desc) > contexto.LARGO_DESCRIPCION:
+            demasiado_largo.append(f"{len(desc)} caracteres")
+        if desc[-1] not in ".!?\"'…)":
+            sin_frase.append(desc[-24:] + "…")
+    revisar(not sin_texto,
+            f"alguna entrada del índice se quedó sin descripción "
+            f"({len(sin_texto)}): {'; '.join(sin_texto[:5])}")
+    revisar(not demasiado_largo,
+            f"alguna descripción pasa de los "
+            f"{contexto.LARGO_DESCRIPCION} caracteres "
+            f"({len(demasiado_largo)}): "
+            f"{'; '.join(demasiado_largo[:5])}")
+    revisar(not sin_frase,
+            f"{len(sin_frase)} descripciones del índice quedan cortadas a "
+            f"media palabra (tienen que acabar en punto o similar): "
+            f"{'; '.join(sin_frase[:5])}")
 revisar('id="buscar-proyecto"' in indice, "índice: falta el campo de búsqueda")
 revisar('id="lista-proyectos-vacio"' in indice, "índice: falta el aviso de vacío")
+
+# --- 4-bis. El número de proyectos, el mismo en todos los lados --------------
+# El total aparece en el antetítulo, en la cifra grande, en la etiqueta de la
+# cifra, en el texto del buscador, en el contador y en el botón del 404. Cuando
+# el repositorio creció de 73 a 74, cinco de esos seis seguían diciendo 73 y
+# nadie se dio cuenta: el sitio no se rompe, solo miente. Ahora se comparan
+# todos contra el número de la configuración.
+patron_numero = re.compile(r"\b(\d{1,4})\s+proyectos\b", re.I)
+for html in sorted(RAIZ.rglob("*.html")):
+    rel = html.relative_to(RAIZ)
+    texto = re.sub(r"<[^>]+>", " ", html.read_text(encoding="utf-8",
+                                                    errors="replace"))
+    for numero in patron_numero.findall(texto):
+        revisar(int(numero) == contexto.PROYECTOS,
+                f"{rel}: dice '{numero} proyectos' y el índice tiene "
+                f"{contexto.PROYECTOS}")
 
 # --- 5. Enlaces y anclas internas ------------------------------------------
 id_de_html = re.compile(r'\bid="([^"]+)"')

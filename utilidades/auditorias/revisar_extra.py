@@ -224,10 +224,11 @@ def main():
         # la barra lateral no cuenta.
         proyectos = len(re.findall(r'<h3 id="', idx))
         print("   el índice sin JS:",
-              proyectos, "proyectos (deben ser 73)")
-        if proyectos != 73:
+              proyectos, f"proyectos (deben ser {contexto.PROYECTOS})")
+        if proyectos != contexto.PROYECTOS:
             problemas.append(
-                f"sin JS, el índice muestra {proyectos} de 73")
+                f"sin JS, el índice muestra {proyectos} "
+                f"de {contexto.PROYECTOS}")
         print("   el buscador (lo aporta el script):",
               "presente" if "data-buscador-campo" in idx
               else "ausente (correcto)")

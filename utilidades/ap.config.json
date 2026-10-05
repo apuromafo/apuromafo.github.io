@@ -47,6 +47,13 @@
     "blog": ["blog", "articulo"]
   },
 
+  "_cifras": "Las cantidades que el sitio enseña en más de un lugar (el antetítulo, la cifra grande, el texto del buscador, el botón del 404...). Viven aquí para que las auditorías puedan compararlas entre sí y con la lista real: si el repositorio crece, se cambia el número del sitio y este, y si se olvida alguno la auditoría lo dice nombrando la página. Antes el 73 estaba escrito en tres archivos del código y en cinco del sitio, y cuando el total pasó a 74 hubo que cazarlos uno por uno.",
+  "cifras": {
+    "_que_es": "proyectos = cuántas entradas tiene el índice, que es cuántas carpetas numeradas tiene el Repositorio Python.",
+    "proyectos": 74,
+    "largo_maximo_descripcion": 180
+  },
+
   "_movil": "Lo que necesita la auditoría del teléfono y no la revisión general. Vive aparte a propósito: la revisión general multiplica páginas por anchos por temas, así que agregar aquí un ancho más la dispararía. El perfil es un teléfono real de la lista de Playwright: eso activa la emulación de pantalla táctil, el factor de escala del dispositivo y las métricas de una pantalla de verdad, en vez de una ventana angosta con ratón. Con ratón, la mitad de los fallos de teléfono no se ven.",
   "movil": {
     "perfil": "Galaxy S24",

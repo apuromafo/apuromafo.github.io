@@ -54,7 +54,7 @@ description: >-
           {% include apuromafo/icono.html nombre="arrow-right" %}
         </a>
         <a class="ap-btn ap-btn--fantasma" data-magnetic href="{{ '/indice/' | relative_url }}">
-          Índice de 73 proyectos
+          Índice de 74 proyectos
         </a>
       </div>
 
@@ -88,7 +88,7 @@ description: >-
         <span class="cifra__etiqueta">referencias de ciberseguridad y regulación</span>
       </li>
       <li data-reveal>
-        <span class="cifra__valor"><em>73</em></span>
+        <span class="cifra__valor"><em>74</em></span>
         <span class="cifra__etiqueta">proyectos en el índice del repositorio</span>
       </li>
     </ul>
@@ -160,7 +160,7 @@ description: >-
           <span class="ap-area__icono">{% include apuromafo/icono.html nombre="list" %}</span>
           <span class="ap-area__titulo">
             Índice
-            <span class="ap-area__conteo">73 proyectos</span>
+            <span class="ap-area__conteo">74 proyectos</span>
           </span>
           <span class="ap-area__texto">
             Todos los proyectos con descripción, para buscar por nombre.
